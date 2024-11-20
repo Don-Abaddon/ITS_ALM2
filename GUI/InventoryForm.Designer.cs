@@ -1,0 +1,97 @@
+﻿namespace GUI
+{
+    partial class InventoryForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            txtbar = new TextBox();
+            dgvItems = new DataGridView();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvItems).BeginInit();
+            SuspendLayout();
+            // 
+            // txtbar
+            // 
+            txtbar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtbar.BackColor = Color.FromArgb(36, 33, 36);
+            txtbar.BorderStyle = BorderStyle.None;
+            txtbar.Font = new Font("Segoe UI", 14F);
+            txtbar.ForeColor = SystemColors.ScrollBar;
+            txtbar.Location = new Point(300, 73);
+            txtbar.Name = "txtbar";
+            txtbar.Size = new Size(212, 25);
+            txtbar.TabIndex = 1;
+            txtbar.Text = "Barcode";
+            txtbar.TextChanged += txtbar_TextChanged;
+            txtbar.Enter += txtbar_Enter;
+            txtbar.Leave += txtbar_Leave;
+            // 
+            // dgvItems
+            // 
+            dgvItems.BackgroundColor = Color.FromArgb(38, 38, 39);
+            dgvItems.BorderStyle = BorderStyle.None;
+            dgvItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvItems.Location = new Point(12, 145);
+            dgvItems.Name = "dgvItems";
+            dgvItems.Size = new Size(792, 298);
+            dgvItems.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = SystemColors.ControlDark;
+            label1.Location = new Point(299, 86);
+            label1.Name = "label1";
+            label1.Size = new Size(212, 15);
+            label1.TabIndex = 3;
+            label1.Text = "_________________________________________";
+            // 
+            // InventoryForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(816, 458);
+            Controls.Add(dgvItems);
+            Controls.Add(txtbar);
+            Controls.Add(label1);
+            Name = "InventoryForm";
+            Text = "Inventory";
+            Controls.SetChildIndex(label1, 0);
+            Controls.SetChildIndex(txtbar, 0);
+            Controls.SetChildIndex(dgvItems, 0);
+            ((System.ComponentModel.ISupportInitialize)dgvItems).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private TextBox txtbar;
+        private DataGridView dgvItems;
+        private Label label1;
+    }
+}
