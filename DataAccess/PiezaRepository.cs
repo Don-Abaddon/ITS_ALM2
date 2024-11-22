@@ -52,10 +52,10 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = "SELECT * FROM Piezas WHERE BarCode like @barcode";
+                string query = "SELECT * FROM Piezas WHERE BarCode = @barcode";
                 using (var cmd = new SqliteCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@barcode", barcode + "%");
+                    cmd.Parameters.AddWithValue("@barcode", barcode);
                     Console.Write(barcode);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
@@ -64,6 +64,25 @@ namespace DataAccess
                         return dataTable;
                     }
                 }
+            }
+        }
+        public async Task<DataTable> SaveItemsAsync(string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
+        {
+            using (var conn = new SqliteConnection(DBConnection.ConnectionString))
+            {
+                await conn.OpenAsync();
+                string query = "INSERT INTO Piezas (Marca, Modelo, BarCode, Descripcion, Categoria, Cantidad) Value(@Marca, @Modelo, @barcode, @Descripcion, Categoria, Cantidad)";
+                using (var cmd = new SqliteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@barcode", barcode);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }
+                }
+
             }
         }
     }

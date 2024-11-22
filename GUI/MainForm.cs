@@ -10,7 +10,6 @@ namespace GUI
         {
             _inventory = new Inventory();
             InitializeComponent();
-            Win_Title("Main Windows");
             TextBoxStyle(txtbar);
             TextBoxStyle(txtmarca);
             TextBoxStyle(txtmodelo);

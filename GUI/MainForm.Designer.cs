@@ -205,9 +205,9 @@
             // 
             // txtqty
             // 
-            txtqty.Location = new Point(572, 219);
+            txtqty.Location = new Point(573, 219);
             txtqty.Name = "txtqty";
-            txtqty.Size = new Size(100, 23);
+            txtqty.Size = new Size(58, 23);
             txtqty.TabIndex = 2;
             txtqty.Text = "Cantidad";
             // 
@@ -217,14 +217,14 @@
             label7.ForeColor = SystemColors.ControlDark;
             label7.Location = new Point(569, 229);
             label7.Name = "label7";
-            label7.Size = new Size(107, 15);
+            label7.Size = new Size(67, 15);
             label7.TabIndex = 15;
-            label7.Text = "____________________";
+            label7.Text = "____________";
             // 
             // btnsust
             // 
             btnsust.Font = new Font("Segoe UI", 16F);
-            btnsust.Location = new Point(686, 213);
+            btnsust.Location = new Point(649, 213);
             btnsust.Name = "btnsust";
             btnsust.Size = new Size(27, 31);
             btnsust.TabIndex = 3;
@@ -233,9 +233,8 @@
             // 
             // btnadd
             // 
-            btnadd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnadd.Font = new Font("Segoe UI", 16F);
-            btnadd.Location = new Point(737, 213);
+            btnadd.Location = new Point(694, 213);
             btnadd.Name = "btnadd";
             btnadd.Size = new Size(27, 31);
             btnadd.TabIndex = 4;
@@ -246,7 +245,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(776, 286);
+            ClientSize = new Size(735, 266);
             Controls.Add(btnadd);
             Controls.Add(btnsust);
             Controls.Add(txtqty);
@@ -266,7 +265,6 @@
             Controls.Add(pnlnav);
             Name = "MainForm";
             Text = "Form1";
-            
             Controls.SetChildIndex(pnlnav, 0);
             Controls.SetChildIndex(label1, 0);
             Controls.SetChildIndex(txtpiezaID, 0);
