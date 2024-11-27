@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class NewPartForm
+    partial class Add_UpdateForm
     {
         /// <summary>
         /// Required designer variable.
@@ -183,7 +183,7 @@
             btnsave.FlatStyle = FlatStyle.Flat;
             btnsave.Font = new Font("Segoe UI", 14F);
             btnsave.ForeColor = SystemColors.ControlDark;
-            btnsave.Location = new Point(218, 262);
+            btnsave.Location = new Point(181, 262);
             btnsave.Name = "btnsave";
             btnsave.Size = new Size(103, 35);
             btnsave.TabIndex = 30;
@@ -195,7 +195,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(512, 309);
+            ClientSize = new Size(509, 309);
             Controls.Add(btnsave);
             Controls.Add(txtqty);
             Controls.Add(label7);

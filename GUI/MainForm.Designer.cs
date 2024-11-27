@@ -55,9 +55,9 @@
             pnlnav.BorderStyle = BorderStyle.FixedSingle;
             pnlnav.Controls.Add(btnnew);
             pnlnav.Controls.Add(btnInventory);
-            pnlnav.Location = new Point(0, 41);
+            pnlnav.Location = new Point(0, 40);
             pnlnav.Name = "pnlnav";
-            pnlnav.Size = new Size(150, 244);
+            pnlnav.Size = new Size(147, 225);
             pnlnav.TabIndex = 1;
             // 
             // btnnew

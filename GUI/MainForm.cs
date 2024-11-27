@@ -22,6 +22,7 @@ namespace GUI
             txtdescription.Multiline = true;
             //txtdescription.ScrollBars = ScrollBars.Vertical;
             Disable_entries();
+            Win_Title("Almacen ITS");
         }
         private void Disable_entries()
         {
@@ -59,7 +60,7 @@ namespace GUI
         private void btnnew_Click(object sender, EventArgs e)
         {
             this.Hide();
-            NewPartForm newPartForm = new NewPartForm();
+            Add_UpdateForm newPartForm = new Add_UpdateForm();
             newPartForm.ShowDialog();
         }
         private async void txtbar_KeyDown(object sender, KeyEventArgs e)

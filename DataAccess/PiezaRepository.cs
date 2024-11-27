@@ -71,10 +71,15 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = "INSERT INTO Piezas (Marca, Modelo, BarCode, Descripcion, Categoria, Cantidad) Value(@Marca, @Modelo, @barcode, @Descripcion, Categoria, Cantidad)";
+                string query = "INSERT INTO Piezas (Marca, Modelo, BarCode, Descripcion, Categoria, Cantidad) Value(@Marca, @Modelo, @barcode, @Descripcion, @Categoria, @Cantidad)";
                 using (var cmd = new SqliteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@barcode", barcode);
+                    cmd.Parameters.AddWithValue("@Marca", marca);
+                    cmd.Parameters.AddWithValue("@Modelo", modelo);
+                    cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+                    cmd.Parameters.AddWithValue("@Categoria", categoria);
+                    cmd.Parameters.AddWithValue("@Cantidad", cantidad);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         DataTable dataTable = new DataTable();
@@ -83,6 +88,31 @@ namespace DataAccess
                     }
                 }
 
+            }
+        }
+        public async Task<DataTable> UpdateItemsAsync(string ID, string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
+        {
+            using (var conn = new SqliteConnection(DBConnection.ConnectionString))
+            {
+                await conn.OpenAsync();
+                string query = "UPDATE Piezas (Marca, Modelo, BarCode, Descripcion, Categoria, Cantidad) Value(@Marca, @Modelo, @barcode, @Descripcion, @Categoria, @Cantidad" +
+                    "WHERE PiezaID = @id)";
+                using (var cmd = new SqliteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", ID);
+                    cmd.Parameters.AddWithValue("@barcode", barcode);
+                    cmd.Parameters.AddWithValue("@Marca", marca);
+                    cmd.Parameters.AddWithValue("@Modelo", modelo);
+                    cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+                    cmd.Parameters.AddWithValue("@Categoria", categoria);
+                    cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }
+                }
             }
         }
     }

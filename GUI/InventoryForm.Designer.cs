@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             txtbar = new TextBox();
             dgvItems = new DataGridView();
             label1 = new Label();
@@ -43,7 +45,7 @@
             txtbar.ForeColor = SystemColors.ScrollBar;
             txtbar.Location = new Point(300, 73);
             txtbar.Name = "txtbar";
-            txtbar.Size = new Size(212, 25);
+            txtbar.Size = new Size(229, 25);
             txtbar.TabIndex = 1;
             txtbar.Text = "Barcode";
             txtbar.TextChanged += txtbar_TextChanged;
@@ -53,11 +55,28 @@
             // dgvItems
             // 
             dgvItems.BackgroundColor = Color.FromArgb(38, 38, 39);
-            dgvItems.BorderStyle = BorderStyle.None;
+            dgvItems.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvItems.Location = new Point(12, 145);
             dgvItems.Name = "dgvItems";
-            dgvItems.Size = new Size(792, 298);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.Info;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvItems.RowHeadersVisible = false;
+            dgvItems.Size = new Size(809, 298);
             dgvItems.TabIndex = 0;
             // 
             // label1
@@ -74,7 +93,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(816, 458);
+            ClientSize = new Size(833, 458);
             Controls.Add(dgvItems);
             Controls.Add(txtbar);
             Controls.Add(label1);

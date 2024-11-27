@@ -1,5 +1,7 @@
 ﻿using DataAccess;
 using System.Data;
+using System.Reflection;
+using System.Text.RegularExpressions;
 namespace Domain
 {
     public class Inventory
@@ -25,6 +27,10 @@ namespace Domain
         public async Task<DataTable> SaveItemsAsync(string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
         {
             return await _piezaRepository.SaveItemsAsync(marca,  modelo,  barcode,  descripcion,  categoria,  cantidad);
+        }
+        public async Task<DataTable> UpdateItems(string ID, string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
+            {
+            return await _piezaRepository.UpdateItemsAsync(ID, marca, modelo, barcode, descripcion, categoria, cantidad);
         }
     }
 }

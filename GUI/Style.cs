@@ -24,12 +24,12 @@ namespace GUI
         public Style()
         {
             InitializeComponent();
-            Win_Title("Almacen ITS");
+            //Win_Title("Almacen ITS");
         }
 
         public void Win_Title(string Title)
         {
-            lblTitle.Text = Title;
+           title.Text = Title;
         }
 
         private void btnclose_Click(object sender, EventArgs e)

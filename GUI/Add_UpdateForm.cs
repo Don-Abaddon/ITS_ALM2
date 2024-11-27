@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class NewPartForm : Style
+    public partial class Add_UpdateForm : Style
     {
         private Inventory _inventory;
-        public NewPartForm()
+        public Add_UpdateForm()
         {
             InitializeComponent();
             this.FormClosed += NewPartForm_FormClosed;
@@ -29,6 +29,7 @@ namespace GUI
             ButtonStyle(btnsave);
             txtdescription.Multiline = true;
             txtpiezaID.Enabled = false;
+            Win_Title("Nueva Pieza");
         }
         private void NewPartForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -47,6 +48,7 @@ namespace GUI
             string descripcion = txtdescription.Text;
             string cantidad = txtqty.Text;
             string barcode = txtbar.Text;
+            string ID = txtpiezaID.Text;
             if (txtpiezaID.Text == "" || txtpiezaID.Text == "ID")
             {
                 if (string.IsNullOrWhiteSpace(marca) || marca == "Marca" ||
@@ -70,7 +72,13 @@ namespace GUI
             }
             else
             {
-
+                if (int.TryParse(cantidad, out int cantidadNumerica) && cantidadNumerica >= 0)
+                {
+                    // Llamar al método para guardar los datos
+                    DataTable dataTable = await _inventory.UpdateItems(ID, marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
+                    MessageBox.Show("Registro ha actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+               
             }
         }
     }
