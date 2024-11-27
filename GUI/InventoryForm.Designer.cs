@@ -78,6 +78,7 @@
             dgvItems.RowHeadersVisible = false;
             dgvItems.Size = new Size(809, 298);
             dgvItems.TabIndex = 0;
+            dgvItems.CellMouseDown += dgvItems_CellMouseDown;
             // 
             // label1
             // 

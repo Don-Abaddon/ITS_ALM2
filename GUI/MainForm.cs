@@ -53,9 +53,8 @@ namespace GUI
         }
         private void btnInventory_Click(object sender, EventArgs e)
         {
-            this.Hide();
             InventoryForm inventoryForm = new InventoryForm();
-            inventoryForm.ShowDialog();
+            inventoryForm.Show();
         }
         private void btnnew_Click(object sender, EventArgs e)
         {

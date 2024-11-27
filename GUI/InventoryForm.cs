@@ -36,6 +36,7 @@ namespace GUI
                 //editMenuItem,
                 //deleteMenuItem
             });
+            contextMenuStrip1.Items.Add(addMenuItem);
             foreach (ToolStripMenuItem item in contextMenuStrip1.Items)
             {
                 item.BackColor = Color.FromArgb(30, 30, 30); // Fondo oscuro
@@ -43,14 +44,49 @@ namespace GUI
                 item.Font = new Font("Segoe UI", 10);       // Fuente personalizada
             }
             this.dgvItems.ContextMenuStrip = this.contextMenuStrip1;
+            //dgvItems.MouseDown += dgvItems_MouseDown;
         }
         private void AddMenuItem_Click(object sender, EventArgs e)
         {
-            // Abre un formulario para añadir un nuevo elemento
-            Add_UpdateForm addForm = new Add_UpdateForm();
-            addForm.ShowDialog();
-        }
+            if (dgvItems.SelectedRows.Count > 0)
+            {
+                var selectedRow = dgvItems.SelectedRows[0];
 
+                // Obtén los valores de las celdas
+                string id = selectedRow.Cells["PiezaID"].Value?.ToString() ?? string.Empty;
+                string marca = selectedRow.Cells["Marca"].Value?.ToString() ?? string.Empty;
+                string modelo = selectedRow.Cells["Modelo"].Value?.ToString() ?? string.Empty;
+                string barcode = selectedRow.Cells["BarCode"].Value?.ToString() ?? string.Empty;
+                string descripcion = selectedRow.Cells["Descripcion"].Value?.ToString() ?? string.Empty;
+                string categoria = selectedRow.Cells["Categoria"].Value?.ToString() ?? string.Empty;
+                int.TryParse(selectedRow.Cells["Cantidad"].Value?.ToString(), out int cantidad);
+
+                // Abre el formulario de edición con los datos
+                Add_UpdateForm editForm = new Add_UpdateForm(id, marca, modelo, barcode, descripcion, categoria, cantidad);
+                editForm.ShowDialog();
+
+                // Opcional: Actualiza el DataGridView después de editar
+                _ = Inventory_Load();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void dgvItems_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hitTestInfo = dgvItems.HitTest(e.X, e.Y);
+
+                if (hitTestInfo.RowIndex >= 0)
+                {
+                    dgvItems.ClearSelection(); // Limpia selecciones previas
+                    dgvItems.Rows[hitTestInfo.RowIndex].Selected = true; // Selecciona la fila correspondiente
+                    dgvItems.CurrentCell = dgvItems.Rows[hitTestInfo.RowIndex].Cells[hitTestInfo.ColumnIndex]; // Establece la celda activa
+                }
+            }
+        }
         private void txtbar_Enter(object sender, EventArgs e)
         {
             if (txtbar.Text == "Barcode")
@@ -119,6 +155,17 @@ namespace GUI
 
             // Otros estilos
             dgvItems.EnableHeadersVisualStyles = false; // Permite aplicar estilos personalizados
+        }
+
+        private void dgvItems_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                dgvItems.ClearSelection(); // Limpia selecciones previas
+                dgvItems.Rows[e.RowIndex].Selected = true; // Selecciona la fila correspondiente
+                dgvItems.CurrentCell = dgvItems.Rows[e.RowIndex].Cells[e.ColumnIndex]; // Establece la celda activa
+            }
+
         }
     }
 }

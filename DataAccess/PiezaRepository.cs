@@ -95,8 +95,16 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = "UPDATE Piezas (Marca, Modelo, BarCode, Descripcion, Categoria, Cantidad) Value(@Marca, @Modelo, @barcode, @Descripcion, @Categoria, @Cantidad" +
-                    "WHERE PiezaID = @id)";
+                string query = @"
+                                UPDATE Piezas
+                                SET 
+                                    Marca = @Marca, 
+                                    Modelo = @Modelo, 
+                                    BarCode = @barcode, 
+                                    Descripcion = @Descripcion, 
+                                    Categoria = @Categoria, 
+                                    Cantidad = @Cantidad
+                                WHERE PiezaID = @id";
                 using (var cmd = new SqliteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@id", ID);

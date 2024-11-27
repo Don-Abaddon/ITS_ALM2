@@ -61,6 +61,7 @@
             title.Size = new Size(71, 30);
             title.TabIndex = 101;
             title.Text = "label1";
+            title.MouseDown += label1_MouseDown;
             // 
             // btnmin
             // 
