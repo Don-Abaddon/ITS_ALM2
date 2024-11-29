@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 
@@ -71,7 +73,20 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = "INSERT INTO Piezas (Marca, Modelo, BarCode, Descripcion, Categoria, Cantidad) Value(@Marca, @Modelo, @barcode, @Descripcion, @Categoria, @Cantidad)";
+                string query = @"INSERT INTO Piezas 
+                                     (Marca, 
+                                     Modelo, 
+                                     BarCode, 
+                                     Descripcion, 
+                                     Categoria, 
+                                     Cantidad) 
+                                 Values
+                                    (@Marca, 
+                                    @Modelo, 
+                                    @barcode, 
+                                    @Descripcion, 
+                                    @Categoria, 
+                                    @Cantidad)";
                 using (var cmd = new SqliteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@barcode", barcode);
@@ -114,6 +129,25 @@ namespace DataAccess
                     cmd.Parameters.AddWithValue("@Descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@Categoria", categoria);
                     cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }
+                }
+            }
+        }
+        public async Task<DataTable> DeleteItemsAsync(string ID)
+        {
+            using (var conn = new SqliteConnection(DBConnection.ConnectionString))
+            {
+                await conn.OpenAsync();
+                string query = @"DELETE FROM Piezas
+                                WHERE PiezaID = @id";
+                using (var cmd = new SqliteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", ID);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         DataTable dataTable = new DataTable();

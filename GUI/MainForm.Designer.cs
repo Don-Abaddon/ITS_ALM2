@@ -91,7 +91,7 @@
             txtpiezaID.Location = new Point(192, 74);
             txtpiezaID.Name = "txtpiezaID";
             txtpiezaID.Size = new Size(100, 23);
-            txtpiezaID.TabIndex = 2;
+            txtpiezaID.TabIndex = 10;
             txtpiezaID.TabStop = false;
             txtpiezaID.Text = "ID";
             // 
@@ -110,7 +110,7 @@
             txtmarca.Location = new Point(383, 74);
             txtmarca.Name = "txtmarca";
             txtmarca.Size = new Size(100, 23);
-            txtmarca.TabIndex = 4;
+            txtmarca.TabIndex = 11;
             txtmarca.TabStop = false;
             txtmarca.Text = "Marca";
             // 
@@ -129,7 +129,7 @@
             txtmodelo.Location = new Point(572, 74);
             txtmodelo.Name = "txtmodelo";
             txtmodelo.Size = new Size(100, 23);
-            txtmodelo.TabIndex = 6;
+            txtmodelo.TabIndex = 12;
             txtmodelo.TabStop = false;
             txtmodelo.Text = "Modelo";
             // 
@@ -148,7 +148,7 @@
             txtbar.Location = new Point(189, 155);
             txtbar.Name = "txtbar";
             txtbar.Size = new Size(140, 23);
-            txtbar.TabIndex = 1;
+            txtbar.TabIndex = 2;
             txtbar.Text = "Barcode";
             txtbar.Enter += txtbar_Enter;
             txtbar.KeyDown += txtbar_KeyDown;
@@ -170,7 +170,7 @@
             txtdescription.Multiline = true;
             txtdescription.Name = "txtdescription";
             txtdescription.Size = new Size(149, 67);
-            txtdescription.TabIndex = 9;
+            txtdescription.TabIndex = 13;
             txtdescription.TabStop = false;
             txtdescription.Text = "Descripcion";
             // 
@@ -189,7 +189,7 @@
             txtcategory.Location = new Point(572, 155);
             txtcategory.Name = "txtcategory";
             txtcategory.Size = new Size(100, 23);
-            txtcategory.TabIndex = 12;
+            txtcategory.TabIndex = 14;
             txtcategory.TabStop = false;
             txtcategory.Text = "Categoria";
             // 
@@ -208,8 +208,10 @@
             txtqty.Location = new Point(573, 219);
             txtqty.Name = "txtqty";
             txtqty.Size = new Size(58, 23);
-            txtqty.TabIndex = 2;
+            txtqty.TabIndex = 3;
             txtqty.Text = "Cantidad";
+            txtqty.Enter += txtqty_Enter;
+            txtqty.Leave += txtqty_Leave;
             // 
             // label7
             // 
@@ -227,7 +229,7 @@
             btnsust.Location = new Point(649, 213);
             btnsust.Name = "btnsust";
             btnsust.Size = new Size(27, 31);
-            btnsust.TabIndex = 3;
+            btnsust.TabIndex = 4;
             btnsust.Text = "-";
             btnsust.UseVisualStyleBackColor = true;
             // 
@@ -237,7 +239,7 @@
             btnadd.Location = new Point(694, 213);
             btnadd.Name = "btnadd";
             btnadd.Size = new Size(27, 31);
-            btnadd.TabIndex = 4;
+            btnadd.TabIndex = 5;
             btnadd.Text = "+";
             btnadd.UseVisualStyleBackColor = true;
             // 

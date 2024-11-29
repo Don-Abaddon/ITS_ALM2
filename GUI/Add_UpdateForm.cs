@@ -32,6 +32,38 @@ namespace GUI
             txtpiezaID.Enabled = false;
             Win_Title("Nueva Pieza");
             Updates(id, marca, modelo, barcode, descripcion, categoria, cantidad?.ToString());
+            if (txtpiezaID.Text != "ID" && txtpiezaID.Text != "")
+            {
+                Disable_entries();
+            }
+        }
+        private void TextBox_Enter(object sender, EventArgs e)
+        {
+            txtbar.Tag = "Barcode";
+            txtmarca.Tag = "Marca";
+            txtmodelo.Tag = "Modelo";
+            txtcategory.Tag = "Categoria";
+            txtdescription.Tag = "Descripcion";
+            txtqty.Tag = "Cantidad";
+
+            if (sender is TextBox textBox)
+            {
+                if (textBox.Text == textBox.Tag?.ToString())
+                {
+                    textBox.Text = string.Empty;
+                }
+            }
+        }
+
+        private void TextBox_Leave(object sender, EventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    textBox.Text = textBox.Tag?.ToString();
+                }
+            }
         }
         private void ConfigurarFormulario()
         {
@@ -44,7 +76,25 @@ namespace GUI
             TextBoxStyle(txtqty);
             TextBoxStyle(txtpiezaID);
             ButtonStyle(btnsave);
+            txtpiezaID.Enabled = false;
+            txtpiezaID.ReadOnly = true;
             txtdescription.Multiline = true;
+            
+        }
+        private void Disable_entries()
+        {
+            txtbar.Enabled = false;
+            txtbar.ReadOnly = true;
+            //txtqty.ReadOnly = true;
+            //txtdescription.ReadOnly = true;
+            txtmarca.ReadOnly = true;
+            txtmodelo.ReadOnly = true;
+            txtcategory.ReadOnly = true;
+           //txtdescription.Enabled = false;
+            txtmarca.Enabled = false;
+            txtmodelo.Enabled = false;
+            txtcategory.Enabled = false;
+            txtpiezaID.Enabled = false;
         }
         private void NewPartForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -81,7 +131,8 @@ namespace GUI
                     {
                         // Llamar al método para guardar los datos
                         DataTable dataTable = await _inventory.SaveItemsAsync(marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
-                        MessageBox.Show("Registro guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DarkMessageBox.Show("Registro guardado correctamente.", "Éxito", MessageBoxButtons.OK);
+                        this.Close();
                     }
                 }
             }
@@ -91,9 +142,10 @@ namespace GUI
                 {
                     // Llamar al método para guardar los datos
                     DataTable dataTable = await _inventory.UpdateItems(id, marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
-                    MessageBox.Show("Registro ha actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DarkMessageBox.Show("Registro ha actualizado correctamente.", "Éxito", MessageBoxButtons.OK);
+                    this.Close();
                 }
-               
+
             }
         }
         private void Updates(string id, string marca, string modelo, string barcode, string descripcion, string categoria, string cantidad)
@@ -108,7 +160,7 @@ namespace GUI
             else // Caso de nuevo registro
             {
                 txtpiezaID.Text = "ID";
-                txtpiezaID.Enabled = false; 
+                txtpiezaID.Enabled = false;
                 Win_Title("Nueva Pieza");
             }
             txtmarca.Text = marca ?? "Marca";

@@ -28,25 +28,25 @@ namespace GUI
             dgvItems.AllowUserToAddRows = false;
             dgvItems.RowHeadersVisible = false;
             this.contextMenuStrip1 = new ContextMenuStrip();
-            var addMenuItem = new ToolStripMenuItem("Editar", null, AddMenuItem_Click);
-            //var editMenuItem = new ToolStripMenuItem("Editar", null, EditMenuItem_Click);
-            //var deleteMenuItem = new ToolStripMenuItem("Eliminar", null, DeleteMenuItem_Click);
+            var editMenuItem = new ToolStripMenuItem("Editar", null, editMenuItem_Click);
+            var deleteMenuItem = new ToolStripMenuItem("Eliminar", null, deleteMenuItem_Click);
+            //var newMenuItem = new ToolStripMenuItem("Eliminar", null, NewMenuItem_Click);
             this.contextMenuStrip1.Items.AddRange(new ToolStripItem[] {
-                addMenuItem,
-                //editMenuItem,
-                //deleteMenuItem
+                editMenuItem,
+                //NewMenuItem,
+                deleteMenuItem
             });
-            contextMenuStrip1.Items.Add(addMenuItem);
+            contextMenuStrip1.Items.Add(editMenuItem);
             foreach (ToolStripMenuItem item in contextMenuStrip1.Items)
             {
-                item.BackColor = Color.FromArgb(30, 30, 30); // Fondo oscuro
-                item.ForeColor = Color.White;               // Texto blanco
+                item.BackColor = ColorTranslator.FromHtml("#19201f"); // Fondo oscuro
+                item.ForeColor = ColorTranslator.FromHtml("#a8a9a8");               // Texto blanco
                 item.Font = new Font("Segoe UI", 10);       // Fuente personalizada
             }
             this.dgvItems.ContextMenuStrip = this.contextMenuStrip1;
             //dgvItems.MouseDown += dgvItems_MouseDown;
         }
-        private void AddMenuItem_Click(object sender, EventArgs e)
+        private void editMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvItems.SelectedRows.Count > 0)
             {
@@ -62,8 +62,11 @@ namespace GUI
                 int.TryParse(selectedRow.Cells["Cantidad"].Value?.ToString(), out int cantidad);
 
                 // Abre el formulario de edición con los datos
-                Add_UpdateForm editForm = new Add_UpdateForm(id, marca, modelo, barcode, descripcion, categoria, cantidad);
-                editForm.ShowDialog();
+                using (Add_UpdateForm editForm = new Add_UpdateForm(id, marca, modelo, barcode, descripcion, categoria, cantidad))
+                {
+                    editForm.ShowDialog();
+                }
+                this.Hide();
 
                 // Opcional: Actualiza el DataGridView después de editar
                 _ = Inventory_Load();
@@ -72,19 +75,31 @@ namespace GUI
             {
                 MessageBox.Show("Seleccione una fila para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void dgvItems_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                var hitTestInfo = dgvItems.HitTest(e.X, e.Y);
 
-                if (hitTestInfo.RowIndex >= 0)
+        }
+        private async void deleteMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvItems.SelectedRows.Count > 0)
+            {
+                var selectedRow = dgvItems.SelectedRows[0];
+                string id = selectedRow.Cells["PiezaID"].Value?.ToString() ?? string.Empty;
+
+                var confirm = DarkMessageBox.Show("¿Estás seguro de que deseas eliminar este registro?",
+                                            "Confirmar eliminación", MessageBoxButtons.YesNo);
+
+                if (confirm == DialogResult.Yes)
                 {
-                    dgvItems.ClearSelection(); // Limpia selecciones previas
-                    dgvItems.Rows[hitTestInfo.RowIndex].Selected = true; // Selecciona la fila correspondiente
-                    dgvItems.CurrentCell = dgvItems.Rows[hitTestInfo.RowIndex].Cells[hitTestInfo.ColumnIndex]; // Establece la celda activa
+                    await _inventory.DeleteItems(id);
+                    _ = Inventory_Load();
                 }
+                else
+                {
+                    DarkMessageBox.Show("Eliminación cancelada.", "Información", MessageBoxButtons.OK);
+                }
+            }
+            else
+            {
+                DarkMessageBox.Show("Seleccione una fila para eliminar.", "Error", MessageBoxButtons.OK);
             }
         }
         private void txtbar_Enter(object sender, EventArgs e)

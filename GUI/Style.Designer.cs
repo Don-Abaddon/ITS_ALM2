@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblMessageTitle = new Label();
             title = new Label();
             btnmin = new Button();
             btnclose = new Button();
@@ -40,6 +41,7 @@
             // 
             panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblMessageTitle);
             panel1.Controls.Add(title);
             panel1.Controls.Add(btnmin);
             panel1.Controls.Add(btnclose);
@@ -51,6 +53,17 @@
             panel1.TabIndex = 0;
             panel1.MouseDown += panel1_MouseDown;
             // 
+            // lblMessageTitle
+            // 
+            lblMessageTitle.Anchor = AnchorStyles.Left;
+            lblMessageTitle.AutoSize = true;
+            lblMessageTitle.ForeColor = SystemColors.ControlDark;
+            lblMessageTitle.Location = new Point(23, 4);
+            lblMessageTitle.Name = "lblMessageTitle";
+            lblMessageTitle.Size = new Size(0, 30);
+            lblMessageTitle.TabIndex = 102;
+            lblMessageTitle.MouseDown += label1_MouseDown;
+            // 
             // title
             // 
             title.Anchor = AnchorStyles.None;
@@ -58,9 +71,8 @@
             title.ForeColor = Color.DarkGray;
             title.Location = new Point(297, 4);
             title.Name = "title";
-            title.Size = new Size(71, 30);
+            title.Size = new Size(0, 30);
             title.TabIndex = 101;
-            title.Text = "label1";
             title.MouseDown += label1_MouseDown;
             // 
             // btnmin
@@ -131,5 +143,6 @@
         private Button btnclose;
         private Button btnmin;
         private Label title;
+        private Label lblMessageTitle;
     }
 }

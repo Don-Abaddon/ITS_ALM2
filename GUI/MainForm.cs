@@ -51,6 +51,20 @@ namespace GUI
                 txtbar.Text = "Barcode";
             }
         }
+        private void txtqty_Enter(object sender, EventArgs e)
+        {
+            if (txtqty.Text == "Cantidad")
+            {
+                txtqty.Text = string.Empty;
+            }
+        }
+        private void txtqty_Leave(object sender, EventArgs e)
+        {
+            if (txtqty.Text == string.Empty)
+            {
+                txtqty.Text = "Cantidad";
+            }
+        }
         private void btnInventory_Click(object sender, EventArgs e)
         {
             InventoryForm inventoryForm = new InventoryForm();

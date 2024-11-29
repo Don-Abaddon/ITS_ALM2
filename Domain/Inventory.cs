@@ -32,5 +32,9 @@ namespace Domain
         {
             return await _piezaRepository.UpdateItemsAsync(ID, marca, modelo, barcode, descripcion, categoria, cantidad);
         }
+        public async Task<DataTable> DeleteItems(string ID)
+        {
+            return await _piezaRepository.DeleteItemsAsync(ID);
+        }
     }
 }

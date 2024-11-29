@@ -50,8 +50,10 @@
             txtqty.Location = new Point(385, 161);
             txtqty.Name = "txtqty";
             txtqty.Size = new Size(61, 23);
-            txtqty.TabIndex = 17;
+            txtqty.TabIndex = 6;
             txtqty.Text = "Cantidad";
+            txtqty.Enter += TextBox_Enter;
+            txtqty.Leave += TextBox_Leave;
             // 
             // label7
             // 
@@ -68,9 +70,11 @@
             txtcategory.Location = new Point(385, 80);
             txtcategory.Name = "txtcategory";
             txtcategory.Size = new Size(100, 23);
-            txtcategory.TabIndex = 27;
+            txtcategory.TabIndex = 3;
             txtcategory.TabStop = false;
             txtcategory.Text = "Categoria";
+            txtcategory.Enter += TextBox_Enter;
+            txtcategory.Leave += TextBox_Leave;
             // 
             // label6
             // 
@@ -88,9 +92,11 @@
             txtdescription.Multiline = true;
             txtdescription.Name = "txtdescription";
             txtdescription.Size = new Size(149, 67);
-            txtdescription.TabIndex = 24;
+            txtdescription.TabIndex = 5;
             txtdescription.TabStop = false;
             txtdescription.Text = "Descripcion";
+            txtdescription.Enter += TextBox_Enter;
+            txtdescription.Leave += TextBox_Leave;
             // 
             // label5
             // 
@@ -107,8 +113,10 @@
             txtbar.Location = new Point(12, 161);
             txtbar.Name = "txtbar";
             txtbar.Size = new Size(140, 23);
-            txtbar.TabIndex = 16;
+            txtbar.TabIndex = 4;
             txtbar.Text = "Barcode";
+            txtbar.Enter += TextBox_Enter;
+            txtbar.Leave += TextBox_Leave;
             // 
             // label4
             // 
@@ -125,9 +133,11 @@
             txtmodelo.Location = new Point(206, 80);
             txtmodelo.Name = "txtmodelo";
             txtmodelo.Size = new Size(100, 23);
-            txtmodelo.TabIndex = 22;
+            txtmodelo.TabIndex = 2;
             txtmodelo.TabStop = false;
             txtmodelo.Text = "Modelo";
+            txtmodelo.Enter += TextBox_Enter;
+            txtmodelo.Leave += TextBox_Leave;
             // 
             // label3
             // 
@@ -144,9 +154,11 @@
             txtmarca.Location = new Point(56, 80);
             txtmarca.Name = "txtmarca";
             txtmarca.Size = new Size(100, 23);
-            txtmarca.TabIndex = 20;
+            txtmarca.TabIndex = 1;
             txtmarca.TabStop = false;
             txtmarca.Text = "Marca";
+            txtmarca.Enter += TextBox_Enter;
+            txtmarca.Leave += TextBox_Leave;
             // 
             // label2
             // 
@@ -186,12 +198,12 @@
             btnsave.Location = new Point(181, 262);
             btnsave.Name = "btnsave";
             btnsave.Size = new Size(103, 35);
-            btnsave.TabIndex = 30;
+            btnsave.TabIndex = 0;
             btnsave.Text = "Save";
             btnsave.UseVisualStyleBackColor = true;
             btnsave.Click += btnsave_Click;
             // 
-            // NewPartForm
+            // Add_UpdateForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -211,7 +223,7 @@
             Controls.Add(label2);
             Controls.Add(txtpiezaID);
             Controls.Add(label1);
-            Name = "NewPartForm";
+            Name = "Add_UpdateForm";
             Text = "NewPart";
             Controls.SetChildIndex(label1, 0);
             Controls.SetChildIndex(txtpiezaID, 0);

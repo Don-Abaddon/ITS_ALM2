@@ -29,7 +29,7 @@ namespace GUI
 
         public void Win_Title(string Title)
         {
-           title.Text = Title;
+            title.Text = Title;
         }
 
         private void btnclose_Click(object sender, EventArgs e)
@@ -84,6 +84,10 @@ namespace GUI
             button.ForeColor = Color.White;
             button.BackColor = Color.FromArgb(36, 36, 36);
             button.Font = new Font("Arial", 10, FontStyle.Regular);
+        }
+     public void Message_Title(string MessageTitle)
+        {
+            lblMessageTitle.Text = MessageTitle;
         }
     }
 }
