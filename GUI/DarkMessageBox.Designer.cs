@@ -74,6 +74,7 @@
             btnOk.TabIndex = 4;
             btnOk.Text = "Ok";
             btnOk.UseVisualStyleBackColor = true;
+            btnOk.Click += btnOk_Click;
             // 
             // DarkMessageBox
             // 

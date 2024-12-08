@@ -1,7 +1,5 @@
 ﻿using DataAccess;
 using System.Data;
-using System.Reflection;
-using System.Text.RegularExpressions;
 namespace Domain
 {
     public class Inventory
@@ -35,6 +33,10 @@ namespace Domain
         public async Task<DataTable> DeleteItems(string ID)
         {
             return await _piezaRepository.DeleteItemsAsync(ID);
+        }
+        public async Task<DataTable> AddItems( string ID, int cantidad)
+        {
+            return await _piezaRepository.AddItemsAsync(ID,cantidad);
         }
     }
 }

@@ -110,6 +110,8 @@
             // 
             // txtbar
             // 
+            txtbar.BackColor = SystemColors.InactiveCaptionText;
+            txtbar.ForeColor = SystemColors.ControlDark;
             txtbar.Location = new Point(12, 161);
             txtbar.Name = "txtbar";
             txtbar.Size = new Size(140, 23);

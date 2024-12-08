@@ -129,6 +129,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Style";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Style";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

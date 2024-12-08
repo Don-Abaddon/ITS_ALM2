@@ -1,20 +1,12 @@
 ﻿using Domain;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace GUI
 {
     public partial class Add_UpdateForm : Style
     {
         private Inventory _inventory;
-        public Add_UpdateForm(string id = null, string marca = null, string modelo = null, string barcode = null, string descripcion = null, string categoria = null, int? cantidad = null)
+        public Add_UpdateForm(string? id = null, string? marca = null, string? modelo = null, string? barcode = null, string? descripcion = null, string? categoria = null, int? cantidad = null)
         {
             InitializeComponent();
             ConfigurarFormulario();
@@ -31,11 +23,24 @@ namespace GUI
             txtdescription.Multiline = true;
             txtpiezaID.Enabled = false;
             Win_Title("Nueva Pieza");
-            Updates(id, marca, modelo, barcode, descripcion, categoria, cantidad?.ToString());
+            ResetFields();
+            Updates(id ?? string.Empty, marca ?? string.Empty, modelo ?? string.Empty,
+            barcode ?? string.Empty, descripcion ?? string.Empty,
+            categoria ?? string.Empty, cantidad?.ToString() ?? "0");
             if (txtpiezaID.Text != "ID" && txtpiezaID.Text != "")
             {
                 Disable_entries();
             }
+        }
+        private void ResetFields()
+        {
+            txtpiezaID.Text = "ID";
+            txtmarca.Text = "Marca";
+            txtmodelo.Text = "Modelo";
+            txtbar.Text = "Barcode";
+            txtdescription.Text = "Descripcion";
+            txtcategory.Text = "Categoria";
+            txtqty.Text = "Cantidad";
         }
         private void TextBox_Enter(object sender, EventArgs e)
         {
@@ -96,10 +101,9 @@ namespace GUI
             txtcategory.Enabled = false;
             txtpiezaID.Enabled = false;
         }
-        private void NewPartForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            // Muestra el formulario principal al cerrar el formulario de inventario
-            MainForm mainForm = Application.OpenForms["MainForm"] as MainForm;
+        private void NewPartForm_FormClosed(object? sender, FormClosedEventArgs e)
+        { 
+            MainForm? mainForm = Application.OpenForms["MainForm"] as MainForm;
             if (mainForm != null)
             {
                 mainForm.Show();
@@ -129,7 +133,6 @@ namespace GUI
                 {
                     if (int.TryParse(cantidad, out int cantidadNumerica) && cantidadNumerica >= 0)
                     {
-                        // Llamar al método para guardar los datos
                         DataTable dataTable = await _inventory.SaveItemsAsync(marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
                         DarkMessageBox.Show("Registro guardado correctamente.", "Éxito", MessageBoxButtons.OK);
                         this.Close();
@@ -140,7 +143,6 @@ namespace GUI
             {
                 if (int.TryParse(cantidad, out int cantidadNumerica) && cantidadNumerica >= 0)
                 {
-                    // Llamar al método para guardar los datos
                     DataTable dataTable = await _inventory.UpdateItems(id, marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
                     DarkMessageBox.Show("Registro ha actualizado correctamente.", "Éxito", MessageBoxButtons.OK);
                     this.Close();
@@ -154,7 +156,7 @@ namespace GUI
             if (id != null) // Caso de edición
             {
                 txtpiezaID.Text = id;
-                txtpiezaID.Enabled = false; // Desactivar el campo de ID para edición
+                txtpiezaID.Enabled = false;
                 Win_Title("Editar Pieza");
             }
             else // Caso de nuevo registro

@@ -65,37 +65,108 @@ namespace GUI
                 txtqty.Text = "Cantidad";
             }
         }
+        private InventoryForm? inventoryForm = null;
         private void btnInventory_Click(object sender, EventArgs e)
         {
-            InventoryForm inventoryForm = new InventoryForm();
-            inventoryForm.Show();
+            if (inventoryForm == null || inventoryForm.IsDisposed)
+            {
+                inventoryForm = new InventoryForm();
+                inventoryForm.Show();
+
+            }
+            else
+            {
+                inventoryForm.BringToFront();
+            }
         }
+        private Add_UpdateForm? newPartForm = null;
         private void btnnew_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Add_UpdateForm newPartForm = new Add_UpdateForm();
-            newPartForm.ShowDialog();
+            if (newPartForm == null || newPartForm.IsDisposed)
+            {
+                newPartForm = new Add_UpdateForm();
+                newPartForm.Show();
+            }
+            else
+            {
+                newPartForm.BringToFront();
+            }
         }
         private async void txtbar_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) // Para que funcione al presionar Enter
+            if (e.KeyCode == Keys.Enter)
             {
                 DataTable dataTable = await _inventory.ExactSearchItem(txtbar.Text);
-                if (dataTable != null && dataTable.Rows.Count > 0) // Asegúrate de que hay datos
+                if (dataTable != null && dataTable.Rows.Count > 0)
                 {
-                    // Accede al primer registro y a la columna correspondiente
+                  
                     txtpiezaID.Text = dataTable.Rows[0]["PiezaID"].ToString();
                     txtmarca.Text = dataTable.Rows[0]["Marca"].ToString();
                     txtmodelo.Text = dataTable.Rows[0]["Modelo"].ToString();
                     txtdescription.Text = dataTable.Rows[0]["Descripcion"].ToString();
                     txtcategory.Text = dataTable.Rows[0]["Categoria"].ToString();
-                    txtqty.Text = dataTable.Rows[0]["Cantidad"].ToString();
+                    //txtqty.Text = dataTable.Rows[0]["Cantidad"].ToString();
                 }
                 else
                 {
                     MessageBox.Show("No se encontró ningún elemento con ese código de barras.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+        private async void btnsust_Click(object sender, EventArgs e)
+        {
+            DataTable datatable = await _inventory.ExactSearchItem(txtbar.Text);
+            int cantidad = 1;
+            int cantidaddb = 0;
+
+            if (!string.IsNullOrWhiteSpace(txtqty.Text) && txtqty.Text != "Cantidad" && int.TryParse(txtqty.Text, out int cantidadin))
+            {
+                cantidad = cantidadin;
+               
+            }
+
+            if (datatable.Rows.Count > 0 && !Convert.IsDBNull(datatable.Rows[0]["Cantidad"]))
+            {
+                string? cantidadstr = datatable.Rows[0]["Cantidad"].ToString();
+                if (!string.IsNullOrWhiteSpace(cantidadstr))
+                {
+                    cantidaddb = int.Parse(cantidadstr);
+                }
+                string ID = txtpiezaID.Text;
+                int newcantidad;
+
+                newcantidad = cantidaddb - cantidad;
+
+                await _inventory.AddItems(ID, newcantidad);
+                DarkMessageBox.Show($"La cantidad se actualizó correctamente.\nNueva cantidad: {newcantidad}", "Éxito", MessageBoxButtons.OK);
+            }
+        }
+        private async void btnadd_Click(object sender, EventArgs e)
+        {
+            DataTable datatable = await _inventory.ExactSearchItem(txtbar.Text);
+            int cantidad = 1;
+            int cantidaddb = 0;
+            
+            if ( !string.IsNullOrWhiteSpace(txtqty.Text) && txtqty.Text != "Cantidad" && int.TryParse(txtqty.Text, out int cantidadin))
+            {
+                cantidad = cantidadin;
+            }
+
+            if (datatable.Rows.Count > 0 && !Convert.IsDBNull(datatable.Rows[0]["Cantidad"]))
+            {
+                string? cantidadstr = datatable.Rows[0]["Cantidad"].ToString();
+                if(!string.IsNullOrWhiteSpace(cantidadstr))
+                {
+                    cantidaddb = int.Parse(cantidadstr);
+                }
+            }
+            string ID = txtpiezaID.Text;
+            int newcantidad;
+            
+            newcantidad = cantidaddb + cantidad;
+
+            await _inventory.AddItems(ID, newcantidad);
+            DarkMessageBox.Show($"La cantidad se actualizó correctamente.\nNueva cantidad: {newcantidad}", "Éxito", MessageBoxButtons.OK);
         }
     }
 }

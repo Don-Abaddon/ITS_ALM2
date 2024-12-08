@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Data;
 using Microsoft.Data.Sqlite;
 
 namespace DataAccess
@@ -148,6 +141,25 @@ namespace DataAccess
                 using (var cmd = new SqliteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@id", ID);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }
+                }
+            }
+        }
+        public async Task<DataTable> AddItemsAsync(string ID, int cantidad)
+        {
+            using (var conn = new SqliteConnection(DBConnection.ConnectionString))
+            {
+                await conn.OpenAsync();
+                string query = @"UPDATE  Piezas SET Cantidad = @cantidad WHERE PiezaID = @id ";
+                using (var cmd = new SqliteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", ID);
+                    cmd.Parameters.AddWithValue("@cantidad", cantidad);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         DataTable dataTable = new DataTable();

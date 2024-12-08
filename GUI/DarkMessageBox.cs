@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿
 namespace GUI
 {
     public partial class DarkMessageBox : Style
@@ -25,8 +16,7 @@ namespace GUI
             btnyes.Visible = buttons == MessageBoxButtons.YesNo;
             btnno.Visible = buttons == MessageBoxButtons.YesNo;
             btnOk.Visible = buttons == MessageBoxButtons.OK;
-
-            // Aplicar estilo desde Style
+         
             ButtonStyle(btnyes);
             ButtonStyle(btnno);
             ButtonStyle(btnOk);

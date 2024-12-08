@@ -226,22 +226,26 @@
             // btnsust
             // 
             btnsust.Font = new Font("Segoe UI", 16F);
-            btnsust.Location = new Point(649, 213);
+            btnsust.Location = new Point(649, 219);
             btnsust.Name = "btnsust";
-            btnsust.Size = new Size(27, 31);
+            btnsust.Size = new Size(27, 25);
             btnsust.TabIndex = 4;
             btnsust.Text = "-";
+            btnsust.TextAlign = ContentAlignment.TopCenter;
             btnsust.UseVisualStyleBackColor = true;
+            btnsust.Click += btnsust_Click;
             // 
             // btnadd
             // 
             btnadd.Font = new Font("Segoe UI", 16F);
-            btnadd.Location = new Point(694, 213);
+            btnadd.Location = new Point(694, 219);
             btnadd.Name = "btnadd";
-            btnadd.Size = new Size(27, 31);
+            btnadd.Size = new Size(27, 25);
             btnadd.TabIndex = 5;
             btnadd.Text = "+";
+            btnadd.TextAlign = ContentAlignment.TopCenter;
             btnadd.UseVisualStyleBackColor = true;
+            btnadd.Click += btnadd_Click;
             // 
             // MainForm
             // 
