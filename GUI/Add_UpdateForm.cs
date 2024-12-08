@@ -31,6 +31,10 @@ namespace GUI
             {
                 Disable_entries();
             }
+            else
+            {
+                ResetFields();
+            }
         }
         private void ResetFields()
         {
@@ -127,7 +131,7 @@ namespace GUI
                 string.IsNullOrWhiteSpace(barcode) || barcode == "Barcode" ||
                 string.IsNullOrWhiteSpace(cantidad) || cantidad == "Cantidad")
                 {
-                    MessageBox.Show("Llene todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DarkMessageBox.Show("Llene todos los campos.", "Error", MessageBoxButtons.OK);
                 }
                 else
                 {

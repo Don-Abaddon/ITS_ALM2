@@ -3,6 +3,7 @@ using Domain;
 
 namespace GUI
 {
+
     public partial class InventoryForm : Style
     {
         private Inventory _inventory;
@@ -20,12 +21,12 @@ namespace GUI
             dgvItems.AllowUserToAddRows = false;
             dgvItems.RowHeadersVisible = false;
             this.contextMenuStrip1 = new ContextMenuStrip();
-            var editMenuItem = new ToolStripMenuItem("Editar", null, editMenuItem_Click);
-            var deleteMenuItem = new ToolStripMenuItem("Eliminar", null, deleteMenuItem_Click);
-            //var newMenuItem = new ToolStripMenuItem("Eliminar", null, NewMenuItem_Click);
+            var editMenuItem = new ToolStripMenuItem("Edit", null, editMenuItem_Click);
+            var deleteMenuItem = new ToolStripMenuItem("Delete", null, deleteMenuItem_Click);
+            var newMenuItem = new ToolStripMenuItem("New", null, NewMenuItem_Click);
             this.contextMenuStrip1.Items.AddRange(new ToolStripItem[] {
                 editMenuItem,
-                //NewMenuItem,
+                newMenuItem,
                 deleteMenuItem
             });
             contextMenuStrip1.Items.Add(editMenuItem);
@@ -37,6 +38,19 @@ namespace GUI
             }
             this.dgvItems.ContextMenuStrip = this.contextMenuStrip1;
             //dgvItems.MouseDown += dgvItems_MouseDown;
+        }
+        private Add_UpdateForm? newPartForm = null;
+        private void NewMenuItem_Click(object? sender, EventArgs e)
+        {
+            if (newPartForm == null || newPartForm.IsDisposed)
+            {
+                newPartForm = new Add_UpdateForm();
+                newPartForm.Show();
+            }
+            else
+            {
+                newPartForm.BringToFront();
+            }
         }
         private void editMenuItem_Click(object? sender, EventArgs e)
         {
@@ -58,7 +72,7 @@ namespace GUI
                 {
                     editForm.ShowDialog();
                 }
-                this.Hide();
+                
 
                 // Opcional: Actualiza el DataGridView después de editar
                 _ = Inventory_Load();
