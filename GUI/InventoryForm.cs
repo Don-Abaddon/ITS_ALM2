@@ -39,7 +39,6 @@ namespace GUI
             }
             this.dgvItems.ContextMenuStrip = this.contextMenuStrip1;
             //dgvItems.MouseDown += dgvItems_MouseDown;
-
         }
         private Add_UpdateForm? newPartForm = null;
         private void NewMenuItem_Click(object? sender, EventArgs e)
@@ -83,7 +82,6 @@ namespace GUI
             {
                 MessageBox.Show("Seleccione una fila para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
         private async void deleteMenuItem_Click(object? sender, EventArgs e)
         {
@@ -124,7 +122,6 @@ namespace GUI
                 }
             }
         }
-
         private void TextBox_Leave(object sender, EventArgs e)
         {
             if (sender is TextBox textBox)
@@ -184,7 +181,6 @@ namespace GUI
 
             dgvItems.EnableHeadersVisualStyles = false;
         }
-
         private void dgvItems_CellMouseDown(object? sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
@@ -193,9 +189,7 @@ namespace GUI
                 dgvItems.Rows[e.RowIndex].Selected = true;
                 dgvItems.CurrentCell = dgvItems.Rows[e.RowIndex].Cells[e.ColumnIndex];
             }
-
         }
-
         private async void btnrefresh_Click(object sender, EventArgs e)
         {
             await Inventory_Load();
