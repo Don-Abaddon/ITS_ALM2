@@ -26,7 +26,7 @@ namespace GUI
         }
         private void Disable_entries()
         {
-            txtqty.ReadOnly = true;
+            //txtqty.ReadOnly = true;
             txtdescription.ReadOnly = true;
             txtmarca.ReadOnly = true;
             txtmodelo.ReadOnly = true;
@@ -109,7 +109,15 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("No se encontró ningún elemento con ese código de barras.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DarkMessageBox.Show("No se encontró ningún elemento con ese código de barras.", "Sin resultados", MessageBoxButtons.OK);
+                    txtbar.Text = "";
+                    txtqty.Text = "Cantidad";
+                    txtcategory.Text = "Categoria";
+                    txtdescription.Text = "Descripcion";
+                    txtmarca.Text = "Marca";
+                    txtmodelo.Text = "Modelo";
+                    txtpiezaID.Text = "ID";
+
                 }
             }
         }

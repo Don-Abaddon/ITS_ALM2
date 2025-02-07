@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Security.Policy;
 using Domain;
 
 namespace GUI
@@ -38,6 +39,7 @@ namespace GUI
             }
             this.dgvItems.ContextMenuStrip = this.contextMenuStrip1;
             //dgvItems.MouseDown += dgvItems_MouseDown;
+
         }
         private Add_UpdateForm? newPartForm = null;
         private void NewMenuItem_Click(object? sender, EventArgs e)
@@ -72,7 +74,7 @@ namespace GUI
                 {
                     editForm.ShowDialog();
                 }
-                
+
 
                 // Opcional: Actualiza el DataGridView después de editar
                 _ = Inventory_Load();
@@ -108,23 +110,34 @@ namespace GUI
                 DarkMessageBox.Show("Seleccione una fila para eliminar.", "Error", MessageBoxButtons.OK);
             }
         }
-        private void txtbar_Enter(object? sender, EventArgs e)
+        private void TextBox_Enter(object sender, EventArgs e)
         {
-            if (txtbar.Text == "Barcode")
+            txtbar.Tag = "Barcode";
+            txtmodel.Tag = "Modelo";
+           
+
+            if (sender is TextBox textBox)
             {
-                txtbar.Text = string.Empty;
+                if (textBox.Text == textBox.Tag?.ToString())
+                {
+                    textBox.Text = string.Empty;
+                }
             }
         }
-        private void txtbar_Leave(object? sender, EventArgs e)
+
+        private void TextBox_Leave(object sender, EventArgs e)
         {
-            if (txtbar.Text == string.Empty)
+            if (sender is TextBox textBox)
             {
-                txtbar.Text = "Barcode";
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    textBox.Text = textBox.Tag?.ToString();
+                }
             }
         }
         private void InventoryForm_FormClosed(object? sender, FormClosedEventArgs e)
         {
-           
+
             MainForm? mainForm = Application.OpenForms["MainForm"] as MainForm;
             if (mainForm != null)
             {
@@ -136,17 +149,17 @@ namespace GUI
             var dataTable = await _inventory.LoadItems();
             dgvItems.DataSource = dataTable;
         }
-        private async void txtbar_TextChanged(object? sender, EventArgs e)
+        private async void TextBox_TextChanged(object? sender, EventArgs e)
         {
             DataTable dataTable;
 
-            if (txtbar.Text == "" || txtbar.Text == "Barcode")
+            if ((txtbar.Text == "" || txtbar.Text == "Barcode") && (txtmodel.Text == "" || txtmodel.Text == "Modelo"))
             {
                 dataTable = await _inventory.LoadItems();
             }
             else
             {
-                dataTable = await _inventory.DynamicSearchItem(txtbar.Text);
+                dataTable = await _inventory.DynamicSearchItem(txtbar.Text, txtmodel.Text);
             }
             dgvItems.DataSource = dataTable;
         }
@@ -158,18 +171,18 @@ namespace GUI
             dgvItems.DefaultCellStyle.ForeColor = Color.White;
             dgvItems.DefaultCellStyle.SelectionBackColor = Color.FromArgb(70, 70, 70);
             dgvItems.DefaultCellStyle.SelectionForeColor = Color.White;
-           
+
             dgvItems.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
             dgvItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvItems.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dgvItems.GridColor = Color.FromArgb(70, 70, 70); 
+            dgvItems.GridColor = Color.FromArgb(70, 70, 70);
             dgvItems.BorderStyle = BorderStyle.None;
 
             dgvItems.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvItems.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
-            dgvItems.EnableHeadersVisualStyles = false; 
+            dgvItems.EnableHeadersVisualStyles = false;
         }
 
         private void dgvItems_CellMouseDown(object? sender, DataGridViewCellMouseEventArgs e)
@@ -181,6 +194,11 @@ namespace GUI
                 dgvItems.CurrentCell = dgvItems.Rows[e.RowIndex].Cells[e.ColumnIndex];
             }
 
+        }
+
+        private async void btnrefresh_Click(object sender, EventArgs e)
+        {
+            await Inventory_Load();
         }
     }
 }

@@ -14,9 +14,9 @@ namespace Domain
         {
             return await _piezaRepository.GetAllPiezasAsync();
         }
-        public async Task<DataTable> DynamicSearchItem(string barcode)
+        public async Task<DataTable> DynamicSearchItem(string barcode, string modelo)
         {
-            return await _piezaRepository.DynamicSearchItemAsync(barcode);
+            return await _piezaRepository.DynamicSearchItemAsync(barcode, modelo);
         }
         public async Task<DataTable> ExactSearchItem( string barcode)
         {

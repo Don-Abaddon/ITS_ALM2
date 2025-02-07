@@ -33,6 +33,9 @@
             txtbar = new TextBox();
             dgvItems = new DataGridView();
             label1 = new Label();
+            btnrefresh = new Button();
+            txtmodel = new TextBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvItems).BeginInit();
             SuspendLayout();
             // 
@@ -43,14 +46,14 @@
             txtbar.BorderStyle = BorderStyle.None;
             txtbar.Font = new Font("Segoe UI", 14F);
             txtbar.ForeColor = SystemColors.ScrollBar;
-            txtbar.Location = new Point(300, 73);
+            txtbar.Location = new Point(442, 71);
             txtbar.Name = "txtbar";
-            txtbar.Size = new Size(229, 25);
+            txtbar.Size = new Size(209, 25);
             txtbar.TabIndex = 1;
             txtbar.Text = "Barcode";
-            txtbar.TextChanged += txtbar_TextChanged;
-            txtbar.Enter += txtbar_Enter;
-            txtbar.Leave += txtbar_Leave;
+            txtbar.TextChanged += TextBox_TextChanged;
+            txtbar.Enter += TextBox_Enter;
+            txtbar.Leave += TextBox_Leave;
             // 
             // dgvItems
             // 
@@ -65,7 +68,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvItems.Location = new Point(12, 145);
+            dgvItems.Location = new Point(10, 132);
             dgvItems.Name = "dgvItems";
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaptionText;
@@ -84,17 +87,61 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = SystemColors.ControlDark;
-            label1.Location = new Point(299, 86);
+            label1.Location = new Point(439, 84);
             label1.Name = "label1";
             label1.Size = new Size(212, 15);
             label1.TabIndex = 3;
             label1.Text = "_________________________________________";
+            // 
+            // btnrefresh
+            // 
+            btnrefresh.BackColor = Color.Gainsboro;
+            btnrefresh.BackgroundImage = Properties.Resources.pngwing_com;
+            btnrefresh.BackgroundImageLayout = ImageLayout.Zoom;
+            btnrefresh.Cursor = Cursors.Hand;
+            btnrefresh.FlatStyle = FlatStyle.Flat;
+            btnrefresh.ImageAlign = ContentAlignment.TopCenter;
+            btnrefresh.Location = new Point(794, 100);
+            btnrefresh.Name = "btnrefresh";
+            btnrefresh.Size = new Size(22, 26);
+            btnrefresh.TabIndex = 4;
+            btnrefresh.UseVisualStyleBackColor = false;
+            btnrefresh.Click += btnrefresh_Click;
+            // 
+            // txtmodel
+            // 
+            txtmodel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtmodel.BackColor = Color.FromArgb(36, 33, 36);
+            txtmodel.BorderStyle = BorderStyle.None;
+            txtmodel.Font = new Font("Segoe UI", 14F);
+            txtmodel.ForeColor = SystemColors.ScrollBar;
+            txtmodel.Location = new Point(157, 71);
+            txtmodel.Name = "txtmodel";
+            txtmodel.Size = new Size(209, 25);
+            txtmodel.TabIndex = 5;
+            txtmodel.Text = "Modelo";
+            txtmodel.TextChanged += TextBox_TextChanged;
+            txtmodel.Enter += TextBox_Enter;
+            txtmodel.Leave += TextBox_Leave;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = SystemColors.ControlDark;
+            label2.Location = new Point(154, 84);
+            label2.Name = "label2";
+            label2.Size = new Size(212, 15);
+            label2.TabIndex = 6;
+            label2.Text = "_________________________________________";
             // 
             // InventoryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(833, 458);
+            Controls.Add(txtmodel);
+            Controls.Add(label2);
+            Controls.Add(btnrefresh);
             Controls.Add(dgvItems);
             Controls.Add(txtbar);
             Controls.Add(label1);
@@ -103,6 +150,9 @@
             Controls.SetChildIndex(label1, 0);
             Controls.SetChildIndex(txtbar, 0);
             Controls.SetChildIndex(dgvItems, 0);
+            Controls.SetChildIndex(btnrefresh, 0);
+            Controls.SetChildIndex(label2, 0);
+            Controls.SetChildIndex(txtmodel, 0);
             ((System.ComponentModel.ISupportInitialize)dgvItems).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -113,5 +163,8 @@
         private TextBox txtbar;
         private DataGridView dgvItems;
         private Label label1;
+        private Button btnrefresh;
+        private TextBox txtmodel;
+        private Label label2;
     }
 }

@@ -23,15 +23,16 @@ namespace DataAccess
                 }
             }
         }
-        public async Task<DataTable> DynamicSearchItemAsync(string barcode)
+        public async Task<DataTable> DynamicSearchItemAsync(string barcode, string modelo)
         {
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = "SELECT * FROM Piezas WHERE BarCode like @barcode";
+                string query = "SELECT * FROM Piezas WHERE BarCode like @barcode or Modelo like @model ";
                 using (var cmd = new SqliteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@barcode", barcode + "%");
+                    cmd.Parameters.AddWithValue("@model", modelo + "%");
                     Console.Write(barcode);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {

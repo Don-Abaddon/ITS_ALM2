@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Style));
             panel1 = new Panel();
             lblMessageTitle = new Label();
             title = new Label();
@@ -128,6 +129,7 @@
             Controls.Add(lblTitle);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Style";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Style";

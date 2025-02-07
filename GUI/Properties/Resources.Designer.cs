@@ -63,6 +63,16 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap warehouse_ico_icon_png_favpng_aJhBVfd6ZLGfeGLv28EgzW1bE {
             get {
                 object obj = ResourceManager.GetObject("warehouse-ico-icon-png-favpng-aJhBVfd6ZLGfeGLv28EgzW1bE", resourceCulture);
