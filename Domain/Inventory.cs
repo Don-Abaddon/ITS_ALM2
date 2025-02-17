@@ -14,6 +14,14 @@ namespace Domain
         {
             return await _piezaRepository.GetAllPiezasAsync();
         }
+        public async Task<DataTable> Combobox_Marca()
+        {
+            return await _piezaRepository.ComboBox_MarcaAsync();
+        }
+        public async Task<DataTable> Combobox_Categoria()
+        {
+            return await _piezaRepository.ComboBox_CategoriaAsync();
+        }
         public async Task<DataTable> DynamicSearchItem(string barcode, string modelo)
         {
             return await _piezaRepository.DynamicSearchItemAsync(barcode, modelo);

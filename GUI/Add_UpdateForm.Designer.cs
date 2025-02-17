@@ -30,19 +30,19 @@
         {
             txtqty = new TextBox();
             label7 = new Label();
-            txtcategory = new TextBox();
-            label6 = new Label();
             txtdescription = new TextBox();
             label5 = new Label();
             txtbar = new TextBox();
             label4 = new Label();
             txtmodelo = new TextBox();
             label3 = new Label();
-            txtmarca = new TextBox();
             label2 = new Label();
             txtpiezaID = new TextBox();
             label1 = new Label();
             btnsave = new Button();
+            cmbmarca = new CustomControl.CustomCombobox();
+            cmbcategory = new CustomControl.CustomCombobox();
+            label6 = new Label();
             SuspendLayout();
             // 
             // txtqty
@@ -64,27 +64,6 @@
             label7.Size = new Size(67, 15);
             label7.TabIndex = 29;
             label7.Text = "____________";
-            // 
-            // txtcategory
-            // 
-            txtcategory.Location = new Point(385, 80);
-            txtcategory.Name = "txtcategory";
-            txtcategory.Size = new Size(100, 23);
-            txtcategory.TabIndex = 3;
-            txtcategory.TabStop = false;
-            txtcategory.Text = "Categoria";
-            txtcategory.Enter += TextBox_Enter;
-            txtcategory.Leave += TextBox_Leave;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.ForeColor = SystemColors.ControlDark;
-            label6.Location = new Point(382, 90);
-            label6.Name = "label6";
-            label6.Size = new Size(107, 15);
-            label6.TabIndex = 28;
-            label6.Text = "____________________";
             // 
             // txtdescription
             // 
@@ -110,7 +89,7 @@
             // 
             // txtbar
             // 
-            txtbar.BackColor = SystemColors.InactiveCaptionText;
+            txtbar.BackColor = SystemColors.ControlLightLight;
             txtbar.ForeColor = SystemColors.ControlDark;
             txtbar.Location = new Point(12, 161);
             txtbar.Name = "txtbar";
@@ -151,30 +130,19 @@
             label3.TabIndex = 23;
             label3.Text = "____________________";
             // 
-            // txtmarca
-            // 
-            txtmarca.Location = new Point(56, 80);
-            txtmarca.Name = "txtmarca";
-            txtmarca.Size = new Size(100, 23);
-            txtmarca.TabIndex = 1;
-            txtmarca.TabStop = false;
-            txtmarca.Text = "Marca";
-            txtmarca.Enter += TextBox_Enter;
-            txtmarca.Leave += TextBox_Leave;
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.ControlDark;
-            label2.Location = new Point(53, 90);
+            label2.Location = new Point(60, 90);
             label2.Name = "label2";
-            label2.Size = new Size(107, 15);
+            label2.Size = new Size(92, 15);
             label2.TabIndex = 21;
-            label2.Text = "____________________";
+            label2.Text = "_________________";
             // 
             // txtpiezaID
             // 
-            txtpiezaID.Location = new Point(17, 80);
+            txtpiezaID.Location = new Point(14, 80);
             txtpiezaID.Name = "txtpiezaID";
             txtpiezaID.ReadOnly = true;
             txtpiezaID.Size = new Size(22, 23);
@@ -205,43 +173,89 @@
             btnsave.UseVisualStyleBackColor = true;
             btnsave.Click += btnsave_Click;
             // 
+            // cmbmarca
+            // 
+            cmbmarca.BackColor = Color.FromArgb(36, 36, 36);
+            cmbmarca.DataSource = null;
+            cmbmarca.DisplayMember = "";
+            cmbmarca.ForeColor = Color.DimGray;
+            cmbmarca.Location = new Point(60, 78);
+            cmbmarca.MaximumSize = new Size(150, 25);
+            cmbmarca.MinimumSize = new Size(50, 25);
+            cmbmarca.Name = "cmbmarca";
+            cmbmarca.PlaceholderText = "";
+            cmbmarca.SelectedIndex = -1;
+            cmbmarca.SelectedItem = null;
+            cmbmarca.SelectedValue = null;
+            cmbmarca.Size = new Size(122, 25);
+            cmbmarca.TabIndex = 31;
+            cmbmarca.ValueMember = "";
+            // 
+            // cmbcategory
+            // 
+            cmbcategory.BackColor = Color.FromArgb(36, 36, 36);
+            cmbcategory.DataSource = null;
+            cmbcategory.DisplayMember = "";
+            cmbcategory.ForeColor = Color.DimGray;
+            cmbcategory.Location = new Point(382, 80);
+            cmbcategory.MaximumSize = new Size(150, 25);
+            cmbcategory.MinimumSize = new Size(50, 25);
+            cmbcategory.Name = "cmbcategory";
+            cmbcategory.PlaceholderText = "";
+            cmbcategory.SelectedIndex = -1;
+            cmbcategory.SelectedItem = null;
+            cmbcategory.SelectedValue = null;
+            cmbcategory.Size = new Size(122, 25);
+            cmbcategory.TabIndex = 34;
+            cmbcategory.ValueMember = "";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.ForeColor = SystemColors.ControlDark;
+            label6.Location = new Point(382, 92);
+            label6.Name = "label6";
+            label6.Size = new Size(92, 15);
+            label6.TabIndex = 33;
+            label6.Text = "_________________";
+            // 
             // Add_UpdateForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(509, 309);
+            ClientSize = new Size(514, 309);
+            Controls.Add(label6);
+            Controls.Add(label2);
             Controls.Add(btnsave);
             Controls.Add(txtqty);
             Controls.Add(label7);
-            Controls.Add(txtcategory);
-            Controls.Add(label6);
             Controls.Add(txtdescription);
             Controls.Add(label5);
             Controls.Add(txtbar);
             Controls.Add(label4);
             Controls.Add(txtmodelo);
             Controls.Add(label3);
-            Controls.Add(txtmarca);
-            Controls.Add(label2);
             Controls.Add(txtpiezaID);
             Controls.Add(label1);
+            Controls.Add(cmbmarca);
+            Controls.Add(cmbcategory);
             Name = "Add_UpdateForm";
             Text = "NewPart";
+            Controls.SetChildIndex(cmbcategory, 0);
+            Controls.SetChildIndex(cmbmarca, 0);
             Controls.SetChildIndex(label1, 0);
             Controls.SetChildIndex(txtpiezaID, 0);
-            Controls.SetChildIndex(label2, 0);
-            Controls.SetChildIndex(txtmarca, 0);
             Controls.SetChildIndex(label3, 0);
             Controls.SetChildIndex(txtmodelo, 0);
             Controls.SetChildIndex(label4, 0);
             Controls.SetChildIndex(txtbar, 0);
             Controls.SetChildIndex(label5, 0);
             Controls.SetChildIndex(txtdescription, 0);
-            Controls.SetChildIndex(label6, 0);
-            Controls.SetChildIndex(txtcategory, 0);
             Controls.SetChildIndex(label7, 0);
             Controls.SetChildIndex(txtqty, 0);
             Controls.SetChildIndex(btnsave, 0);
+            Controls.SetChildIndex(label2, 0);
+            Controls.SetChildIndex(label6, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -250,18 +264,18 @@
 
         private TextBox txtqty;
         private Label label7;
-        private TextBox txtcategory;
-        private Label label6;
         private TextBox txtdescription;
         private Label label5;
         private TextBox txtbar;
         private Label label4;
         private TextBox txtmodelo;
         private Label label3;
-        private TextBox txtmarca;
         private Label label2;
         private TextBox txtpiezaID;
         private Label label1;
         private Button btnsave;
+        private CustomControl.CustomCombobox cmbmarca;
+        private CustomControl.CustomCombobox cmbcategory;
+        private Label label6;
     }
 }

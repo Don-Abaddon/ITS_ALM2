@@ -65,7 +65,7 @@
             btnnew.FlatStyle = FlatStyle.Flat;
             btnnew.Font = new Font("Segoe UI", 14F);
             btnnew.ForeColor = SystemColors.ControlDark;
-            btnnew.Location = new Point(24, 72);
+            btnnew.Location = new Point(24, 87);
             btnnew.Name = "btnnew";
             btnnew.Size = new Size(103, 35);
             btnnew.TabIndex = 1;
@@ -78,9 +78,9 @@
             btnInventory.FlatStyle = FlatStyle.Flat;
             btnInventory.Font = new Font("Segoe UI", 14F);
             btnInventory.ForeColor = SystemColors.ControlDark;
-            btnInventory.Location = new Point(24, 22);
+            btnInventory.Location = new Point(24, 37);
             btnInventory.Name = "btnInventory";
-            btnInventory.Size = new Size(103, 35);
+            btnInventory.Size = new Size(103, 36);
             btnInventory.TabIndex = 0;
             btnInventory.Text = "Inventory";
             btnInventory.UseVisualStyleBackColor = true;

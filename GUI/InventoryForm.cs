@@ -132,6 +132,11 @@ namespace GUI
                 }
             }
         }
+       private void TextBoxRefresh()
+        {
+            txtbar.Text = txtbar.Tag?.ToString();
+            txtmodel.Text = txtmodel.Tag?.ToString();
+        }
         private void InventoryForm_FormClosed(object? sender, FormClosedEventArgs e)
         {
 
@@ -193,6 +198,8 @@ namespace GUI
         private async void btnrefresh_Click(object sender, EventArgs e)
         {
             await Inventory_Load();
+            TextBoxRefresh();
+
         }
     }
 }

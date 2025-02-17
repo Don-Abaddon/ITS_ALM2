@@ -7,9 +7,9 @@ namespace DataAccess
         {
             get
             {
-                string basePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string basePath = @"\\prt-itstech\itstech\Yamil\";
                 string folderPath = System.IO.Path.Combine(basePath, "ITS_ALM");
-                string dbPath = System.IO.Path.Combine(folderPath, "its_alm.db");
+                string dbPath = System.IO.Path.Combine(folderPath, "its_alm2.db");
 
 
                 if (!Directory.Exists(dbPath))
@@ -30,16 +30,30 @@ namespace DataAccess
             {
                 connection.Open();
 
-                string createTableQuery = @"
-                CREATE TABLE IF NOT EXISTS Piezas (
-                    PiezaID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Marca TEXT NOT NULL,
-                    Modelo TEXT NOT NULL,
-                    BarCode TEXT NOT NULL,
-                    Descripcion TEXT,
-                    Categoria TEXT,
-                    Cantidad INTEGER NOT NULL
-                );";
+                string createTableQuery = @"CREATE TABLE Marcas(
+	                    ID INTEGER,
+	                    Nombre TEXT,
+	                    PRIMARY KEY(ID AUTOINCREMENT)
+                    );
+
+                    CREATE TABLE Category(
+	                    ID INTEGER,
+	                    Category TEXT,
+	                    PRIMARY KEY (ID AUTOINCREMENT)
+                    );
+	
+                    CREATE TABLE Piezas (
+	                    PiezaID	INTEGER,
+	                    Marca	TEXT(100) NOT NULL,
+	                    Modelo	TEXT(100) NOT NULL,
+	                    BarCode	TEXT(20) UNIQUE,
+	                    Descripcion	TEXT,
+	                    Categoria	TEXT(50) NOT NULL,
+	                    Cantidad	INT NOT NULL,
+	                    PRIMARY KEY(PiezaID AUTOINCREMENT),
+	                    FOREIGN KEY (Marca) REFERENCES Marcas(ID),
+	                    FOREIGN KEY (Categoria) REFERENCES Category(ID)
+                    );";
 
                 using (var command = new SqliteCommand(createTableQuery, connection))
                 {

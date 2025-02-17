@@ -1,4 +1,5 @@
 ﻿using Domain;
+using GUI.CustomControl;
 using System.Data;
 
 namespace GUI
@@ -12,6 +13,7 @@ namespace GUI
             ConfigurarFormulario();
             this.FormClosed += NewPartForm_FormClosed;
             _inventory = new Inventory();
+            this.Load += async (s, e) => await LoadComboBox();
             TextBoxStyle(txtbar);
             TextBoxStyle(txtmarca);
             TextBoxStyle(txtmodelo);
@@ -115,15 +117,20 @@ namespace GUI
         }
         private async void btnsave_Click(object sender, EventArgs e)
         {
-            string marca = txtmarca.Text;
+            string marca = cmbmarca.SelectedValue?.ToString() ?? string.Empty;
             string modelo = txtmodelo.Text;
-            string categoria = txtcategory.Text;
+            string categoria = cmbcategory.SelectedValue?.ToString() ?? string.Empty;
             string descripcion = txtdescription.Text;
             string cantidad = txtqty.Text;
             string barcode = txtbar.Text;
             string id = txtpiezaID.Text;
             if (txtpiezaID.Text == "" || txtpiezaID.Text == "ID")
             {
+                if (!int.TryParse(marca, out int marcaID) || !int.TryParse(categoria, out int categoriaID))
+                {
+                    DarkMessageBox.Show("Seleccione una marca y una categoría válidas.", "Error", MessageBoxButtons.OK);
+                    return;
+                }
                 if (string.IsNullOrWhiteSpace(marca) || marca == "Marca" ||
                 string.IsNullOrWhiteSpace(modelo) || modelo == "Modelo" ||
                 string.IsNullOrWhiteSpace(categoria) || categoria == "Categoria" ||
@@ -175,6 +182,21 @@ namespace GUI
             txtdescription.Text = descripcion ?? "Descripcion";
             txtcategory.Text = categoria ?? "Categoria";
             txtqty.Text = cantidad?.ToString() ?? "Cantidad";
+        }
+        private async Task LoadComboBox()
+        {
+            DataTable dataTable = await _inventory.Combobox_Marca();
+            DataTable dataTable2 = await _inventory.Combobox_Categoria();
+            cmbmarca.DisplayMember = "Nombre";  // Mostrar el nombre en el ComboBox
+            cmbmarca.ValueMember = "ID";        // Guardar el ID internamente
+            cmbmarca.DataSource = dataTable;
+            cmbmarca.SelectedIndex = -1;
+            cmbmarca.PlaceholderText = "Marca";
+            cmbcategory.DisplayMember = "Category";
+            cmbcategory.ValueMember = "ID";
+            cmbcategory.DataSource = dataTable2;
+            cmbcategory.SelectedIndex = -1;
+            cmbcategory.PlaceholderText = "Category";
         }
     }
 }

@@ -10,7 +10,9 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = "SELECT * FROM Piezas";
+                string query = @"SELECT PiezaID, m.Nombre as Marca, Modelo, BarCode, Descripcion, c.Category, Cantidad FROM Piezas AS p 
+                    INNER JOIN Marcas AS m ON p.Marca = m.ID 
+                    INNER JOIN Category As c ON p.Categoria = c.ID;";
 
                 using (var cmd = new SqliteCommand(query, conn))
                 {
@@ -28,7 +30,9 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = "SELECT * FROM Piezas WHERE BarCode like @barcode or Modelo like @model ";
+                string query = @"SELECT PiezaID, m.Nombre as Marca, Modelo, BarCode, Descripcion, c.Category, Cantidad FROM Piezas AS p 
+                    INNER JOIN Marcas AS m ON p.Marca = m.ID 
+                    INNER JOIN Category As c ON p.Categoria = c.ID WHERE BarCode like @barcode or Modelo like @model ";
                 using (var cmd = new SqliteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@barcode", barcode + "%");
@@ -89,6 +93,7 @@ namespace DataAccess
                     cmd.Parameters.AddWithValue("@Descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@Categoria", categoria);
                     cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                    Console.WriteLine("Martca" + marca + "Modelo" + modelo);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         DataTable dataTable = new DataTable();
@@ -96,7 +101,6 @@ namespace DataAccess
                         return dataTable;
                     }
                 }
-
             }
         }
         public async Task<DataTable> UpdateItemsAsync(string ID, string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
@@ -104,8 +108,7 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = @"
-                                UPDATE Piezas
+                string query = @"UPDATE Piezas
                                 SET 
                                     Marca = @Marca, 
                                     Modelo = @Modelo, 
@@ -161,6 +164,42 @@ namespace DataAccess
                 {
                     cmd.Parameters.AddWithValue("@id", ID);
                     cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }
+                }
+            }
+        }
+        public async Task<DataTable> ComboBox_MarcaAsync()
+        {
+            using (var conn = new SqliteConnection(DBConnection.ConnectionString))
+            {
+                await conn.OpenAsync();
+                string query = "SELECT ID, Nombre FROM Marcas ORDER BY Nombre ASC";
+
+                using (var cmd = new SqliteCommand(query, conn))
+                {
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }
+                }
+            }
+        }
+        public async Task<DataTable> ComboBox_CategoriaAsync()
+        {
+            using (var conn = new SqliteConnection(DBConnection.ConnectionString))
+            {
+                await conn.OpenAsync();
+                string query = "SELECT ID, Category FROM Category ORDER BY Category ASC";
+
+                using (var cmd = new SqliteCommand(query, conn))
+                {
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         DataTable dataTable = new DataTable();
