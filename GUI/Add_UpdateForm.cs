@@ -15,9 +15,7 @@ namespace GUI
             _inventory = new Inventory();
             this.Load += async (s, e) => await LoadComboBox();
             TextBoxStyle(txtbar);
-            TextBoxStyle(txtmarca);
             TextBoxStyle(txtmodelo);
-            TextBoxStyle(txtcategory);
             TextBoxStyle(txtdescription);
             TextBoxStyle(txtqty);
             TextBoxStyle(txtpiezaID);
@@ -41,19 +39,15 @@ namespace GUI
         private void ResetFields()
         {
             txtpiezaID.Text = "ID";
-            txtmarca.Text = "Marca";
             txtmodelo.Text = "Modelo";
             txtbar.Text = "Barcode";
             txtdescription.Text = "Descripcion";
-            txtcategory.Text = "Categoria";
             txtqty.Text = "Cantidad";
         }
         private void TextBox_Enter(object sender, EventArgs e)
         {
             txtbar.Tag = "Barcode";
-            txtmarca.Tag = "Marca";
             txtmodelo.Tag = "Modelo";
-            txtcategory.Tag = "Categoria";
             txtdescription.Tag = "Descripcion";
             txtqty.Tag = "Cantidad";
 
@@ -80,9 +74,7 @@ namespace GUI
         {
             _inventory = new Inventory();
             TextBoxStyle(txtbar);
-            TextBoxStyle(txtmarca);
             TextBoxStyle(txtmodelo);
-            TextBoxStyle(txtcategory);
             TextBoxStyle(txtdescription);
             TextBoxStyle(txtqty);
             TextBoxStyle(txtpiezaID);
@@ -98,13 +90,9 @@ namespace GUI
             txtbar.ReadOnly = true;
             //txtqty.ReadOnly = true;
             //txtdescription.ReadOnly = true;
-            txtmarca.ReadOnly = true;
             txtmodelo.ReadOnly = true;
-            txtcategory.ReadOnly = true;
            //txtdescription.Enabled = false;
-            txtmarca.Enabled = false;
             txtmodelo.Enabled = false;
-            txtcategory.Enabled = false;
             txtpiezaID.Enabled = false;
         }
         private void NewPartForm_FormClosed(object? sender, FormClosedEventArgs e)
@@ -175,12 +163,10 @@ namespace GUI
                 txtpiezaID.Text = "ID";
                 txtpiezaID.Enabled = false;
                 Win_Title("Nueva Pieza");
-            }
-            txtmarca.Text = marca ?? "Marca";
+            }           
             txtmodelo.Text = modelo ?? "Modelo";
             txtbar.Text = barcode ?? "Barcode";
             txtdescription.Text = descripcion ?? "Descripcion";
-            txtcategory.Text = categoria ?? "Categoria";
             txtqty.Text = cantidad?.ToString() ?? "Cantidad";
         }
         private async Task LoadComboBox()
