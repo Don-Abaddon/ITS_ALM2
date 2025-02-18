@@ -7,7 +7,7 @@ namespace GUI
     public partial class Add_UpdateForm : Style
     {
         private Inventory _inventory;
-        public Add_UpdateForm(string? id = null, string? marca = null, string? modelo = null, string? barcode = null, string? descripcion = null, string? categoria = null, int? cantidad = null)
+        public Add_UpdateForm(string? id = null, int? marca = null, string? modelo = null, string? barcode = null, string? descripcion = null, int? categoria = null, int? cantidad = null)
         {
             InitializeComponent();
             ConfigurarFormulario();
@@ -24,9 +24,9 @@ namespace GUI
             txtpiezaID.Enabled = false;
             Win_Title("Nueva Pieza");
             ResetFields();
-            Updates(id ?? string.Empty, marca ?? string.Empty, modelo ?? string.Empty,
+            Updates(id ?? string.Empty, marca ?? 0, modelo ?? string.Empty,
             barcode ?? string.Empty, descripcion ?? string.Empty,
-            categoria ?? string.Empty, cantidad?.ToString() ?? "0");
+            categoria ?? 0, cantidad?.ToString() ?? "0");
             if (txtpiezaID.Text != "ID" && txtpiezaID.Text != "")
             {
                 Disable_entries();
@@ -133,8 +133,7 @@ namespace GUI
                     if (int.TryParse(cantidad, out int cantidadNumerica) && cantidadNumerica >= 0)
                     {
                         DataTable dataTable = await _inventory.SaveItemsAsync(marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
-                        DarkMessageBox.Show("Registro guardado correctamente.", "Éxito", MessageBoxButtons.OK);
-                        this.Close();
+                        DarkMessageBox.Show("Registro guardado correctamente.", "Éxito", MessageBoxButtons.OK);                       
                     }
                 }
             }
@@ -144,14 +143,12 @@ namespace GUI
                 {
                     DataTable dataTable = await _inventory.UpdateItems(id, marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
                     DarkMessageBox.Show("Registro ha actualizado correctamente.", "Éxito", MessageBoxButtons.OK);
-                    this.Close();
-                }
-
+                }               
             }
+            this.Close();
         }
-        private void Updates(string id, string marca, string modelo, string barcode, string descripcion, string categoria, string cantidad)
+        private void Updates(string id, int marcaID, string modelo, string barcode, string descripcion, int categoriaID, string cantidad)
         {
-            Console.WriteLine($"ID: {id}, Marca: {marca}, Modelo: {modelo}, Barcode: {barcode}, Descripción: {descripcion}, Categoría: {categoria}, Cantidad: {cantidad}");
             if (id != null) // Caso de edición
             {
                 txtpiezaID.Text = id;
@@ -163,11 +160,16 @@ namespace GUI
                 txtpiezaID.Text = "ID";
                 txtpiezaID.Enabled = false;
                 Win_Title("Nueva Pieza");
-            }           
+            }
+            
             txtmodelo.Text = modelo ?? "Modelo";
             txtbar.Text = barcode ?? "Barcode";
             txtdescription.Text = descripcion ?? "Descripcion";
             txtqty.Text = cantidad?.ToString() ?? "Cantidad";
+            cmbmarca.SelectedValue = marcaID > 0 ? marcaID : -1;
+            cmbcategory.SelectedValue = categoriaID > 0 ? categoriaID : -1;
+            MessageBox.Show(marcaID.ToString() + categoriaID);
+
         }
         private async Task LoadComboBox()
         {

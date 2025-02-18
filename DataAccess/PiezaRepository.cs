@@ -10,7 +10,15 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = @"SELECT PiezaID, m.Nombre as Marca, Modelo, BarCode, Descripcion, c.Category, Cantidad FROM Piezas AS p 
+                string query = @"SELECT 
+                        p.PiezaID,
+                        m.Nombre as Marca,
+                        p.Modelo,
+                        p.BarCode,
+                        p.Descripcion,
+                        c.Category as Categoria, 
+                        p.Cantidad 
+                        FROM Piezas AS p 
                     INNER JOIN Marcas AS m ON p.Marca = m.ID 
                     INNER JOIN Category As c ON p.Categoria = c.ID;";
 
@@ -30,7 +38,7 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = @"SELECT PiezaID, m.Nombre as Marca, Modelo, BarCode, Descripcion, c.Category, Cantidad FROM Piezas AS p 
+                string query = @"SELECT PiezaID, m.Nombre as Marca, Modelo, BarCode, Descripcion, c.Category  as Categoria,, Cantidad FROM Piezas AS p 
                     INNER JOIN Marcas AS m ON p.Marca = m.ID 
                     INNER JOIN Category As c ON p.Categoria = c.ID WHERE BarCode like @barcode or Modelo like @model ";
                 using (var cmd = new SqliteCommand(query, conn))
@@ -93,7 +101,6 @@ namespace DataAccess
                     cmd.Parameters.AddWithValue("@Descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@Categoria", categoria);
                     cmd.Parameters.AddWithValue("@Cantidad", cantidad);
-                    Console.WriteLine("Martca" + marca + "Modelo" + modelo);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         DataTable dataTable = new DataTable();

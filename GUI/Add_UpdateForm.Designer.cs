@@ -224,6 +224,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(514, 309);
+            Controls.Add(cmbcategory);
+            Controls.Add(cmbmarca);
             Controls.Add(label6);
             Controls.Add(label2);
             Controls.Add(btnsave);
@@ -237,12 +239,8 @@
             Controls.Add(label3);
             Controls.Add(txtpiezaID);
             Controls.Add(label1);
-            Controls.Add(cmbmarca);
-            Controls.Add(cmbcategory);
             Name = "Add_UpdateForm";
             Text = "NewPart";
-            Controls.SetChildIndex(cmbcategory, 0);
-            Controls.SetChildIndex(cmbmarca, 0);
             Controls.SetChildIndex(label1, 0);
             Controls.SetChildIndex(txtpiezaID, 0);
             Controls.SetChildIndex(label3, 0);
@@ -256,6 +254,8 @@
             Controls.SetChildIndex(btnsave, 0);
             Controls.SetChildIndex(label2, 0);
             Controls.SetChildIndex(label6, 0);
+            Controls.SetChildIndex(cmbmarca, 0);
+            Controls.SetChildIndex(cmbcategory, 0);
             ResumeLayout(false);
             PerformLayout();
         }

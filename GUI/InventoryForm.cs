@@ -11,9 +11,10 @@ namespace GUI
         private ContextMenuStrip contextMenuStrip1;
         public InventoryForm()
         {
-            InitializeComponent();
+            InitializeComponent();            
             this.FormClosed += InventoryForm_FormClosed;
             _inventory = new Inventory();
+            _inventory.InventoryUpdated += async (s, e) => await Inventory_Load();
             this.Load += async (s, e) => await Inventory_Load();
             Win_Title("Inventory");
             CustomizeDataGridView();
@@ -53,7 +54,7 @@ namespace GUI
                 newPartForm.BringToFront();
             }
         }
-        private void editMenuItem_Click(object? sender, EventArgs e)
+        private async void editMenuItem_Click(object? sender, EventArgs e)
         {
             if (dgvItems.SelectedRows.Count > 0)
             {
@@ -61,17 +62,26 @@ namespace GUI
 
                 // Obtén los valores de las celdas
                 string id = selectedRow.Cells["PiezaID"].Value?.ToString() ?? string.Empty;
-                string marca = selectedRow.Cells["Marca"].Value?.ToString() ?? string.Empty;
+                string marcaNombre = selectedRow.Cells["Marca"].Value?.ToString() ?? string.Empty;
                 string modelo = selectedRow.Cells["Modelo"].Value?.ToString() ?? string.Empty;
                 string barcode = selectedRow.Cells["BarCode"].Value?.ToString() ?? string.Empty;
                 string descripcion = selectedRow.Cells["Descripcion"].Value?.ToString() ?? string.Empty;
-                string categoria = selectedRow.Cells["Categoria"].Value?.ToString() ?? string.Empty;
+                string categoriaNombre = selectedRow.Cells["Categoria"].Value?.ToString() ?? string.Empty;
                 int.TryParse(selectedRow.Cells["Cantidad"].Value?.ToString(), out int cantidad);
 
+                //Obtener los IDs reales de la base de datos basados en los nombres
+                DataTable marcasTable = await _inventory.Combobox_Marca();
+                DataTable categoriasTable = await _inventory.Combobox_Categoria();
+
+                int marcaID = ObtenerIDDesdeDataTable(marcasTable, "Nombre", marcaNombre, "ID");
+                int categoriaID = ObtenerIDDesdeDataTable(categoriasTable, "Category", categoriaNombre, "ID");
+
+
                 // Abre el formulario de edición con los datos
-                using (Add_UpdateForm editForm = new Add_UpdateForm(id, marca, modelo, barcode, descripcion, categoria, cantidad))
+                using (Add_UpdateForm editForm = new Add_UpdateForm(id, marcaID, modelo, barcode, descripcion, categoriaID, cantidad))
                 {
-                    editForm.ShowDialog();
+                    MessageBox.Show(marcaNombre + " "+ marcaID + " " + categoriaNombre + categoriaID);
+                    editForm.ShowDialog();                    
                 }
 
 
@@ -134,6 +144,8 @@ namespace GUI
         }
        private void TextBoxRefresh()
         {
+            txtbar.Tag = "Barcode";
+            txtmodel.Tag = "Modelo";
             txtbar.Text = txtbar.Tag?.ToString();
             txtmodel.Text = txtmodel.Tag?.ToString();
         }
@@ -149,7 +161,15 @@ namespace GUI
         private async Task Inventory_Load()
         {
             var dataTable = await _inventory.LoadItems();
-            dgvItems.DataSource = dataTable;
+            //Asegurar que la UI se actualiza en el hilo principal
+            if (dgvItems.InvokeRequired)
+            {
+                dgvItems.Invoke(new Action(() => dgvItems.DataSource = dataTable));
+            }
+            else
+            {
+                dgvItems.DataSource = dataTable;
+            }
         }
         private async void TextBox_TextChanged(object? sender, EventArgs e)
         {
@@ -200,6 +220,17 @@ namespace GUI
             await Inventory_Load();
             TextBoxRefresh();
 
+        }
+        private int ObtenerIDDesdeDataTable(DataTable table, string columnName, string searchValue, string idColumn)
+        {
+            foreach (DataRow row in table.Rows)
+            {
+                if (row[columnName].ToString() == searchValue)
+                {
+                    return Convert.ToInt32(row[idColumn]);
+                }
+            }
+            return 0; // Si no se encuentra, devuelve 0 (o lanza una excepción según tu lógica)
         }
     }
 }

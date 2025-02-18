@@ -137,6 +137,8 @@ namespace GUI.CustomControl
                 lblText.Text = cmbList.Text;
             else
                 lblText.Text = placeholderText;
+
+            OnSelectedIndexChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public object? DataSource

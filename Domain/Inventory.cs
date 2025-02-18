@@ -2,14 +2,29 @@
 using System.Data;
 namespace Domain
 {
-    public class Inventory
+    public class Inventory : IDisposable
     {
         private PiezaRepository _piezaRepository;
+        private readonly DatabaseWatcher _dbWatcher;
+        public event EventHandler? InventoryUpdated;
+
         public Inventory()
         {
             _piezaRepository = new PiezaRepository();
-        }
+            _dbWatcher = new DatabaseWatcher(DBConnection.GetDatabasePath()); // Ruta de la BD
 
+            _dbWatcher.DatabaseChanged += async (s, e) => await NotifyUpdate();
+        }
+        private async Task NotifyUpdate()
+        {
+            await Task.Delay(200); // Pequeño retraso para evitar problemas de concurrencia
+            InventoryUpdated?.Invoke(this, EventArgs.Empty);
+        }
+        public void Dispose()
+        {
+            _dbWatcher?.Dispose();
+            GC.SuppressFinalize(this);
+        }
         public async Task<DataTable> LoadItems()
         {
             return await _piezaRepository.GetAllPiezasAsync();
