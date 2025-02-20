@@ -79,8 +79,7 @@ namespace GUI
 
                 // Abre el formulario de edición con los datos
                 using (Add_UpdateForm editForm = new Add_UpdateForm(id, marcaID, modelo, barcode, descripcion, categoriaID, cantidad))
-                {
-                    MessageBox.Show(marcaNombre + " "+ marcaID + " " + categoriaNombre + categoriaID);
+                {                 
                     editForm.ShowDialog();                    
                 }
 

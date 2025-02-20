@@ -168,7 +168,7 @@ namespace GUI
             txtqty.Text = cantidad?.ToString() ?? "Cantidad";
             cmbmarca.SelectedValue = marcaID > 0 ? marcaID : -1;
             cmbcategory.SelectedValue = categoriaID > 0 ? categoriaID : -1;
-            MessageBox.Show(marcaID.ToString() + categoriaID);
+            
 
         }
         private async Task LoadComboBox()
