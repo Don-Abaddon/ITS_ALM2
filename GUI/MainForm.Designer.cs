@@ -33,21 +33,25 @@
             btnInventory = new Button();
             txtpiezaID = new TextBox();
             label1 = new Label();
-            txtmarca = new TextBox();
-            label2 = new Label();
             txtmodelo = new TextBox();
             label3 = new Label();
             txtbar = new TextBox();
             label4 = new Label();
             txtdescription = new TextBox();
             label5 = new Label();
-            txtcategory = new TextBox();
-            label6 = new Label();
             txtqty = new TextBox();
             label7 = new Label();
             btnsust = new Button();
             btnadd = new Button();
+            cmbmarca = new CustomControl.CustomCombobox();
+            label2 = new Label();
+            cmbcategory = new CustomControl.CustomCombobox();
+            label6 = new Label();
+            dgvItems = new DataGridView();
+            btnSearch = new Button();
+            btnrefresh = new Button();
             pnlnav.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvItems).BeginInit();
             SuspendLayout();
             // 
             // pnlnav
@@ -105,25 +109,6 @@
             label1.TabIndex = 3;
             label1.Text = "____________________";
             // 
-            // txtmarca
-            // 
-            txtmarca.Location = new Point(383, 74);
-            txtmarca.Name = "txtmarca";
-            txtmarca.Size = new Size(100, 23);
-            txtmarca.TabIndex = 11;
-            txtmarca.TabStop = false;
-            txtmarca.Text = "Marca";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = SystemColors.ControlDark;
-            label2.Location = new Point(380, 84);
-            label2.Name = "label2";
-            label2.Size = new Size(107, 15);
-            label2.TabIndex = 5;
-            label2.Text = "____________________";
-            // 
             // txtmodelo
             // 
             txtmodelo.Location = new Point(572, 74);
@@ -145,7 +130,7 @@
             // 
             // txtbar
             // 
-            txtbar.Location = new Point(189, 155);
+            txtbar.Location = new Point(189, 147);
             txtbar.Name = "txtbar";
             txtbar.Size = new Size(140, 23);
             txtbar.TabIndex = 2;
@@ -158,7 +143,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = SystemColors.ControlDark;
-            label4.Location = new Point(186, 165);
+            label4.Location = new Point(186, 157);
             label4.Name = "label4";
             label4.Size = new Size(147, 15);
             label4.TabIndex = 9;
@@ -166,7 +151,7 @@
             // 
             // txtdescription
             // 
-            txtdescription.Location = new Point(383, 155);
+            txtdescription.Location = new Point(383, 147);
             txtdescription.Multiline = true;
             txtdescription.Name = "txtdescription";
             txtdescription.Size = new Size(149, 67);
@@ -178,30 +163,11 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = SystemColors.ControlDark;
-            label5.Location = new Point(380, 209);
+            label5.Location = new Point(380, 201);
             label5.Name = "label5";
             label5.Size = new Size(152, 15);
             label5.TabIndex = 11;
             label5.Text = "_____________________________";
-            // 
-            // txtcategory
-            // 
-            txtcategory.Location = new Point(572, 155);
-            txtcategory.Name = "txtcategory";
-            txtcategory.Size = new Size(100, 23);
-            txtcategory.TabIndex = 14;
-            txtcategory.TabStop = false;
-            txtcategory.Text = "Categoria";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.ForeColor = SystemColors.ControlDark;
-            label6.Location = new Point(569, 165);
-            label6.Name = "label6";
-            label6.Size = new Size(107, 15);
-            label6.TabIndex = 13;
-            label6.Text = "____________________";
             // 
             // txtqty
             // 
@@ -247,48 +213,139 @@
             btnadd.UseVisualStyleBackColor = true;
             btnadd.Click += btnadd_Click;
             // 
+            // cmbmarca
+            // 
+            cmbmarca.BackColor = Color.FromArgb(36, 36, 36);
+            cmbmarca.DataSource = null;
+            cmbmarca.DisplayMember = "";
+            cmbmarca.ForeColor = Color.DimGray;
+            cmbmarca.Location = new Point(360, 74);
+            cmbmarca.MaximumSize = new Size(150, 25);
+            cmbmarca.MinimumSize = new Size(50, 25);
+            cmbmarca.Name = "cmbmarca";
+            cmbmarca.PlaceholderText = "";
+            cmbmarca.SelectedIndex = -1;
+            cmbmarca.SelectedItem = null;
+            cmbmarca.SelectedValue = null;
+            cmbmarca.Size = new Size(122, 25);
+            cmbmarca.TabIndex = 33;
+            cmbmarca.ValueMember = "";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = SystemColors.ControlDark;
+            label2.Location = new Point(360, 86);
+            label2.Name = "label2";
+            label2.Size = new Size(92, 15);
+            label2.TabIndex = 32;
+            label2.Text = "_________________";
+            // 
+            // cmbcategory
+            // 
+            cmbcategory.BackColor = Color.FromArgb(36, 36, 36);
+            cmbcategory.DataSource = null;
+            cmbcategory.DisplayMember = "";
+            cmbcategory.ForeColor = Color.DimGray;
+            cmbcategory.Location = new Point(569, 147);
+            cmbcategory.MaximumSize = new Size(150, 25);
+            cmbcategory.MinimumSize = new Size(50, 25);
+            cmbcategory.Name = "cmbcategory";
+            cmbcategory.PlaceholderText = "";
+            cmbcategory.SelectedIndex = -1;
+            cmbcategory.SelectedItem = null;
+            cmbcategory.SelectedValue = null;
+            cmbcategory.Size = new Size(122, 25);
+            cmbcategory.TabIndex = 36;
+            cmbcategory.ValueMember = "";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.ForeColor = SystemColors.ControlDark;
+            label6.Location = new Point(569, 159);
+            label6.Name = "label6";
+            label6.Size = new Size(92, 15);
+            label6.TabIndex = 35;
+            label6.Text = "_________________";
+            // 
+            // dgvItems
+            // 
+            dgvItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvItems.Location = new Point(12, 271);
+            dgvItems.Name = "dgvItems";
+            dgvItems.Size = new Size(711, 224);
+            dgvItems.TabIndex = 37;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(183, 225);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(94, 34);
+            btnSearch.TabIndex = 38;
+            btnSearch.Text = "Busqueda";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += SearchItems;
+            // 
+            // btnrefresh
+            // 
+            btnrefresh.Location = new Point(283, 225);
+            btnrefresh.Name = "btnrefresh";
+            btnrefresh.Size = new Size(93, 34);
+            btnrefresh.TabIndex = 39;
+            btnrefresh.Text = "Refrescar";
+            btnrefresh.UseVisualStyleBackColor = true;
+            btnrefresh.Click += Refresh;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(735, 266);
+            ClientSize = new Size(735, 267);
+            Controls.Add(btnrefresh);
+            Controls.Add(btnSearch);
+            Controls.Add(dgvItems);
+            Controls.Add(cmbcategory);
+            Controls.Add(label6);
+            Controls.Add(cmbmarca);
+            Controls.Add(label2);
             Controls.Add(btnadd);
             Controls.Add(btnsust);
             Controls.Add(txtqty);
             Controls.Add(label7);
-            Controls.Add(txtcategory);
-            Controls.Add(label6);
             Controls.Add(txtdescription);
             Controls.Add(label5);
             Controls.Add(txtbar);
             Controls.Add(label4);
             Controls.Add(txtmodelo);
             Controls.Add(label3);
-            Controls.Add(txtmarca);
-            Controls.Add(label2);
             Controls.Add(txtpiezaID);
             Controls.Add(label1);
             Controls.Add(pnlnav);
             Name = "MainForm";
-            Text = "Form1";
+            Text = "";
             Controls.SetChildIndex(pnlnav, 0);
             Controls.SetChildIndex(label1, 0);
             Controls.SetChildIndex(txtpiezaID, 0);
-            Controls.SetChildIndex(label2, 0);
-            Controls.SetChildIndex(txtmarca, 0);
             Controls.SetChildIndex(label3, 0);
             Controls.SetChildIndex(txtmodelo, 0);
             Controls.SetChildIndex(label4, 0);
             Controls.SetChildIndex(txtbar, 0);
             Controls.SetChildIndex(label5, 0);
             Controls.SetChildIndex(txtdescription, 0);
-            Controls.SetChildIndex(label6, 0);
-            Controls.SetChildIndex(txtcategory, 0);
             Controls.SetChildIndex(label7, 0);
             Controls.SetChildIndex(txtqty, 0);
             Controls.SetChildIndex(btnsust, 0);
             Controls.SetChildIndex(btnadd, 0);
+            Controls.SetChildIndex(label2, 0);
+            Controls.SetChildIndex(cmbmarca, 0);
+            Controls.SetChildIndex(label6, 0);
+            Controls.SetChildIndex(cmbcategory, 0);
+            Controls.SetChildIndex(dgvItems, 0);
+            Controls.SetChildIndex(btnSearch, 0);
+            Controls.SetChildIndex(btnrefresh, 0);
             pnlnav.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvItems).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -299,20 +356,23 @@
         private Button btnInventory;
         private TextBox txtpiezaID;
         private Label label1;
-        private TextBox txtmarca;
-        private Label label2;
         private TextBox txtmodelo;
         private Label label3;
         private TextBox txtbar;
         private Label label4;
         private TextBox txtdescription;
         private Label label5;
-        private TextBox txtcategory;
-        private Label label6;
         private TextBox txtqty;
         private Label label7;
         private Button btnsust;
         private Button btnadd;
         private Button btnnew;
+        private CustomControl.CustomCombobox cmbmarca;
+        private Label label2;
+        private CustomControl.CustomCombobox cmbcategory;
+        private Label label6;
+        private DataGridView dgvItems;
+        private Button btnSearch;
+        private Button btnrefresh;
     }
 }

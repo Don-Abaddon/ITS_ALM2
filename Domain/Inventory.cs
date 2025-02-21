@@ -45,6 +45,10 @@ namespace Domain
         {
             return await _piezaRepository.ExactSearchItemAsync(barcode);
         }
+        public async Task<DataTable> SearchItem(string marcaID, string categoryID)
+        {
+            return await _piezaRepository.SearchItemAsync(marcaID, categoryID);
+        }
         public async Task<DataTable> SaveItemsAsync(string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
         {
             return await _piezaRepository.SaveItemsAsync(marca,  modelo,  barcode,  descripcion,  categoria,  cantidad);

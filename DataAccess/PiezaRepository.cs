@@ -60,11 +60,34 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = "SELECT * FROM Piezas WHERE BarCode = @barcode";
+                string query = @"SELECT p.PiezaID, m.Nombre as Marca, p.Modelo, p.BarCode, p.Descripcion, c.Category  as Categoria, p.Cantidad FROM Piezas AS p 
+                    INNER JOIN Marcas AS m ON p.Marca = m.ID 
+                    INNER JOIN Category As c ON p.Categoria = c.ID WHERE BarCode = @barcode"; ;
                 using (var cmd = new SqliteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@barcode", barcode);
                     Console.Write(barcode);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }
+                }
+            }
+        }
+        public async Task<DataTable> SearchItemAsync(string marcaID, string categoryID)
+        {
+            using (var conn = new SqliteConnection(DBConnection.ConnectionString))
+            {
+                await conn.OpenAsync();
+                string query = @"SELECT p.PiezaID, m.Nombre as Marca, p.Modelo, p.BarCode, p.Descripcion, c.Category  as Categoria, p.Cantidad FROM Piezas AS p 
+                    INNER JOIN Marcas AS m ON p.Marca = m.ID 
+                    INNER JOIN Category As c ON p.Categoria = c.ID WHERE p.Categoria = @categoria or p.Marca = @marca "; ;
+                using (var cmd = new SqliteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@marca", string.IsNullOrEmpty(marcaID) ? DBNull.Value : (object)marcaID);
+                    cmd.Parameters.AddWithValue("@categoria", string.IsNullOrEmpty(categoryID) ? DBNull.Value : (object)categoryID);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         DataTable dataTable = new DataTable();

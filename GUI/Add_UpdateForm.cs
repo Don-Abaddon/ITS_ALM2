@@ -169,6 +169,7 @@ namespace GUI
             cmbmarca.SelectedValue = marcaID > 0 ? marcaID : -1;
             cmbcategory.SelectedValue = categoriaID > 0 ? categoriaID : -1;
             
+            
 
         }
         private async Task LoadComboBox()

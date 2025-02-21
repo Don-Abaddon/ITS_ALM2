@@ -10,15 +10,16 @@ namespace GUI
         {
             _inventory = new Inventory();
             InitializeComponent();
+            this.Load += async (s, e) => await LoadComboBox();
             TextBoxStyle(txtbar);
-            TextBoxStyle(txtmarca);
             TextBoxStyle(txtmodelo);
-            TextBoxStyle(txtcategory);
             TextBoxStyle(txtdescription);
             TextBoxStyle(txtqty);
             TextBoxStyle(txtpiezaID);
             ButtonStyle(btnadd);
             ButtonStyle(btnsust);
+            ButtonStyle(btnSearch);
+            ButtonStyle(btnrefresh);
             txtdescription.Multiline = true;
             //txtdescription.ScrollBars = ScrollBars.Vertical;
             Disable_entries();
@@ -26,15 +27,10 @@ namespace GUI
         }
         private void Disable_entries()
         {
-            //txtqty.ReadOnly = true;
             txtdescription.ReadOnly = true;
-            txtmarca.ReadOnly = true;
             txtmodelo.ReadOnly = true;
-            txtcategory.ReadOnly = true;
             txtdescription.Enabled = false;
-            txtmarca.Enabled = false;
             txtmodelo.Enabled = false;
-            txtcategory.Enabled = false;
             txtpiezaID.Enabled = false;
         }
         private void txtbar_Enter(object sender, EventArgs e)
@@ -99,27 +95,40 @@ namespace GUI
                 DataTable dataTable = await _inventory.ExactSearchItem(txtbar.Text);
                 if (dataTable != null && dataTable.Rows.Count > 0)
                 {
-                  
+
                     txtpiezaID.Text = dataTable.Rows[0]["PiezaID"].ToString();
-                    txtmarca.Text = dataTable.Rows[0]["Marca"].ToString();
                     txtmodelo.Text = dataTable.Rows[0]["Modelo"].ToString();
                     txtdescription.Text = dataTable.Rows[0]["Descripcion"].ToString();
-                    txtcategory.Text = dataTable.Rows[0]["Categoria"].ToString();
-                    //txtqty.Text = dataTable.Rows[0]["Cantidad"].ToString();
+                    cmbmarca.SelectedValue = dataTable.Rows[0]["Marca"].ToString();
+                    cmbcategory.SelectedValue = dataTable.Rows[0]["Categoria"].ToString();
+                    txtqty.Text = dataTable.Rows[0]["Cantidad"].ToString();
                 }
                 else
                 {
                     DarkMessageBox.Show("No se encontró ningún elemento con ese código de barras.", "Sin resultados", MessageBoxButtons.OK);
                     txtbar.Text = "";
                     txtqty.Text = "Cantidad";
-                    txtcategory.Text = "Categoria";
                     txtdescription.Text = "Descripcion";
-                    txtmarca.Text = "Marca";
                     txtmodelo.Text = "Modelo";
                     txtpiezaID.Text = "ID";
 
                 }
             }
+        }
+        private async Task LoadComboBox()
+        {
+            DataTable dataTable = await _inventory.Combobox_Marca();
+            DataTable dataTable2 = await _inventory.Combobox_Categoria();
+            cmbmarca.DisplayMember = "Nombre";  // Mostrar el nombre en el ComboBox
+            cmbmarca.ValueMember = "ID";        // Guardar el ID internamente
+            cmbmarca.DataSource = dataTable;
+            cmbmarca.SelectedIndex = -1;
+            cmbmarca.PlaceholderText = "Marca";
+            cmbcategory.DisplayMember = "Category";
+            cmbcategory.ValueMember = "ID";
+            cmbcategory.DataSource = dataTable2;
+            cmbcategory.SelectedIndex = -1;
+            cmbcategory.PlaceholderText = "Category";
         }
         private async void btnsust_Click(object sender, EventArgs e)
         {
@@ -130,7 +139,7 @@ namespace GUI
             if (!string.IsNullOrWhiteSpace(txtqty.Text) && txtqty.Text != "Cantidad" && int.TryParse(txtqty.Text, out int cantidadin))
             {
                 cantidad = cantidadin;
-               
+
             }
 
             if (datatable.Rows.Count > 0 && !Convert.IsDBNull(datatable.Rows[0]["Cantidad"]))
@@ -154,8 +163,8 @@ namespace GUI
             DataTable datatable = await _inventory.ExactSearchItem(txtbar.Text);
             int cantidad = 1;
             int cantidaddb = 0;
-            
-            if ( !string.IsNullOrWhiteSpace(txtqty.Text) && txtqty.Text != "Cantidad" && int.TryParse(txtqty.Text, out int cantidadin))
+
+            if (!string.IsNullOrWhiteSpace(txtqty.Text) && txtqty.Text != "Cantidad" && int.TryParse(txtqty.Text, out int cantidadin))
             {
                 cantidad = cantidadin;
             }
@@ -163,18 +172,36 @@ namespace GUI
             if (datatable.Rows.Count > 0 && !Convert.IsDBNull(datatable.Rows[0]["Cantidad"]))
             {
                 string? cantidadstr = datatable.Rows[0]["Cantidad"].ToString();
-                if(!string.IsNullOrWhiteSpace(cantidadstr))
+                if (!string.IsNullOrWhiteSpace(cantidadstr))
                 {
                     cantidaddb = int.Parse(cantidadstr);
                 }
             }
             string ID = txtpiezaID.Text;
             int newcantidad;
-            
+
             newcantidad = cantidaddb + cantidad;
 
             await _inventory.AddItems(ID, newcantidad);
             DarkMessageBox.Show($"La cantidad se actualizó correctamente.\nNueva cantidad: {newcantidad}", "Éxito", MessageBoxButtons.OK);
         }
+        private async void SearchItems(object? sender, EventArgs e)
+        {           
+            string? marcaID = cmbmarca.SelectedValue?.ToString();
+            string? categoriaID = cmbcategory.SelectedValue?.ToString();
+            if (string.IsNullOrEmpty(marcaID) && string.IsNullOrEmpty(categoriaID))
+            {
+                DarkMessageBox.Show("Seleccione al menos una Marca o Categoría."," ", MessageBoxButtons.OK);
+                return;
+            }
+            this.Height = 504;
+            DataTable dataTable = await _inventory.SearchItem(marcaID, categoriaID);
+            dgvItems.DataSource = dataTable;
+        }
+        private void Refresh(object? sender, EventArgs e)
+        {
+            this.Height = 267;
+        }
     }
 }
+
