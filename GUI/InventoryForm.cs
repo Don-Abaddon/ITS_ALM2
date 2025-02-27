@@ -17,11 +17,8 @@ namespace GUI
             _inventory.InventoryUpdated += async (s, e) => await Inventory_Load();
             this.Load += async (s, e) => await Inventory_Load();
             Win_Title("Inventory");
-            CustomizeDataGridView();
-            dgvItems.ReadOnly = true;
-            dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvItems.AllowUserToAddRows = false;
-            dgvItems.RowHeadersVisible = false;
+            CustomizeDataGridView(); 
+            this.Load += async (s, e) => await LoadComboBox();
             this.contextMenuStrip1 = new ContextMenuStrip();
             var editMenuItem = new ToolStripMenuItem("Edit", null, editMenuItem_Click);
             var deleteMenuItem = new ToolStripMenuItem("Delete", null, deleteMenuItem_Click);
@@ -35,11 +32,11 @@ namespace GUI
             foreach (ToolStripMenuItem item in contextMenuStrip1.Items)
             {
                 item.BackColor = ColorTranslator.FromHtml("#19201f"); // Fondo oscuro
-                item.ForeColor = ColorTranslator.FromHtml("#a8a9a8");               // Texto blanco
-                item.Font = new Font("Segoe UI", 10);       // Fuente personalizada
+                item.ForeColor = ColorTranslator.FromHtml("#a8a9a8"); // Texto blanco
+                item.Font = new Font("Segoe UI", 10); // Fuente personalizada
             }
             this.dgvItems.ContextMenuStrip = this.contextMenuStrip1;
-            //dgvItems.MouseDown += dgvItems_MouseDown;
+            cmbcategory.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         private Add_UpdateForm? newPartForm = null;
         private void NewMenuItem_Click(object? sender, EventArgs e)
@@ -120,7 +117,6 @@ namespace GUI
         private void TextBox_Enter(object sender, EventArgs e)
         {
             txtbar.Tag = "Barcode";
-            txtmodel.Tag = "Modelo";
            
 
             if (sender is TextBox textBox)
@@ -143,10 +139,8 @@ namespace GUI
         }
        private void TextBoxRefresh()
         {
-            txtbar.Tag = "Barcode";
-            txtmodel.Tag = "Modelo";
+            txtbar.Tag = "Barcode";            
             txtbar.Text = txtbar.Tag?.ToString();
-            txtmodel.Text = txtmodel.Tag?.ToString();
         }
         private void InventoryForm_FormClosed(object? sender, FormClosedEventArgs e)
         {
@@ -169,18 +163,20 @@ namespace GUI
             {
                 dgvItems.DataSource = dataTable;
             }
+            AutoDataGridSize();
         }
         private async void TextBox_TextChanged(object? sender, EventArgs e)
         {
             DataTable dataTable;
+            string? categoryID = cmbcategory.SelectedValue?.ToString();
 
-            if ((txtbar.Text == "" || txtbar.Text == "Barcode") && (txtmodel.Text == "" || txtmodel.Text == "Modelo"))
+            if ((txtbar.Text == "" || txtbar.Text == "Barcode") && (string.IsNullOrEmpty(categoryID)))
             {
                 dataTable = await _inventory.LoadItems();
             }
             else
             {
-                dataTable = await _inventory.DynamicSearchItem(txtbar.Text, txtmodel.Text);
+                dataTable = await _inventory.DynamicSearchItem(txtbar.Text, categoryID);
             }
             dgvItems.DataSource = dataTable;
         }
@@ -204,6 +200,10 @@ namespace GUI
             dgvItems.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
             dgvItems.EnableHeadersVisualStyles = false;
+
+            dgvItems.ReadOnly = true;
+            dgvItems.AllowUserToAddRows = false;
+            dgvItems.RowHeadersVisible = false;            
         }
         private void dgvItems_CellMouseDown(object? sender, DataGridViewCellMouseEventArgs e)
         {
@@ -217,6 +217,7 @@ namespace GUI
         private async void btnrefresh_Click(object sender, EventArgs e)
         {
             await Inventory_Load();
+            await LoadComboBox();
             TextBoxRefresh();
 
         }
@@ -229,7 +230,29 @@ namespace GUI
                     return Convert.ToInt32(row[idColumn]);
                 }
             }
-            return 0; // Si no se encuentra, devuelve 0 (o lanza una excepción según tu lógica)
+            return 0;
+        }
+        private void AutoDataGridSize()
+        {
+            dgvItems.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            var style = new DataGridViewCellStyle();
+            style.WrapMode = DataGridViewTriState.True;
+            int lastColIndex = dgvItems.Columns.Count - 3;
+            if (lastColIndex >= 0)
+            {
+                dgvItems.Columns[lastColIndex].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            dgvItems.Columns["Cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
+        private async Task LoadComboBox()
+        {
+            DataTable dataTable2 = await _inventory.Combobox_Categoria();            
+            cmbcategory.DisplayMember = "Category";
+            cmbcategory.ValueMember = "ID";
+            cmbcategory.DataSource = dataTable2;
+            cmbcategory.SelectedIndex = -1;
+            cmbcategory.PlaceholderText = "Categoria";
         }
     }
 }

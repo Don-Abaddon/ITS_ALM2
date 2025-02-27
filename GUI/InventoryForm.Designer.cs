@@ -34,7 +34,7 @@
             dgvItems = new DataGridView();
             label1 = new Label();
             btnrefresh = new Button();
-            txtmodel = new TextBox();
+            cmbcategory = new CustomControl.CustomCombobox();
             label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvItems).BeginInit();
             SuspendLayout();
@@ -108,38 +108,45 @@
             btnrefresh.UseVisualStyleBackColor = false;
             btnrefresh.Click += btnrefresh_Click;
             // 
-            // txtmodel
+            // cmbcategory
             // 
-            txtmodel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtmodel.BackColor = Color.FromArgb(36, 33, 36);
-            txtmodel.BorderStyle = BorderStyle.None;
-            txtmodel.Font = new Font("Segoe UI", 14F);
-            txtmodel.ForeColor = SystemColors.ScrollBar;
-            txtmodel.Location = new Point(157, 71);
-            txtmodel.Name = "txtmodel";
-            txtmodel.Size = new Size(209, 25);
-            txtmodel.TabIndex = 5;
-            txtmodel.Text = "Modelo";
-            txtmodel.TextChanged += TextBox_TextChanged;
-            txtmodel.Enter += TextBox_Enter;
-            txtmodel.Leave += TextBox_Leave;
+            cmbcategory.BackColor = Color.FromArgb(36, 36, 36);
+            cmbcategory.DataSource = null;
+            cmbcategory.DisplayMember = "";
+            cmbcategory.DropDownStyle = ComboBoxStyle.DropDown;
+            cmbcategory.Font = new Font("Segoe UI", 16F);
+            cmbcategory.ForeColor = SystemColors.ScrollBar;
+            cmbcategory.Location = new Point(205, 71);
+            cmbcategory.MaximumSize = new Size(150, 25);
+            cmbcategory.MinimumSize = new Size(50, 25);
+            cmbcategory.Name = "cmbcategory";
+            cmbcategory.PlaceholderText = "";
+            cmbcategory.SelectedIndex = -1;
+            cmbcategory.SelectedItem = null;
+            cmbcategory.SelectedValue = null;
+            cmbcategory.Size = new Size(150, 25);
+            cmbcategory.TabIndex = 35;
+            cmbcategory.TextFont = new Font("Segoe UI", 16F);
+            cmbcategory.TextForeColor = SystemColors.ScrollBar;
+            cmbcategory.ValueMember = "";
+            cmbcategory.OnSelectedIndexChanged += TextBox_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.ControlDark;
-            label2.Location = new Point(154, 84);
+            label2.Location = new Point(205, 84);
             label2.Name = "label2";
-            label2.Size = new Size(212, 15);
-            label2.TabIndex = 6;
-            label2.Text = "_________________________________________";
+            label2.Size = new Size(127, 15);
+            label2.TabIndex = 34;
+            label2.Text = "________________________";
             // 
             // InventoryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(833, 458);
-            Controls.Add(txtmodel);
+            Controls.Add(cmbcategory);
             Controls.Add(label2);
             Controls.Add(btnrefresh);
             Controls.Add(dgvItems);
@@ -152,7 +159,7 @@
             Controls.SetChildIndex(dgvItems, 0);
             Controls.SetChildIndex(btnrefresh, 0);
             Controls.SetChildIndex(label2, 0);
-            Controls.SetChildIndex(txtmodel, 0);
+            Controls.SetChildIndex(cmbcategory, 0);
             ((System.ComponentModel.ISupportInitialize)dgvItems).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -164,7 +171,7 @@
         private DataGridView dgvItems;
         private Label label1;
         private Button btnrefresh;
-        private TextBox txtmodel;
+        private CustomControl.CustomCombobox cmbcategory;
         private Label label2;
     }
 }

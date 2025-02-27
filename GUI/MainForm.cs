@@ -1,5 +1,6 @@
 using System.Data;
 using Domain;
+using static DataAccess.DBConnection;
 
 namespace GUI
 {
@@ -11,6 +12,7 @@ namespace GUI
             _inventory = new Inventory();
             InitializeComponent();
             this.Load += async (s, e) => await LoadComboBox();
+            dgvItems.CellClick += SelectItem;
             TextBoxStyle(txtbar);
             TextBoxStyle(txtmodelo);
             TextBoxStyle(txtdescription);
@@ -24,6 +26,26 @@ namespace GUI
             //txtdescription.ScrollBars = ScrollBars.Vertical;
             Disable_entries();
             Win_Title("Almacen ITS");
+            dgvItems.ReadOnly = true;
+            dgvItems.AllowUserToAddRows = false;
+            dgvItems.RowHeadersVisible = false;
+            CustomizeDataGridView(dgvItems);
+            dgvItems.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            var style = new DataGridViewCellStyle();
+            style.WrapMode = DataGridViewTriState.True;
+            int lastColIndex = dgvItems.Columns.Count - 1;
+            if (lastColIndex >= 0)
+            {
+                dgvItems.Columns[lastColIndex].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            cmbcategory.TextFont = new Font("Arial", 10F);
+            cmbcategory.TextForeColor = Color.Gray;
+            cmbmarca.TextFont = new Font("Arial", 10F);
+            cmbmarca.TextForeColor = Color.Gray;
+            cmbcategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbmarca.DropDownStyle = ComboBoxStyle.DropDownList;
+            ErrorException();
         }
         private void Disable_entries()
         {
@@ -128,7 +150,7 @@ namespace GUI
             cmbcategory.ValueMember = "ID";
             cmbcategory.DataSource = dataTable2;
             cmbcategory.SelectedIndex = -1;
-            cmbcategory.PlaceholderText = "Category";
+            cmbcategory.PlaceholderText = "Categoria";
         }
         private async void btnsust_Click(object sender, EventArgs e)
         {
@@ -186,21 +208,94 @@ namespace GUI
             DarkMessageBox.Show($"La cantidad se actualizó correctamente.\nNueva cantidad: {newcantidad}", "Éxito", MessageBoxButtons.OK);
         }
         private async void SearchItems(object? sender, EventArgs e)
-        {           
+        {
             string? marcaID = cmbmarca.SelectedValue?.ToString();
             string? categoriaID = cmbcategory.SelectedValue?.ToString();
             if (string.IsNullOrEmpty(marcaID) && string.IsNullOrEmpty(categoriaID))
             {
-                DarkMessageBox.Show("Seleccione al menos una Marca o Categoría."," ", MessageBoxButtons.OK);
+                DarkMessageBox.Show("Seleccione al menos una Marca o Categoría.", " ", MessageBoxButtons.OK);
                 return;
             }
-            this.Height = 504;
+            this.Height = 526;
             DataTable dataTable = await _inventory.SearchItem(marcaID, categoriaID);
             dgvItems.DataSource = dataTable;
+            AutoDataGridSize();
         }
-        private void Refresh(object? sender, EventArgs e)
+        private async void RefreshMainForm(object? sender, EventArgs e)
         {
-            this.Height = 267;
+            this.Height = 265;
+            await LoadComboBox();
+            txtpiezaID.Text = "ID";
+            txtmodelo.Text = "Modelo";
+            txtdescription.Text = "Descripción";
+            txtqty.Text = "Cantidad";
+            txtbar.Text = "Barcode";
+            dgvItems.DataSource = null;
+
+        }
+        private async void SelectItem(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dgvItems.Rows[e.RowIndex];
+                DataTable marcasTable = await _inventory.Combobox_Marca();
+                DataTable categoriasTable = await _inventory.Combobox_Categoria();
+
+                string marcaNombre = selectedRow.Cells["Marca"].Value?.ToString() ?? string.Empty;
+                string categoriaNombre = selectedRow.Cells["Categoria"].Value?.ToString() ?? string.Empty;
+                int.TryParse(selectedRow.Cells["Cantidad"].Value?.ToString(), out int cantidad);
+
+                int marcaID = ObtenerIDDesdeDataTable(marcasTable, "Nombre", marcaNombre, "ID");
+                int categoriaID = ObtenerIDDesdeDataTable(categoriasTable, "Category", categoriaNombre, "ID");
+
+                txtpiezaID.Text = selectedRow.Cells["PiezaID"].Value?.ToString() ?? string.Empty;
+                txtmodelo.Text = selectedRow.Cells["Modelo"].Value?.ToString() ?? string.Empty;
+                txtdescription.Text = selectedRow.Cells["Descripcion"].Value?.ToString() ?? string.Empty;
+                txtbar.Text = selectedRow.Cells["BarCode"].Value?.ToString() ?? string.Empty;
+                cmbmarca.SelectedValue = marcaID > 0 ? marcaID : -1;
+                cmbcategory.SelectedValue = categoriaID > 0 ? categoriaID : -1;
+            }
+        }
+        private int ObtenerIDDesdeDataTable(DataTable table, string columnName, string searchValue, string idColumn)
+        {
+            foreach (DataRow row in table.Rows)
+            {
+                if (row[columnName].ToString() == searchValue)
+                {
+                    return Convert.ToInt32(row[idColumn]);
+                }
+            }
+            return 0;
+        }
+        private void AutoDataGridSize()
+        {
+            dgvItems.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            var style = new DataGridViewCellStyle();
+            style.WrapMode = DataGridViewTriState.True;
+            int lastColIndex = dgvItems.Columns.Count - 3;
+            if (lastColIndex >= 0)
+            {
+                dgvItems.Columns[lastColIndex].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            dgvItems.Columns["Cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
+        private void ErrorException()
+        {
+            try
+            {
+                // Asegurarte de que la base de datos esté creada
+                _inventory.EnsureDatabaseCreated();
+            }
+            catch (DataAccessException ex)
+            {
+                // Aquí sí puedes mostrar el MessageBox
+                DarkMessageBox.Show(
+                    $"Ha ocurrido un error de acceso a datos: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK
+                );
+            }
         }
     }
 }

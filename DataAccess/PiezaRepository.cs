@@ -33,18 +33,26 @@ namespace DataAccess
                 }
             }
         }
-        public async Task<DataTable> DynamicSearchItemAsync(string barcode, string modelo)
-        {
+        public async Task<DataTable> DynamicSearchItemAsync(string barcode, string categoryID)
+        { 
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
+                if (barcode == "Barcode")
+                {
+                    barcode = "";
+                }
                 await conn.OpenAsync();
-                string query = @"SELECT p.PiezaID, m.Nombre as Marca, p.Modelo, p.BarCode, p.Descripcion, c.Category  as Categoria, p.Cantidad FROM Piezas AS p 
+                string query = @"SELECT p.PiezaID, m.Nombre as Marca, 
+                    p.Modelo, p.BarCode, p.Descripcion, c.Category  as Categoria, p.Cantidad 
+                    FROM Piezas AS p 
                     INNER JOIN Marcas AS m ON p.Marca = m.ID 
-                    INNER JOIN Category As c ON p.Categoria = c.ID WHERE BarCode like @barcode or Modelo like @model ";
+                    INNER JOIN Category As c ON p.Categoria = c.ID 
+                    WHERE (p.BarCode IS NULL OR p.BarCode like @barcode) 
+                    AND (@category IS NULL OR p.Categoria = @category)";
                 using (var cmd = new SqliteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@barcode", barcode + "%");
-                    cmd.Parameters.AddWithValue("@model", modelo + "%");
+                    cmd.Parameters.AddWithValue("@category", categoryID);
                     Console.Write(barcode);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
@@ -81,9 +89,13 @@ namespace DataAccess
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
             {
                 await conn.OpenAsync();
-                string query = @"SELECT p.PiezaID, m.Nombre as Marca, p.Modelo, p.BarCode, p.Descripcion, c.Category  as Categoria, p.Cantidad FROM Piezas AS p 
+                string query = @"SELECT p.PiezaID, m.Nombre as Marca, p.Modelo, 
+                    p.BarCode, p.Descripcion, c.Category  as Categoria, p.Cantidad 
+                    FROM Piezas AS p 
                     INNER JOIN Marcas AS m ON p.Marca = m.ID 
-                    INNER JOIN Category As c ON p.Categoria = c.ID WHERE p.Categoria = @categoria or p.Marca = @marca "; ;
+                    INNER JOIN Category As c ON p.Categoria = c.ID 
+                    WHERE (@marca IS NULL OR p.Marca = @marca)
+                    AND (@categoria IS NULL OR p.Categoria = @categoria)";
                 using (var cmd = new SqliteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@marca", string.IsNullOrEmpty(marcaID) ? DBNull.Value : (object)marcaID);
@@ -124,11 +136,25 @@ namespace DataAccess
                     cmd.Parameters.AddWithValue("@Descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@Categoria", categoria);
                     cmd.Parameters.AddWithValue("@Cantidad", cantidad);
-                    using (var reader = await cmd.ExecuteReaderAsync())
+                    int affectedRows = await cmd.ExecuteNonQueryAsync();
+                }
+                // Obtener el ID del registro insertado
+                long lastId;
+                using (var idCmd = new SqliteCommand("SELECT last_insert_rowid()", conn))
+                {
+                    lastId = (long)await idCmd.ExecuteScalarAsync();
+                }
+
+                // Ejecutar SELECT para obtener el registro insertado
+                string selectQuery = @"SELECT * FROM Piezas WHERE PiezaID = @id";
+                using (var selectCmd = new SqliteCommand(selectQuery, conn))
+                {
+                    selectCmd.Parameters.AddWithValue("@id", lastId);
+                    using (var reader = await selectCmd.ExecuteReaderAsync())
                     {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-                        return dataTable;
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+                        return dt;
                     }
                 }
             }

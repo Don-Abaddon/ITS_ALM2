@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+
 namespace DataAccess
 {
     public abstract class DBConnection
@@ -11,7 +12,7 @@ namespace DataAccess
         {
             get
             {
-                if (!Directory.Exists(dbPath))
+                if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
                 }
@@ -30,11 +31,13 @@ namespace DataAccess
         }
         private static void CreateDatabase(string dbPath)
         {
-            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            try
             {
-                connection.Open();
+                using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+                {
+                    connection.Open();
 
-                string createTableQuery = @"CREATE TABLE Marcas(
+                    string createTableQuery = @"CREATE TABLE Marcas(
 	                    ID INTEGER,
 	                    Nombre TEXT,
 	                    PRIMARY KEY(ID AUTOINCREMENT)
@@ -48,7 +51,7 @@ namespace DataAccess
 	
                     CREATE TABLE Piezas (
 	                    PiezaID	INTEGER,
-	                    Marca	TEXT(100) NOT NULL,
+	                    Marca	INTEGER NOT NULL,
 	                    Modelo	INT NOT NULL,
 	                    BarCode	TEXT(20) UNIQUE,
 	                    Descripcion	TEXT,
@@ -59,10 +62,22 @@ namespace DataAccess
 	                    FOREIGN KEY (Categoria) REFERENCES Category(ID)
                     );";
 
-                using (var command = new SqliteCommand(createTableQuery, connection))
-                {
-                    command.ExecuteNonQuery();
+                    using (var command = new SqliteCommand(createTableQuery, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new DataAccessException("Error al crear la base de datos", ex);
+            }
+        }
+        public class DataAccessException : Exception
+        {
+            public DataAccessException(string message, Exception innerException)
+                : base(message, innerException)
+            {
             }
         }
 

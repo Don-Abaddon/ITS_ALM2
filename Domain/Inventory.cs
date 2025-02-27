@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using System.Data;
+using static DataAccess.DBConnection;
 namespace Domain
 {
     public class Inventory : IDisposable
@@ -37,9 +38,9 @@ namespace Domain
         {
             return await _piezaRepository.ComboBox_CategoriaAsync();
         }
-        public async Task<DataTable> DynamicSearchItem(string barcode, string modelo)
+        public async Task<DataTable> DynamicSearchItem(string barcode, string categoryID)
         {
-            return await _piezaRepository.DynamicSearchItemAsync(barcode, modelo);
+            return await _piezaRepository.DynamicSearchItemAsync(barcode, categoryID);
         }
         public async Task<DataTable> ExactSearchItem( string barcode)
         {
@@ -64,6 +65,21 @@ namespace Domain
         public async Task<DataTable> AddItems( string ID, int cantidad)
         {
             return await _piezaRepository.AddItemsAsync(ID,cantidad);
+        }
+        public void EnsureDatabaseCreated()
+        {
+            try
+            {
+                // Llamada a DBConnection, que internamente puede lanzar DataAccessException
+                var dbPath = DBConnection.DatabasePath;
+                // Si la DB no existe, se creará automáticamente en la propiedad ConnectionString
+                _ = DBConnection.ConnectionString;
+            }
+            catch (DataAccessException ex)
+            {
+
+                throw new DataAccessException("Error al procesar datos de la base de datos", ex);
+            }
         }
     }
 }

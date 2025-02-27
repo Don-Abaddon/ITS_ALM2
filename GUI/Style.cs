@@ -77,9 +77,30 @@ namespace GUI
             button.BackColor = Color.FromArgb(36, 36, 36);
             button.Font = new Font("Arial", 10, FontStyle.Regular);
         }
-     public void Message_Title(string MessageTitle)
-        {
+         public void Message_Title(string MessageTitle)
+         {
             lblMessageTitle.Text = MessageTitle;
+         }
+        public void CustomizeDataGridView(DataGridView DataGrid)
+        {
+            DataGrid.BackgroundColor = Color.FromArgb(30, 30, 30);
+
+            DataGrid.DefaultCellStyle.BackColor = Color.FromArgb(40, 40, 40);
+            DataGrid.DefaultCellStyle.ForeColor = Color.White;
+            DataGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(70, 70, 70);
+            DataGrid.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            DataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
+            DataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DataGrid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            DataGrid.GridColor = Color.FromArgb(70, 70, 70);
+            DataGrid.BorderStyle = BorderStyle.None;
+
+            DataGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DataGrid.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+            DataGrid.EnableHeadersVisualStyles = false;
         }
     }
 }

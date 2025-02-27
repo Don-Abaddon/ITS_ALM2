@@ -218,7 +218,9 @@
             cmbmarca.BackColor = Color.FromArgb(36, 36, 36);
             cmbmarca.DataSource = null;
             cmbmarca.DisplayMember = "";
-            cmbmarca.ForeColor = Color.DimGray;
+            cmbmarca.DropDownStyle = ComboBoxStyle.DropDown;
+            cmbmarca.Font = new Font("Segoe UI", 10F);
+            cmbmarca.ForeColor = Color.Gray;
             cmbmarca.Location = new Point(360, 74);
             cmbmarca.MaximumSize = new Size(150, 25);
             cmbmarca.MinimumSize = new Size(50, 25);
@@ -229,15 +231,18 @@
             cmbmarca.SelectedValue = null;
             cmbmarca.Size = new Size(122, 25);
             cmbmarca.TabIndex = 33;
+            cmbmarca.TextFont = new Font("Segoe UI", 10F);
+            cmbmarca.TextForeColor = Color.DimGray;
             cmbmarca.ValueMember = "";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.ForeColor = SystemColors.ControlDark;
+            label2.Font = new Font("Segoe UI", 10F);
+            label2.ForeColor = Color.DimGray;
             label2.Location = new Point(360, 86);
             label2.Name = "label2";
-            label2.Size = new Size(92, 15);
+            label2.Size = new Size(111, 19);
             label2.TabIndex = 32;
             label2.Text = "_________________";
             // 
@@ -246,7 +251,8 @@
             cmbcategory.BackColor = Color.FromArgb(36, 36, 36);
             cmbcategory.DataSource = null;
             cmbcategory.DisplayMember = "";
-            cmbcategory.ForeColor = Color.DimGray;
+            cmbcategory.DropDownStyle = ComboBoxStyle.DropDown;
+            cmbcategory.ForeColor = Color.Gray;
             cmbcategory.Location = new Point(569, 147);
             cmbcategory.MaximumSize = new Size(150, 25);
             cmbcategory.MinimumSize = new Size(50, 25);
@@ -257,15 +263,18 @@
             cmbcategory.SelectedValue = null;
             cmbcategory.Size = new Size(122, 25);
             cmbcategory.TabIndex = 36;
+            cmbcategory.TextFont = new Font("Segoe UI", 9F);
+            cmbcategory.TextForeColor = Color.DimGray;
             cmbcategory.ValueMember = "";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.ForeColor = SystemColors.ControlDark;
+            label6.Font = new Font("Segoe UI", 10F);
+            label6.ForeColor = Color.DimGray;
             label6.Location = new Point(569, 159);
             label6.Name = "label6";
-            label6.Size = new Size(92, 15);
+            label6.Size = new Size(111, 19);
             label6.TabIndex = 35;
             label6.Text = "_________________";
             // 
@@ -274,8 +283,9 @@
             dgvItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvItems.Location = new Point(12, 271);
             dgvItems.Name = "dgvItems";
-            dgvItems.Size = new Size(711, 224);
+            dgvItems.Size = new Size(711, 243);
             dgvItems.TabIndex = 37;
+            dgvItems.CellClick += SelectItem;
             // 
             // btnSearch
             // 
@@ -295,13 +305,13 @@
             btnrefresh.TabIndex = 39;
             btnrefresh.Text = "Refrescar";
             btnrefresh.UseVisualStyleBackColor = true;
-            btnrefresh.Click += Refresh;
+            btnrefresh.Click += RefreshMainForm;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(735, 267);
+            ClientSize = new Size(735, 265);
             Controls.Add(btnrefresh);
             Controls.Add(btnSearch);
             Controls.Add(dgvItems);

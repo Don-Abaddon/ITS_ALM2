@@ -35,6 +35,12 @@ namespace GUI
             {
                 ResetFields();
             }
+            cmbcategory.TextFont = new Font("Arial", 10F);
+            cmbcategory.TextForeColor = Color.Gray;
+            cmbmarca.TextFont = new Font("Arial", 10F);
+            cmbmarca.TextForeColor = Color.Gray;
+            cmbcategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbmarca.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         private void ResetFields()
         {
@@ -133,7 +139,9 @@ namespace GUI
                     if (int.TryParse(cantidad, out int cantidadNumerica) && cantidadNumerica >= 0)
                     {
                         DataTable dataTable = await _inventory.SaveItemsAsync(marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
-                        DarkMessageBox.Show("Registro guardado correctamente.", "Éxito", MessageBoxButtons.OK);                       
+                        DarkMessageBox.Show("Registro guardado correctamente.", "Éxito", MessageBoxButtons.OK);
+                        RefreshForm();
+                        return;  
                     }
                 }
             }
@@ -143,13 +151,13 @@ namespace GUI
                 {
                     DataTable dataTable = await _inventory.UpdateItems(id, marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
                     DarkMessageBox.Show("Registro ha actualizado correctamente.", "Éxito", MessageBoxButtons.OK);
-                }               
-            }
-            this.Close();
+                    this.Close();
+                }                
+            }            
         }
         private void Updates(string id, int marcaID, string modelo, string barcode, string descripcion, int categoriaID, string cantidad)
         {
-            if (id != null) // Caso de edición
+            if (!string.IsNullOrEmpty(id) && id != "ID") // Caso de edición
             {
                 txtpiezaID.Text = id;
                 txtpiezaID.Enabled = false;
@@ -168,9 +176,6 @@ namespace GUI
             txtqty.Text = cantidad?.ToString() ?? "Cantidad";
             cmbmarca.SelectedValue = marcaID > 0 ? marcaID : -1;
             cmbcategory.SelectedValue = categoriaID > 0 ? categoriaID : -1;
-            
-            
-
         }
         private async Task LoadComboBox()
         {
@@ -186,6 +191,15 @@ namespace GUI
             cmbcategory.DataSource = dataTable2;
             cmbcategory.SelectedIndex = -1;
             cmbcategory.PlaceholderText = "Category";
+        }
+        private async void RefreshForm()
+        {
+            txtpiezaID.Text = "ID";
+            txtmodelo.Text = "Modelo";
+            txtdescription.Text = "Descripción";
+            txtqty.Text = "Cantidad";
+            txtbar.Text = "Barcode";
+            await LoadComboBox();
         }
     }
 }

@@ -111,9 +111,10 @@
             // 
             // txtmodelo
             // 
+            txtmodelo.Font = new Font("Segoe UI", 11F);
             txtmodelo.Location = new Point(206, 80);
             txtmodelo.Name = "txtmodelo";
-            txtmodelo.Size = new Size(100, 23);
+            txtmodelo.Size = new Size(100, 27);
             txtmodelo.TabIndex = 2;
             txtmodelo.TabStop = false;
             txtmodelo.Text = "Modelo";
@@ -142,10 +143,11 @@
             // 
             // txtpiezaID
             // 
+            txtpiezaID.Font = new Font("Segoe UI", 11F);
             txtpiezaID.Location = new Point(14, 80);
             txtpiezaID.Name = "txtpiezaID";
             txtpiezaID.ReadOnly = true;
-            txtpiezaID.Size = new Size(22, 23);
+            txtpiezaID.Size = new Size(22, 27);
             txtpiezaID.TabIndex = 18;
             txtpiezaID.TabStop = false;
             txtpiezaID.Text = "ID";
@@ -178,6 +180,8 @@
             cmbmarca.BackColor = Color.FromArgb(36, 36, 36);
             cmbmarca.DataSource = null;
             cmbmarca.DisplayMember = "";
+            cmbmarca.DropDownStyle = ComboBoxStyle.DropDown;
+            cmbmarca.Font = new Font("Segoe UI", 10F);
             cmbmarca.ForeColor = Color.DimGray;
             cmbmarca.Location = new Point(60, 78);
             cmbmarca.MaximumSize = new Size(150, 25);
@@ -189,6 +193,8 @@
             cmbmarca.SelectedValue = null;
             cmbmarca.Size = new Size(122, 25);
             cmbmarca.TabIndex = 31;
+            cmbmarca.TextFont = new Font("Segoe UI", 10F);
+            cmbmarca.TextForeColor = Color.DimGray;
             cmbmarca.ValueMember = "";
             // 
             // cmbcategory
@@ -196,6 +202,8 @@
             cmbcategory.BackColor = Color.FromArgb(36, 36, 36);
             cmbcategory.DataSource = null;
             cmbcategory.DisplayMember = "";
+            cmbcategory.DropDownStyle = ComboBoxStyle.DropDown;
+            cmbcategory.Font = new Font("Segoe UI", 10F);
             cmbcategory.ForeColor = Color.DimGray;
             cmbcategory.Location = new Point(382, 80);
             cmbcategory.MaximumSize = new Size(150, 25);
@@ -207,6 +215,8 @@
             cmbcategory.SelectedValue = null;
             cmbcategory.Size = new Size(122, 25);
             cmbcategory.TabIndex = 34;
+            cmbcategory.TextFont = new Font("Segoe UI", 10F);
+            cmbcategory.TextForeColor = Color.DimGray;
             cmbcategory.ValueMember = "";
             // 
             // label6

@@ -62,7 +62,7 @@ namespace GUI.CustomControl
             lblText.BackColor = backColor;
             lblText.TextAlign =ContentAlignment.MiddleLeft;
             lblText.Padding = new Padding(8,0, 0, 0);
-            lblText.Font = new Font(this.Font.Name, 10F);
+            //lblText.Font = new Font(this.Font.Name, 10F);
             lblText.Click += new EventHandler(Surface_Click);
 
             //User Control
@@ -70,7 +70,7 @@ namespace GUI.CustomControl
             this.Controls.Add(btnIcon);
             this.Controls.Add(cmbList);
             this.MinimumSize = new Size(50, 25);
-            this.MaximumSize = new Size(150, 25);
+            this.MaximumSize = new Size(500, 25);
             this.ForeColor = Color.DimGray;
             this.Padding = new Padding(borderSize);
             base.BackColor = backColor;
@@ -183,6 +183,22 @@ namespace GUI.CustomControl
         {
             get { return cmbList.SelectedItem; }
             set { cmbList.SelectedItem = value; }
+        }
+        public ComboBoxStyle DropDownStyle
+        {
+            get { return cmbList.DropDownStyle; }
+            set { cmbList.DropDownStyle = value; }
+        }
+        public Font TextFont
+        {
+            get { return lblText.Font; }
+            set { lblText.Font = value; }
+        }
+
+        public Color TextForeColor
+        {
+            get { return lblText.ForeColor; }
+            set { lblText.ForeColor = value; }
         }
     }
 }
