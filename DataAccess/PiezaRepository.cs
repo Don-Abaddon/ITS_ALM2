@@ -45,14 +45,17 @@ namespace DataAccess
                 string query = @"SELECT p.PiezaID, m.Nombre as Marca, 
                     p.Modelo, p.BarCode, p.Descripcion, c.Category  as Categoria, p.Cantidad 
                     FROM Piezas AS p 
-                    INNER JOIN Marcas AS m ON p.Marca = m.ID 
-                    INNER JOIN Category As c ON p.Categoria = c.ID 
-                    WHERE (p.BarCode IS NULL OR p.BarCode like @barcode) 
+                    JOIN Marcas AS m ON p.Marca = m.ID 
+                    JOIN Category As c ON p.Categoria = c.ID 
+                    WHERE (@barcode IS NULL OR p.BarCode like @barcode) 
                     AND (@category IS NULL OR p.Categoria = @category)";
                 using (var cmd = new SqliteCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@barcode", barcode + "%");
-                    cmd.Parameters.AddWithValue("@category", categoryID);
+                    cmd.Parameters.AddWithValue("@barcode", "%"+ barcode + "%");
+                    if (string.IsNullOrEmpty(categoryID))
+                        cmd.Parameters.AddWithValue("@category", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@category", categoryID);
                     Console.Write(barcode);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
@@ -136,13 +139,18 @@ namespace DataAccess
                     cmd.Parameters.AddWithValue("@Descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@Categoria", categoria);
                     cmd.Parameters.AddWithValue("@Cantidad", cantidad);
-                    int affectedRows = await cmd.ExecuteNonQueryAsync();
+                    await cmd.ExecuteNonQueryAsync();
                 }
                 // Obtener el ID del registro insertado
                 long lastId;
                 using (var idCmd = new SqliteCommand("SELECT last_insert_rowid()", conn))
                 {
-                    lastId = (long)await idCmd.ExecuteScalarAsync();
+                    object? result = await idCmd.ExecuteScalarAsync();
+                    if (result is null)
+                    {
+                        throw new InvalidOperationException("No se obtuvo el valor de last_insert_rowid.");
+                    }
+                    lastId = Convert.ToInt64(result);
                 }
 
                 // Ejecutar SELECT para obtener el registro insertado
@@ -182,14 +190,33 @@ namespace DataAccess
                     cmd.Parameters.AddWithValue("@Descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@Categoria", categoria);
                     cmd.Parameters.AddWithValue("@Cantidad", cantidad);
-                    using (var reader = await cmd.ExecuteReaderAsync())
+                    await cmd.ExecuteNonQueryAsync();
+                }
+                // Obtener el ID del registro insertado
+                long lastId;
+                using (var idCmd = new SqliteCommand("SELECT last_insert_rowid()", conn))
+                {
+                    object? result = await idCmd.ExecuteScalarAsync();
+                    if (result is null)
                     {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-                        return dataTable;
+                        throw new InvalidOperationException("No se obtuvo el valor de last_insert_rowid.");
+                    }
+                    lastId = Convert.ToInt64(result);
+                }
+
+                // Ejecutar SELECT para obtener el registro insertado
+                string selectQuery = @"SELECT * FROM Piezas WHERE PiezaID = @id";
+                using (var selectCmd = new SqliteCommand(selectQuery, conn))
+                {
+                    selectCmd.Parameters.AddWithValue("@id", lastId);
+                    using (var reader = await selectCmd.ExecuteReaderAsync())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+                        return dt;
                     }
                 }
-            }
+            }            
         }
         public async Task<DataTable> DeleteItemsAsync(string ID)
         {

@@ -168,7 +168,7 @@ namespace GUI
         private async void TextBox_TextChanged(object? sender, EventArgs e)
         {
             DataTable dataTable;
-            string? categoryID = cmbcategory.SelectedValue?.ToString();
+            string? categoryID = cmbcategory.SelectedValue?.ToString() ?? "";
 
             if ((txtbar.Text == "" || txtbar.Text == "Barcode") && (string.IsNullOrEmpty(categoryID)))
             {

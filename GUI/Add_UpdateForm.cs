@@ -7,10 +7,12 @@ namespace GUI
     public partial class Add_UpdateForm : Style
     {
         private Inventory _inventory;
+        private int _marcaIDEdit = -1;
+        private int _categoriaIDEdit = -1;
         public Add_UpdateForm(string? id = null, int? marca = null, string? modelo = null, string? barcode = null, string? descripcion = null, int? categoria = null, int? cantidad = null)
         {
             InitializeComponent();
-            ConfigurarFormulario();
+            ConfigurarFormulario();           
             this.FormClosed += NewPartForm_FormClosed;
             _inventory = new Inventory();
             this.Load += async (s, e) => await LoadComboBox();
@@ -23,10 +25,14 @@ namespace GUI
             txtdescription.Multiline = true;
             txtpiezaID.Enabled = false;
             Win_Title("Nueva Pieza");
-            ResetFields();
-            Updates(id ?? string.Empty, marca ?? 0, modelo ?? string.Empty,
-            barcode ?? string.Empty, descripcion ?? string.Empty,
-            categoria ?? 0, cantidad?.ToString() ?? "0");
+            if (!string.IsNullOrEmpty(id) && id != "ID")
+            {
+                Updates(id, marca ?? 0, modelo ?? string.Empty, barcode ?? string.Empty, descripcion ?? string.Empty, categoria ?? 0, cantidad?.ToString() ?? "0");
+            }
+            else
+            {
+                ResetFields();
+            }
             if (txtpiezaID.Text != "ID" && txtpiezaID.Text != "")
             {
                 Disable_entries();
@@ -94,10 +100,7 @@ namespace GUI
         {
             txtbar.Enabled = false;
             txtbar.ReadOnly = true;
-            //txtqty.ReadOnly = true;
-            //txtdescription.ReadOnly = true;
             txtmodelo.ReadOnly = true;
-           //txtdescription.Enabled = false;
             txtmodelo.Enabled = false;
             txtpiezaID.Enabled = false;
         }
@@ -174,8 +177,9 @@ namespace GUI
             txtbar.Text = barcode ?? "Barcode";
             txtdescription.Text = descripcion ?? "Descripcion";
             txtqty.Text = cantidad?.ToString() ?? "Cantidad";
-            cmbmarca.SelectedValue = marcaID > 0 ? marcaID : -1;
-            cmbcategory.SelectedValue = categoriaID > 0 ? categoriaID : -1;
+            // Guarda los IDs para la edición
+            _marcaIDEdit = marcaID;
+            _categoriaIDEdit = categoriaID;
         }
         private async Task LoadComboBox()
         {
@@ -191,6 +195,15 @@ namespace GUI
             cmbcategory.DataSource = dataTable2;
             cmbcategory.SelectedIndex = -1;
             cmbcategory.PlaceholderText = "Category";
+
+            if (_marcaIDEdit > 0)
+            {
+                cmbmarca.SelectedValue = _marcaIDEdit;
+            }
+            if (_categoriaIDEdit > 0)
+            {
+                cmbcategory.SelectedValue = _categoriaIDEdit;
+            }
         }
         private async void RefreshForm()
         {

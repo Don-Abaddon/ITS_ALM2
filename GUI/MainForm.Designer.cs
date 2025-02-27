@@ -50,6 +50,7 @@
             dgvItems = new DataGridView();
             btnSearch = new Button();
             btnrefresh = new Button();
+            label8 = new Label();
             pnlnav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItems).BeginInit();
             SuspendLayout();
@@ -307,11 +308,22 @@
             btnrefresh.UseVisualStyleBackColor = true;
             btnrefresh.Click += RefreshMainForm;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.ForeColor = Color.Silver;
+            label8.Location = new Point(696, 43);
+            label8.Name = "label8";
+            label8.Size = new Size(31, 15);
+            label8.TabIndex = 40;
+            label8.Text = "1.0.4";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(735, 265);
+            Controls.Add(label8);
             Controls.Add(btnrefresh);
             Controls.Add(btnSearch);
             Controls.Add(dgvItems);
@@ -354,6 +366,7 @@
             Controls.SetChildIndex(dgvItems, 0);
             Controls.SetChildIndex(btnSearch, 0);
             Controls.SetChildIndex(btnrefresh, 0);
+            Controls.SetChildIndex(label8, 0);
             pnlnav.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvItems).EndInit();
             ResumeLayout(false);
@@ -384,5 +397,6 @@
         private DataGridView dgvItems;
         private Button btnSearch;
         private Button btnrefresh;
+        private Label label8;
     }
 }
