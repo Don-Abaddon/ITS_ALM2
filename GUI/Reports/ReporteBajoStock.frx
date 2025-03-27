@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" TextQuality="Regular" ReportInfo.Created="03/26/2025 16:07:47" ReportInfo.Modified="03/27/2025 11:56:51" ReportInfo.CreatorVersion="2025.1.0.0">
+  <Dictionary>
+    <XmlDataConnection Name="Connection" ConnectionString="rijcmlqjvMLRQNNmscOhVp5BRTKpSKCgB+Th/VqFHX9h0Gdm9WfKXt13eIWPJM3mlqGCzELKsCH/ZcOColcTjdf1moLn+I391ORE6vBeDn4tPSm1eAedTQ62jFRN+A1Q5MQszOYumwK+F481kAdV7CYkHJij9ltP7f/jyfOjC45yK/Na/lnM8Mlb2OqGNJMNT/iaKTT">
+      <TableDataSource Name="dtPiezas1" DataType="System.Int32" Enabled="true" TableName="dtPiezas">
+        <Column Name="Modelo" DataType="System.String"/>
+      </TableDataSource>
+    </XmlDataConnection>
+    <XmlDataConnection Name="Connection1" ConnectionString="rijcmlqjvMLRQNNmscOhVp5BRTKpSKCgB+Th/VqFHX9h0Gdm9WfKXt13eIWPJM3mlqGCzELKsCH/ZcOColcTjdf1moLn+I391ORE6vBeDn4tPSm1eAedTQ62jFRN+A1Q5MQszOYumwK+F481kAdV7CYkHJij9ltP7f/jyfOjC45yK/Na/lnM8Mlb2OqGNJMNT/iaKTT"/>
+    <XmlDataConnection Name="DBPiezas" ConnectionString="rijcmlqjvMLRQNNmscOhVp5BRTKpSKCgB+Th/VqFHX9h0Gdm9WfKXt13eIWPJM3mlqGCzELKsCH/ZcOColcTjdf1moLn+I391ORE6vBeDn4tPSm1eAedTQ62jFRN+A1Q5MQszOYumwK+F481kAdV7CYkHJij9ltP7f/jyfOjC45yK/Na/lnM8Mlb2OqGNJMNT/iaKTT">
+      <TableDataSource Name="dtPiezas2" DataType="System.Int32" Enabled="true" TableName="dtPiezas">
+        <Column Name="PiezaID" DataType="System.Int32"/>
+        <Column Name="Marca" DataType="System.String"/>
+        <Column Name="Modelo" DataType="System.String"/>
+        <Column Name="BarCode" DataType="System.String"/>
+        <Column Name="Descripcion" DataType="System.String"/>
+        <Column Name="Categoria" DataType="System.String"/>
+        <Column Name="Cantidad" DataType="System.Int32"/>
+      </TableDataSource>
+    </XmlDataConnection>
+    <TableDataSource Name="dtPiezas" DataType="System.Int32" Enabled="true"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="50">
+      <TextObject Name="TextTitle" Width="718" Height="50" Text="Piezas a pedir" HorzAlign="Center" VertAlign="Center" Font="Arial, 16pt, style=Bold"/>
+    </ReportTitleBand>
+    <DataBand Name="DataBand1" Top="54" Width="718.2" Height="95.6" DataSource="dtPiezas2">
+      <TextObject Name="Text_Marca" Left="9.45" Width="109.45" Height="20" Text="[dtPiezas2.Marca]" Font="Arial, 10pt"/>
+      <TextObject Name="Text_Modelo" Left="128.35" Width="71.65" Height="20" Text="[dtPiezas2.Modelo]" Font="Arial, 10pt"/>
+      <TextObject Name="Text_BarCode" Left="209.45" Width="100" Height="20" Text="[dtPiezas2.BarCode]" Font="Arial, 10pt"/>
+      <TextObject Name="Text_Descripcion" Left="309.45" Width="181.1" Height="38.9" Text="[dtPiezas2.Descripcion]" Font="Arial, 10pt"/>
+      <TextObject Name="Text_Categoria" Left="500" Width="100" Height="20" Text="[dtPiezas2.Categoria]" Font="Arial, 10pt"/>
+      <TextObject Name="Text_Cantidad" Left="600" Width="100" Height="20" Text="[dtPiezas2.Cantidad]" Font="Arial, 10pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="153.6" Width="718.2" Height="30"/>
+  </ReportPage>
+</Report>

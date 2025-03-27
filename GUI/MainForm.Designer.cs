@@ -51,6 +51,7 @@
             btnSearch = new Button();
             btnrefresh = new Button();
             label8 = new Label();
+            btnreports = new Button();
             pnlnav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItems).BeginInit();
             SuspendLayout();
@@ -58,6 +59,7 @@
             // pnlnav
             // 
             pnlnav.BorderStyle = BorderStyle.FixedSingle;
+            pnlnav.Controls.Add(btnreports);
             pnlnav.Controls.Add(btnnew);
             pnlnav.Controls.Add(btnInventory);
             pnlnav.Location = new Point(0, 40);
@@ -318,6 +320,19 @@
             label8.TabIndex = 40;
             label8.Text = "1.0.4";
             // 
+            // btnreports
+            // 
+            btnreports.FlatStyle = FlatStyle.Flat;
+            btnreports.Font = new Font("Segoe UI", 14F);
+            btnreports.ForeColor = SystemColors.ControlDark;
+            btnreports.Location = new Point(23, 140);
+            btnreports.Name = "btnreports";
+            btnreports.Size = new Size(103, 35);
+            btnreports.TabIndex = 2;
+            btnreports.Text = "Reports";
+            btnreports.UseVisualStyleBackColor = true;
+            btnreports.Click += btnreports_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -398,5 +413,6 @@
         private Button btnSearch;
         private Button btnrefresh;
         private Label label8;
+        private Button btnreports;
     }
 }

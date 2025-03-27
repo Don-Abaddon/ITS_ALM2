@@ -297,6 +297,12 @@ namespace GUI
                 );
             }
         }
+        private ReportsForm? reports;
+        private void btnreports_Click(object sender, EventArgs e)
+        {
+            reports = new ReportsForm();
+            reports.Show();
+        }
     }
 }
 

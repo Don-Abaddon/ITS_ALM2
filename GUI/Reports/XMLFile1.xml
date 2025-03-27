@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dsPiezas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="DataSet1.xsd">
+
+	<dtPiezas2>
+		<PiezaID>1</PiezaID>
+		<Marca>Logitech</Marca>
+		<Modelo>M110 Silent</Modelo>
+		<BarCode>97855181138</BarCode>
+		<Descripcion>Mouse</Descripcion>
+		<Categoria>Mouse</Categoria>
+		<Cantidad>57</Cantidad>
+	</dtPiezas2>
+
+	<dtPiezas2>
+		<PiezaID>2</PiezaID>
+		<Marca>Kingston</Marca>
+		<Modelo>KVR16LS11/4</Modelo>
+		<BarCode>740617217984</BarCode>
+		<Descripcion>4GB PC3L - 12800 CL11</Descripcion>
+		<Categoria>RAM Laptop</Categoria>
+		<Cantidad>22</Cantidad>
+	</dtPiezas2>
+
+</dsPiezas>
