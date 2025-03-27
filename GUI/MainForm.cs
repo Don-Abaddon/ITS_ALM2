@@ -4,6 +4,9 @@ using static DataAccess.DBConnection;
 
 namespace GUI
 {
+    /// <summary>
+    /// Clase principal del formulario de inventario.
+    /// </summary>
     public partial class MainForm : Style
     {
         private Inventory _inventory;
@@ -47,6 +50,9 @@ namespace GUI
             cmbmarca.DropDownStyle = ComboBoxStyle.DropDownList;
             ErrorException();
         }
+        /// <summary>
+        /// Deshabilita la edición de los campos de texto.
+        /// </summary>
         private void Disable_entries()
         {
             txtdescription.ReadOnly = true;
@@ -55,6 +61,11 @@ namespace GUI
             txtmodelo.Enabled = false;
             txtpiezaID.Enabled = false;
         }
+        /// <summary>
+        /// Establece el estilo de los campos de texto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtbar_Enter(object sender, EventArgs e)
         {
             if (txtbar.Text == "Barcode")
@@ -62,6 +73,11 @@ namespace GUI
                 txtbar.Text = string.Empty;
             }
         }
+        /// <summary>
+        /// Establece el estilo de los campos de texto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtbar_Leave(object sender, EventArgs e)
         {
             if (txtbar.Text == string.Empty)
@@ -69,6 +85,11 @@ namespace GUI
                 txtbar.Text = "Barcode";
             }
         }
+        /// <summary>
+        /// Establece el estilo de los campos de texto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtqty_Enter(object sender, EventArgs e)
         {
             if (txtqty.Text == "Cantidad")
@@ -76,6 +97,11 @@ namespace GUI
                 txtqty.Text = string.Empty;
             }
         }
+        /// <summary>
+        /// Establece el estilo de los campos de texto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtqty_Leave(object sender, EventArgs e)
         {
             if (txtqty.Text == string.Empty)
@@ -84,6 +110,11 @@ namespace GUI
             }
         }
         private InventoryForm? inventoryForm = null;
+        /// <summary>
+        /// Abre el formulario de inventario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnInventory_Click(object sender, EventArgs e)
         {
             if (inventoryForm == null || inventoryForm.IsDisposed)
@@ -98,6 +129,11 @@ namespace GUI
             }
         }
         private Add_UpdateForm? newPartForm = null;
+        /// <summary>
+        /// Abre el formulario para agregar una nueva parte.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnnew_Click(object sender, EventArgs e)
         {
             if (newPartForm == null || newPartForm.IsDisposed)
@@ -110,6 +146,11 @@ namespace GUI
                 newPartForm.BringToFront();
             }
         }
+        /// <summary>
+        /// Realiza una búsqueda exacta de un elemento en la base de datos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void txtbar_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -137,6 +178,10 @@ namespace GUI
                 }
             }
         }
+        /// <summary>
+        /// Carga las marcas y categorías en los ComboBox.
+        /// </summary>
+        /// <returns></returns>
         private async Task LoadComboBox()
         {
             DataTable dataTable = await _inventory.Combobox_Marca();
@@ -152,6 +197,11 @@ namespace GUI
             cmbcategory.SelectedIndex = -1;
             cmbcategory.PlaceholderText = "Categoria";
         }
+        /// <summary>
+        /// Realiza una búsqueda de elementos en la base de datos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnsust_Click(object sender, EventArgs e)
         {
             DataTable datatable = await _inventory.ExactSearchItem(txtbar.Text);
@@ -180,6 +230,11 @@ namespace GUI
                 DarkMessageBox.Show($"La cantidad se actualizó correctamente.\nNueva cantidad: {newcantidad}", "Éxito", MessageBoxButtons.OK);
             }
         }
+        /// <summary>
+        /// Realiza una búsqueda de elementos en la base de datos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnadd_Click(object sender, EventArgs e)
         {
             DataTable datatable = await _inventory.ExactSearchItem(txtbar.Text);
@@ -207,6 +262,11 @@ namespace GUI
             await _inventory.AddItems(ID, newcantidad);
             DarkMessageBox.Show($"La cantidad se actualizó correctamente.\nNueva cantidad: {newcantidad}", "Éxito", MessageBoxButtons.OK);
         }
+        /// <summary>
+        /// Realiza una búsqueda de elementos en la base de datos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SearchItems(object? sender, EventArgs e)
         {
             string? marcaID = cmbmarca.SelectedValue?.ToString();
@@ -221,6 +281,11 @@ namespace GUI
             dgvItems.DataSource = dataTable;
             AutoDataGridSize();
         }
+        /// <summary>
+        /// Refresca el formulario principal.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void RefreshMainForm(object? sender, EventArgs e)
         {
             this.Height = 265;
@@ -233,6 +298,11 @@ namespace GUI
             dgvItems.DataSource = null;
 
         }
+        /// <summary>
+        /// Selecciona un elemento del DataGridView.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SelectItem(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -256,6 +326,14 @@ namespace GUI
                 cmbcategory.SelectedValue = categoriaID > 0 ? categoriaID : -1;
             }
         }
+        /// <summary>
+        /// Obtiene el ID de un elemento en un DataTable.
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="columnName"></param>
+        /// <param name="searchValue"></param>
+        /// <param name="idColumn"></param>
+        /// <returns></returns>
         private int ObtenerIDDesdeDataTable(DataTable table, string columnName, string searchValue, string idColumn)
         {
             foreach (DataRow row in table.Rows)
@@ -267,6 +345,9 @@ namespace GUI
             }
             return 0;
         }
+        /// <summary>
+        /// Establece el tamaño de las columnas del DataGridView.
+        /// </summary>
         private void AutoDataGridSize()
         {
             dgvItems.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -280,6 +361,9 @@ namespace GUI
             }
             dgvItems.Columns["Cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
+        /// <summary>
+        /// Muestra un MessageBox en caso de error.
+        /// </summary>
         private void ErrorException()
         {
             try
@@ -297,6 +381,9 @@ namespace GUI
                 );
             }
         }
+        /// <summary>
+        /// Abre el formulario de reportes.
+        /// </summary>
         private ReportsForm? reports;
         private void btnreports_Click(object sender, EventArgs e)
         {

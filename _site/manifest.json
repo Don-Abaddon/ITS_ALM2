@@ -1,0 +1,407 @@
+{
+  "source_base_path": "C:/Users/te81862/source/repos/ITS_ALM2",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.DBConnection.DataAccessException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.DBConnection.DataAccessException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DataAccess.DBConnection.DataAccessException",
+      "Summary": "<p sourcefile=\"api/DataAccess.DBConnection.DataAccessException.yml\" sourcestartlinenumber=\"1\">Exception for data access</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.DBConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.DBConnection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DataAccess.DBConnection",
+      "Summary": "<p sourcefile=\"api/DataAccess.DBConnection.yml\" sourcestartlinenumber=\"1\">Class to manage the connection to the database</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.PiezaRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.PiezaRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DataAccess.PiezaRepository",
+      "Summary": "<p sourcefile=\"api/DataAccess.PiezaRepository.yml\" sourcestartlinenumber=\"1\">Class to manage the connection to the database</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "DataAccess",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain.Inventory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain.Inventory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Domain.Inventory",
+      "Summary": "<p sourcefile=\"api/Domain.Inventory.yml\" sourcestartlinenumber=\"1\">Clase para manejar el inventario de piezas</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Domain",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.Add_UpdateForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.Add_UpdateForm.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.Add_UpdateForm",
+      "Summary": "<p sourcefile=\"api/GUI.Add_UpdateForm.yml\" sourcestartlinenumber=\"1\">Clase para agregar o actualizar piezas en el inventario.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.DarkMessageBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.DarkMessageBox.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.DarkMessageBox",
+      "Summary": "<p sourcefile=\"api/GUI.DarkMessageBox.yml\" sourcestartlinenumber=\"1\">Clase que representa un MessageBox personalizado</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.InventoryForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.InventoryForm.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.InventoryForm",
+      "Summary": "<p sourcefile=\"api/GUI.InventoryForm.yml\" sourcestartlinenumber=\"1\">Clase que representa el formulario de inventario</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.MainForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.MainForm.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.MainForm",
+      "Summary": "<p sourcefile=\"api/GUI.MainForm.yml\" sourcestartlinenumber=\"1\">Clase principal del formulario de inventario.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.Reports.DataSet1.dtPiezasDataTable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.Reports.DataSet1.dtPiezasDataTable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.Reports.DataSet1.dtPiezasDataTable",
+      "Summary": "<p sourcefile=\"api/GUI.Reports.DataSet1.dtPiezasDataTable.yml\" sourcestartlinenumber=\"1\">Represents the strongly named DataTable class.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.Reports.DataSet1.dtPiezasRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.Reports.DataSet1.dtPiezasRow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.Reports.DataSet1.dtPiezasRow",
+      "Summary": "<p sourcefile=\"api/GUI.Reports.DataSet1.dtPiezasRow.yml\" sourcestartlinenumber=\"1\">Represents strongly named DataRow class.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.Reports.DataSet1.dtPiezasRowChangeEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.Reports.DataSet1.dtPiezasRowChangeEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.Reports.DataSet1.dtPiezasRowChangeEvent",
+      "Summary": "<p sourcefile=\"api/GUI.Reports.DataSet1.dtPiezasRowChangeEvent.yml\" sourcestartlinenumber=\"1\">Row event argument class</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.Reports.DataSet1.dtPiezasRowChangeEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.Reports.DataSet1.dtPiezasRowChangeEventHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.Reports.DataSet1.dtPiezasRowChangeEventHandler",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.Reports.DataSet1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.Reports.DataSet1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.Reports.DataSet1",
+      "Summary": "<p sourcefile=\"api/GUI.Reports.DataSet1.yml\" sourcestartlinenumber=\"1\">Represents a strongly typed in-memory cache of data.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.Reports.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.Reports.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.Reports",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.ReportsForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.ReportsForm.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.ReportsForm",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.Style.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.Style.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI.Style",
+      "Summary": "<p sourcefile=\"api/GUI.Style.yml\" sourcestartlinenumber=\"1\">Clase que contiene los estilos de los formularios</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUI",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ie.xml/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "ie.xml/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ie.xml/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "ie.xml/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "ie.xml/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "ie.xml/toc.html"
+        },
+        ".json": {
+          "relative_path": "ie.xml/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "packages/Microsoft.Data.Sqlite.9.0.0/PACKAGE.md",
+      "output": {
+        ".html": {
+          "relative_path": "packages/Microsoft.Data.Sqlite.9.0.0/PACKAGE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "packages/Microsoft.Data.Sqlite.Core.9.0.0/PACKAGE.md",
+      "output": {
+        ".html": {
+          "relative_path": "packages/Microsoft.Data.Sqlite.Core.9.0.0/PACKAGE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

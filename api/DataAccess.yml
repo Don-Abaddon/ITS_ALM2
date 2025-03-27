@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: DataAccess
+  commentId: N:DataAccess
+  id: DataAccess
+  children:
+  - DataAccess.DBConnection
+  - DataAccess.DBConnection.DataAccessException
+  - DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: DataAccess
+  nameWithType: DataAccess
+  fullName: DataAccess
+  type: Namespace
+  assemblies:
+  - DataAccess
+references:
+- uid: DataAccess.DBConnection
+  commentId: T:DataAccess.DBConnection
+  href: DataAccess.DBConnection.html
+  name: DBConnection
+  nameWithType: DBConnection
+  fullName: DataAccess.DBConnection
+- uid: DataAccess.DBConnection.DataAccessException
+  commentId: T:DataAccess.DBConnection.DataAccessException
+  href: DataAccess.DBConnection.html
+  name: DBConnection.DataAccessException
+  nameWithType: DBConnection.DataAccessException
+  fullName: DataAccess.DBConnection.DataAccessException
+  spec.csharp:
+  - uid: DataAccess.DBConnection
+    name: DBConnection
+    href: DataAccess.DBConnection.html
+  - name: .
+  - uid: DataAccess.DBConnection.DataAccessException
+    name: DataAccessException
+    href: DataAccess.DBConnection.DataAccessException.html
+  spec.vb:
+  - uid: DataAccess.DBConnection
+    name: DBConnection
+    href: DataAccess.DBConnection.html
+  - name: .
+  - uid: DataAccess.DBConnection.DataAccessException
+    name: DataAccessException
+    href: DataAccess.DBConnection.DataAccessException.html
+- uid: DataAccess.PiezaRepository
+  commentId: T:DataAccess.PiezaRepository
+  href: DataAccess.PiezaRepository.html
+  name: PiezaRepository
+  nameWithType: PiezaRepository
+  fullName: DataAccess.PiezaRepository

@@ -8,6 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <FileVersion>1.0.4</FileVersion>
     <AssemblyVersion>1.0.4</AssemblyVersion>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>C:\Users\te81862\source\repos\ITS_ALM2\doc.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

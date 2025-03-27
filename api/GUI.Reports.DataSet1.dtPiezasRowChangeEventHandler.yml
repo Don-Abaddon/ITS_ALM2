@@ -1,0 +1,97 @@
+### YamlMime:ManagedReference
+items:
+- uid: GUI.Reports.DataSet1.dtPiezasRowChangeEventHandler
+  commentId: T:GUI.Reports.DataSet1.dtPiezasRowChangeEventHandler
+  id: DataSet1.dtPiezasRowChangeEventHandler
+  parent: GUI.Reports
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: DataSet1.dtPiezasRowChangeEventHandler
+  nameWithType: DataSet1.dtPiezasRowChangeEventHandler
+  fullName: GUI.Reports.DataSet1.dtPiezasRowChangeEventHandler
+  type: Delegate
+  source:
+    remote:
+      path: GUI/Reports/DataSet1.Designer.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: dtPiezasRowChangeEventHandler
+    path: GUI/Reports/DataSet1.Designer.cs
+    startLine: 273
+  assemblies:
+  - GUI
+  namespace: GUI.Reports
+  syntax:
+    content: public delegate void DataSet1.dtPiezasRowChangeEventHandler(object sender, DataSet1.dtPiezasRowChangeEvent e)
+    parameters:
+    - id: sender
+      type: System.Object
+    - id: e
+      type: GUI.Reports.DataSet1.dtPiezasRowChangeEvent
+    content.vb: Public Delegate Sub DataSet1.dtPiezasRowChangeEventHandler(sender As Object, e As DataSet1.dtPiezasRowChangeEvent)
+references:
+- uid: GUI.Reports
+  commentId: N:GUI.Reports
+  href: GUI.html
+  name: GUI.Reports
+  nameWithType: GUI.Reports
+  fullName: GUI.Reports
+  spec.csharp:
+  - uid: GUI
+    name: GUI
+    href: GUI.html
+  - name: .
+  - uid: GUI.Reports
+    name: Reports
+    href: GUI.Reports.html
+  spec.vb:
+  - uid: GUI
+    name: GUI
+    href: GUI.html
+  - name: .
+  - uid: GUI.Reports
+    name: Reports
+    href: GUI.Reports.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: GUI.Reports.DataSet1.dtPiezasRowChangeEvent
+  commentId: T:GUI.Reports.DataSet1.dtPiezasRowChangeEvent
+  parent: GUI.Reports
+  href: GUI.Reports.DataSet1.html
+  name: DataSet1.dtPiezasRowChangeEvent
+  nameWithType: DataSet1.dtPiezasRowChangeEvent
+  fullName: GUI.Reports.DataSet1.dtPiezasRowChangeEvent
+  spec.csharp:
+  - uid: GUI.Reports.DataSet1
+    name: DataSet1
+    href: GUI.Reports.DataSet1.html
+  - name: .
+  - uid: GUI.Reports.DataSet1.dtPiezasRowChangeEvent
+    name: dtPiezasRowChangeEvent
+    href: GUI.Reports.DataSet1.dtPiezasRowChangeEvent.html
+  spec.vb:
+  - uid: GUI.Reports.DataSet1
+    name: DataSet1
+    href: GUI.Reports.DataSet1.html
+  - name: .
+  - uid: GUI.Reports.DataSet1.dtPiezasRowChangeEvent
+    name: dtPiezasRowChangeEvent
+    href: GUI.Reports.DataSet1.dtPiezasRowChangeEvent.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

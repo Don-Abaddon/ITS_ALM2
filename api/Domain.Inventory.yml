@@ -1,0 +1,1082 @@
+### YamlMime:ManagedReference
+items:
+- uid: Domain.Inventory
+  commentId: T:Domain.Inventory
+  id: Inventory
+  parent: Domain
+  children:
+  - Domain.Inventory.#ctor
+  - Domain.Inventory.AddItems(System.String,System.Int32)
+  - Domain.Inventory.Combobox_Categoria
+  - Domain.Inventory.Combobox_Marca
+  - Domain.Inventory.DeleteItems(System.String)
+  - Domain.Inventory.Dispose
+  - Domain.Inventory.DynamicSearchItem(System.String,System.String)
+  - Domain.Inventory.EnsureDatabaseCreated
+  - Domain.Inventory.ExactSearchItem(System.String)
+  - Domain.Inventory.InventoryUpdated
+  - Domain.Inventory.LoadItems
+  - Domain.Inventory.SaveItemsAsync(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  - Domain.Inventory.SearchItem(System.String,System.String)
+  - Domain.Inventory.UpdateItems(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: Inventory
+  nameWithType: Inventory
+  fullName: Domain.Inventory
+  type: Class
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: Inventory
+    path: Domain/Inventory.cs
+    startLine: 8
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Clase para manejar el inventario de piezas
+  example: []
+  syntax:
+    content: 'public class Inventory : IDisposable'
+    content.vb: Public Class Inventory Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Domain.Inventory.InventoryUpdated
+  commentId: E:Domain.Inventory.InventoryUpdated
+  id: InventoryUpdated
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: InventoryUpdated
+  nameWithType: Inventory.InventoryUpdated
+  fullName: Domain.Inventory.InventoryUpdated
+  type: Event
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: InventoryUpdated
+    path: Domain/Inventory.cs
+    startLine: 12
+  assemblies:
+  - Domain
+  namespace: Domain
+  syntax:
+    content: public event EventHandler? InventoryUpdated
+    return:
+      type: System.EventHandler
+    content.vb: Public Event InventoryUpdated As EventHandler
+- uid: Domain.Inventory.#ctor
+  commentId: M:Domain.Inventory.#ctor
+  id: '#ctor'
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: Inventory()
+  nameWithType: Inventory.Inventory()
+  fullName: Domain.Inventory.Inventory()
+  type: Constructor
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: .ctor
+    path: Domain/Inventory.cs
+    startLine: 14
+  assemblies:
+  - Domain
+  namespace: Domain
+  syntax:
+    content: public Inventory()
+    content.vb: Public Sub New()
+  overload: Domain.Inventory.#ctor*
+  nameWithType.vb: Inventory.New()
+  fullName.vb: Domain.Inventory.New()
+  name.vb: New()
+- uid: Domain.Inventory.Dispose
+  commentId: M:Domain.Inventory.Dispose
+  id: Dispose
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: Inventory.Dispose()
+  fullName: Domain.Inventory.Dispose()
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: Dispose
+    path: Domain/Inventory.cs
+    startLine: 33
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Libera los recursos del DatabaseWatcher
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Domain.Inventory.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Domain.Inventory.LoadItems
+  commentId: M:Domain.Inventory.LoadItems
+  id: LoadItems
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: LoadItems()
+  nameWithType: Inventory.LoadItems()
+  fullName: Domain.Inventory.LoadItems()
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: LoadItems
+    path: Domain/Inventory.cs
+    startLine: 42
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Carga los items de la base de datos
+  example: []
+  syntax:
+    content: public Task<DataTable> LoadItems()
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function LoadItems() As Task(Of DataTable)
+  overload: Domain.Inventory.LoadItems*
+- uid: Domain.Inventory.Combobox_Marca
+  commentId: M:Domain.Inventory.Combobox_Marca
+  id: Combobox_Marca
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: Combobox_Marca()
+  nameWithType: Inventory.Combobox_Marca()
+  fullName: Domain.Inventory.Combobox_Marca()
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: Combobox_Marca
+    path: Domain/Inventory.cs
+    startLine: 50
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Carga las marcas de la base de datos
+  example: []
+  syntax:
+    content: public Task<DataTable> Combobox_Marca()
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function Combobox_Marca() As Task(Of DataTable)
+  overload: Domain.Inventory.Combobox_Marca*
+- uid: Domain.Inventory.Combobox_Categoria
+  commentId: M:Domain.Inventory.Combobox_Categoria
+  id: Combobox_Categoria
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: Combobox_Categoria()
+  nameWithType: Inventory.Combobox_Categoria()
+  fullName: Domain.Inventory.Combobox_Categoria()
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: Combobox_Categoria
+    path: Domain/Inventory.cs
+    startLine: 58
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Carga las categorías de la base de datos
+  example: []
+  syntax:
+    content: public Task<DataTable> Combobox_Categoria()
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function Combobox_Categoria() As Task(Of DataTable)
+  overload: Domain.Inventory.Combobox_Categoria*
+- uid: Domain.Inventory.DynamicSearchItem(System.String,System.String)
+  commentId: M:Domain.Inventory.DynamicSearchItem(System.String,System.String)
+  id: DynamicSearchItem(System.String,System.String)
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: DynamicSearchItem(string, string)
+  nameWithType: Inventory.DynamicSearchItem(string, string)
+  fullName: Domain.Inventory.DynamicSearchItem(string, string)
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: DynamicSearchItem
+    path: Domain/Inventory.cs
+    startLine: 68
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Realiza una búsqueda dinámica de items en la base de datos
+  example: []
+  syntax:
+    content: public Task<DataTable> DynamicSearchItem(string barcode, string categoryID)
+    parameters:
+    - id: barcode
+      type: System.String
+      description: ''
+    - id: categoryID
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function DynamicSearchItem(barcode As String, categoryID As String) As Task(Of DataTable)
+  overload: Domain.Inventory.DynamicSearchItem*
+  nameWithType.vb: Inventory.DynamicSearchItem(String, String)
+  fullName.vb: Domain.Inventory.DynamicSearchItem(String, String)
+  name.vb: DynamicSearchItem(String, String)
+- uid: Domain.Inventory.ExactSearchItem(System.String)
+  commentId: M:Domain.Inventory.ExactSearchItem(System.String)
+  id: ExactSearchItem(System.String)
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: ExactSearchItem(string)
+  nameWithType: Inventory.ExactSearchItem(string)
+  fullName: Domain.Inventory.ExactSearchItem(string)
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: ExactSearchItem
+    path: Domain/Inventory.cs
+    startLine: 77
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Realiza una búsqueda exacta de un item en la base de datos
+  example: []
+  syntax:
+    content: public Task<DataTable> ExactSearchItem(string barcode)
+    parameters:
+    - id: barcode
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function ExactSearchItem(barcode As String) As Task(Of DataTable)
+  overload: Domain.Inventory.ExactSearchItem*
+  nameWithType.vb: Inventory.ExactSearchItem(String)
+  fullName.vb: Domain.Inventory.ExactSearchItem(String)
+  name.vb: ExactSearchItem(String)
+- uid: Domain.Inventory.SearchItem(System.String,System.String)
+  commentId: M:Domain.Inventory.SearchItem(System.String,System.String)
+  id: SearchItem(System.String,System.String)
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: SearchItem(string, string)
+  nameWithType: Inventory.SearchItem(string, string)
+  fullName: Domain.Inventory.SearchItem(string, string)
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: SearchItem
+    path: Domain/Inventory.cs
+    startLine: 87
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Realiza una búsqueda de items por marca y categoría
+  example: []
+  syntax:
+    content: public Task<DataTable> SearchItem(string marcaID, string categoryID)
+    parameters:
+    - id: marcaID
+      type: System.String
+      description: ''
+    - id: categoryID
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function SearchItem(marcaID As String, categoryID As String) As Task(Of DataTable)
+  overload: Domain.Inventory.SearchItem*
+  nameWithType.vb: Inventory.SearchItem(String, String)
+  fullName.vb: Domain.Inventory.SearchItem(String, String)
+  name.vb: SearchItem(String, String)
+- uid: Domain.Inventory.SaveItemsAsync(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  commentId: M:Domain.Inventory.SaveItemsAsync(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  id: SaveItemsAsync(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: SaveItemsAsync(string, string, string, string, string, int)
+  nameWithType: Inventory.SaveItemsAsync(string, string, string, string, string, int)
+  fullName: Domain.Inventory.SaveItemsAsync(string, string, string, string, string, int)
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: SaveItemsAsync
+    path: Domain/Inventory.cs
+    startLine: 101
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Guarda un item en la base de datos
+  example: []
+  syntax:
+    content: public Task<DataTable> SaveItemsAsync(string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
+    parameters:
+    - id: marca
+      type: System.String
+      description: ''
+    - id: modelo
+      type: System.String
+      description: ''
+    - id: barcode
+      type: System.String
+      description: ''
+    - id: descripcion
+      type: System.String
+      description: ''
+    - id: categoria
+      type: System.String
+      description: ''
+    - id: cantidad
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function SaveItemsAsync(marca As String, modelo As String, barcode As String, descripcion As String, categoria As String, cantidad As Integer) As Task(Of DataTable)
+  overload: Domain.Inventory.SaveItemsAsync*
+  nameWithType.vb: Inventory.SaveItemsAsync(String, String, String, String, String, Integer)
+  fullName.vb: Domain.Inventory.SaveItemsAsync(String, String, String, String, String, Integer)
+  name.vb: SaveItemsAsync(String, String, String, String, String, Integer)
+- uid: Domain.Inventory.UpdateItems(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)
+  commentId: M:Domain.Inventory.UpdateItems(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)
+  id: UpdateItems(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: UpdateItems(string, string, string, string, string, string, int)
+  nameWithType: Inventory.UpdateItems(string, string, string, string, string, string, int)
+  fullName: Domain.Inventory.UpdateItems(string, string, string, string, string, string, int)
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: UpdateItems
+    path: Domain/Inventory.cs
+    startLine: 116
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Actualiza un item en la base de datos
+  example: []
+  syntax:
+    content: public Task<DataTable> UpdateItems(string ID, string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
+    parameters:
+    - id: ID
+      type: System.String
+      description: ''
+    - id: marca
+      type: System.String
+      description: ''
+    - id: modelo
+      type: System.String
+      description: ''
+    - id: barcode
+      type: System.String
+      description: ''
+    - id: descripcion
+      type: System.String
+      description: ''
+    - id: categoria
+      type: System.String
+      description: ''
+    - id: cantidad
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function UpdateItems(ID As String, marca As String, modelo As String, barcode As String, descripcion As String, categoria As String, cantidad As Integer) As Task(Of DataTable)
+  overload: Domain.Inventory.UpdateItems*
+  nameWithType.vb: Inventory.UpdateItems(String, String, String, String, String, String, Integer)
+  fullName.vb: Domain.Inventory.UpdateItems(String, String, String, String, String, String, Integer)
+  name.vb: UpdateItems(String, String, String, String, String, String, Integer)
+- uid: Domain.Inventory.DeleteItems(System.String)
+  commentId: M:Domain.Inventory.DeleteItems(System.String)
+  id: DeleteItems(System.String)
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: DeleteItems(string)
+  nameWithType: Inventory.DeleteItems(string)
+  fullName: Domain.Inventory.DeleteItems(string)
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: DeleteItems
+    path: Domain/Inventory.cs
+    startLine: 125
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Elimina un item de la base de datos
+  example: []
+  syntax:
+    content: public Task<DataTable> DeleteItems(string ID)
+    parameters:
+    - id: ID
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function DeleteItems(ID As String) As Task(Of DataTable)
+  overload: Domain.Inventory.DeleteItems*
+  nameWithType.vb: Inventory.DeleteItems(String)
+  fullName.vb: Domain.Inventory.DeleteItems(String)
+  name.vb: DeleteItems(String)
+- uid: Domain.Inventory.AddItems(System.String,System.Int32)
+  commentId: M:Domain.Inventory.AddItems(System.String,System.Int32)
+  id: AddItems(System.String,System.Int32)
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: AddItems(string, int)
+  nameWithType: Inventory.AddItems(string, int)
+  fullName: Domain.Inventory.AddItems(string, int)
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: AddItems
+    path: Domain/Inventory.cs
+    startLine: 135
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Agrega items a la base de datos
+  example: []
+  syntax:
+    content: public Task<DataTable> AddItems(string ID, int cantidad)
+    parameters:
+    - id: ID
+      type: System.String
+      description: ''
+    - id: cantidad
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function AddItems(ID As String, cantidad As Integer) As Task(Of DataTable)
+  overload: Domain.Inventory.AddItems*
+  nameWithType.vb: Inventory.AddItems(String, Integer)
+  fullName.vb: Domain.Inventory.AddItems(String, Integer)
+  name.vb: AddItems(String, Integer)
+- uid: Domain.Inventory.EnsureDatabaseCreated
+  commentId: M:Domain.Inventory.EnsureDatabaseCreated
+  id: EnsureDatabaseCreated
+  parent: Domain.Inventory
+  langs:
+  - csharp
+  - vb
+  name: EnsureDatabaseCreated()
+  nameWithType: Inventory.EnsureDatabaseCreated()
+  fullName: Domain.Inventory.EnsureDatabaseCreated()
+  type: Method
+  source:
+    remote:
+      path: Domain/Inventory.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: EnsureDatabaseCreated
+    path: Domain/Inventory.cs
+    startLine: 143
+  assemblies:
+  - Domain
+  namespace: Domain
+  summary: Verifica si la base de datos existe y la crea si no
+  example: []
+  syntax:
+    content: public void EnsureDatabaseCreated()
+    content.vb: Public Sub EnsureDatabaseCreated()
+  overload: Domain.Inventory.EnsureDatabaseCreated*
+  exceptions:
+  - type: DataAccess.DBConnection.DataAccessException
+    commentId: T:DataAccess.DBConnection.DataAccessException
+    description: ''
+references:
+- uid: Domain
+  commentId: N:Domain
+  href: Domain.html
+  name: Domain
+  nameWithType: Domain
+  fullName: Domain
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.EventHandler
+  commentId: T:System.EventHandler
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.eventhandler
+  name: EventHandler
+  nameWithType: EventHandler
+  fullName: System.EventHandler
+- uid: Domain.Inventory.#ctor*
+  commentId: Overload:Domain.Inventory.#ctor
+  href: Domain.Inventory.html#Domain_Inventory__ctor
+  name: Inventory
+  nameWithType: Inventory.Inventory
+  fullName: Domain.Inventory.Inventory
+  nameWithType.vb: Inventory.New
+  fullName.vb: Domain.Inventory.New
+  name.vb: New
+- uid: Domain.Inventory.Dispose*
+  commentId: Overload:Domain.Inventory.Dispose
+  href: Domain.Inventory.html#Domain_Inventory_Dispose
+  name: Dispose
+  nameWithType: Inventory.Dispose
+  fullName: Domain.Inventory.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Domain.Inventory.LoadItems*
+  commentId: Overload:Domain.Inventory.LoadItems
+  href: Domain.Inventory.html#Domain_Inventory_LoadItems
+  name: LoadItems
+  nameWithType: Inventory.LoadItems
+  fullName: Domain.Inventory.LoadItems
+- uid: System.Threading.Tasks.Task{System.Data.DataTable}
+  commentId: T:System.Threading.Tasks.Task{System.Data.DataTable}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DataTable>
+  nameWithType: Task<DataTable>
+  fullName: System.Threading.Tasks.Task<System.Data.DataTable>
+  nameWithType.vb: Task(Of DataTable)
+  fullName.vb: System.Threading.Tasks.Task(Of System.Data.DataTable)
+  name.vb: Task(Of DataTable)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Data.DataTable
+    name: DataTable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.data.datatable
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Data.DataTable
+    name: DataTable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.data.datatable
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Domain.Inventory.Combobox_Marca*
+  commentId: Overload:Domain.Inventory.Combobox_Marca
+  href: Domain.Inventory.html#Domain_Inventory_Combobox_Marca
+  name: Combobox_Marca
+  nameWithType: Inventory.Combobox_Marca
+  fullName: Domain.Inventory.Combobox_Marca
+- uid: Domain.Inventory.Combobox_Categoria*
+  commentId: Overload:Domain.Inventory.Combobox_Categoria
+  href: Domain.Inventory.html#Domain_Inventory_Combobox_Categoria
+  name: Combobox_Categoria
+  nameWithType: Inventory.Combobox_Categoria
+  fullName: Domain.Inventory.Combobox_Categoria
+- uid: Domain.Inventory.DynamicSearchItem*
+  commentId: Overload:Domain.Inventory.DynamicSearchItem
+  href: Domain.Inventory.html#Domain_Inventory_DynamicSearchItem_System_String_System_String_
+  name: DynamicSearchItem
+  nameWithType: Inventory.DynamicSearchItem
+  fullName: Domain.Inventory.DynamicSearchItem
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Domain.Inventory.ExactSearchItem*
+  commentId: Overload:Domain.Inventory.ExactSearchItem
+  href: Domain.Inventory.html#Domain_Inventory_ExactSearchItem_System_String_
+  name: ExactSearchItem
+  nameWithType: Inventory.ExactSearchItem
+  fullName: Domain.Inventory.ExactSearchItem
+- uid: Domain.Inventory.SearchItem*
+  commentId: Overload:Domain.Inventory.SearchItem
+  href: Domain.Inventory.html#Domain_Inventory_SearchItem_System_String_System_String_
+  name: SearchItem
+  nameWithType: Inventory.SearchItem
+  fullName: Domain.Inventory.SearchItem
+- uid: Domain.Inventory.SaveItemsAsync*
+  commentId: Overload:Domain.Inventory.SaveItemsAsync
+  href: Domain.Inventory.html#Domain_Inventory_SaveItemsAsync_System_String_System_String_System_String_System_String_System_String_System_Int32_
+  name: SaveItemsAsync
+  nameWithType: Inventory.SaveItemsAsync
+  fullName: Domain.Inventory.SaveItemsAsync
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Domain.Inventory.UpdateItems*
+  commentId: Overload:Domain.Inventory.UpdateItems
+  href: Domain.Inventory.html#Domain_Inventory_UpdateItems_System_String_System_String_System_String_System_String_System_String_System_String_System_Int32_
+  name: UpdateItems
+  nameWithType: Inventory.UpdateItems
+  fullName: Domain.Inventory.UpdateItems
+- uid: Domain.Inventory.DeleteItems*
+  commentId: Overload:Domain.Inventory.DeleteItems
+  href: Domain.Inventory.html#Domain_Inventory_DeleteItems_System_String_
+  name: DeleteItems
+  nameWithType: Inventory.DeleteItems
+  fullName: Domain.Inventory.DeleteItems
+- uid: Domain.Inventory.AddItems*
+  commentId: Overload:Domain.Inventory.AddItems
+  href: Domain.Inventory.html#Domain_Inventory_AddItems_System_String_System_Int32_
+  name: AddItems
+  nameWithType: Inventory.AddItems
+  fullName: Domain.Inventory.AddItems
+- uid: DataAccess.DBConnection.DataAccessException
+  commentId: T:DataAccess.DBConnection.DataAccessException
+  href: DataAccess.DBConnection.html
+  name: DBConnection.DataAccessException
+  nameWithType: DBConnection.DataAccessException
+  fullName: DataAccess.DBConnection.DataAccessException
+  spec.csharp:
+  - uid: DataAccess.DBConnection
+    name: DBConnection
+    href: DataAccess.DBConnection.html
+  - name: .
+  - uid: DataAccess.DBConnection.DataAccessException
+    name: DataAccessException
+    href: DataAccess.DBConnection.DataAccessException.html
+  spec.vb:
+  - uid: DataAccess.DBConnection
+    name: DBConnection
+    href: DataAccess.DBConnection.html
+  - name: .
+  - uid: DataAccess.DBConnection.DataAccessException
+    name: DataAccessException
+    href: DataAccess.DBConnection.DataAccessException.html
+- uid: Domain.Inventory.EnsureDatabaseCreated*
+  commentId: Overload:Domain.Inventory.EnsureDatabaseCreated
+  href: Domain.Inventory.html#Domain_Inventory_EnsureDatabaseCreated
+  name: EnsureDatabaseCreated
+  nameWithType: Inventory.EnsureDatabaseCreated
+  fullName: Domain.Inventory.EnsureDatabaseCreated

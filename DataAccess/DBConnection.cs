@@ -2,12 +2,21 @@
 
 namespace DataAccess
 {
+    /// <summary>
+    /// Class to manage the connection to the database
+    /// </summary>
     public abstract class DBConnection
     {
+        /// <summary>
+        /// Path to the database file
+        /// </summary>
         private static readonly string basePath = @"\\prt-itstech\itstech\Yamil\";
         private static readonly string folderPath = System.IO.Path.Combine(basePath, "ITS_ALM");
         private static readonly string dbPath = System.IO.Path.Combine(folderPath, "its_alm2.db");
         public static string DatabasePath => dbPath;
+        /// <summary>
+        /// Connection string to the database
+        /// </summary>
         public static string ConnectionString
         {
             get
@@ -24,11 +33,19 @@ namespace DataAccess
                 return $"Data Source={dbPath}";
             }
         }
-
+        /// <summary>
+        /// Get the path to the database
+        /// </summary>
+        /// <returns></returns>
         public static string GetDatabasePath()
         {
             return dbPath;
         }
+        /// <summary>
+        /// Create the database
+        /// </summary>
+        /// <param name="dbPath"></param>
+        /// <exception cref="DataAccessException"></exception>
         private static void CreateDatabase(string dbPath)
         {
             try
@@ -73,6 +90,9 @@ namespace DataAccess
                 throw new DataAccessException("Error al crear la base de datos", ex);
             }
         }
+        /// <summary>
+        /// Exception for data access
+        /// </summary>
         public class DataAccessException : Exception
         {
             public DataAccessException(string message, Exception innerException)
@@ -80,7 +100,10 @@ namespace DataAccess
             {
             }
         }
-
+        /// <summary>
+        /// Get a connection to the database
+        /// </summary>
+        /// <returns></returns>
         protected SqliteConnection GetConenction()
         {
             return new SqliteConnection(ConnectionString);

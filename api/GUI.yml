@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: GUI
+  commentId: N:GUI
+  id: GUI
+  children:
+  - GUI.Add_UpdateForm
+  - GUI.DarkMessageBox
+  - GUI.InventoryForm
+  - GUI.MainForm
+  - GUI.ReportsForm
+  - GUI.Style
+  langs:
+  - csharp
+  - vb
+  name: GUI
+  nameWithType: GUI
+  fullName: GUI
+  type: Namespace
+  assemblies:
+  - GUI
+references:
+- uid: GUI.Add_UpdateForm
+  commentId: T:GUI.Add_UpdateForm
+  href: GUI.Add_UpdateForm.html
+  name: Add_UpdateForm
+  nameWithType: Add_UpdateForm
+  fullName: GUI.Add_UpdateForm
+- uid: GUI.DarkMessageBox
+  commentId: T:GUI.DarkMessageBox
+  href: GUI.DarkMessageBox.html
+  name: DarkMessageBox
+  nameWithType: DarkMessageBox
+  fullName: GUI.DarkMessageBox
+- uid: GUI.InventoryForm
+  commentId: T:GUI.InventoryForm
+  href: GUI.InventoryForm.html
+  name: InventoryForm
+  nameWithType: InventoryForm
+  fullName: GUI.InventoryForm
+- uid: GUI.MainForm
+  commentId: T:GUI.MainForm
+  href: GUI.MainForm.html
+  name: MainForm
+  nameWithType: MainForm
+  fullName: GUI.MainForm
+- uid: GUI.ReportsForm
+  commentId: T:GUI.ReportsForm
+  href: GUI.ReportsForm.html
+  name: ReportsForm
+  nameWithType: ReportsForm
+  fullName: GUI.ReportsForm
+- uid: GUI.Style
+  commentId: T:GUI.Style
+  parent: GUI
+  href: GUI.Style.html
+  name: Style
+  nameWithType: Style
+  fullName: GUI.Style
+- uid: GUI
+  commentId: N:GUI
+  href: GUI.html
+  name: GUI
+  nameWithType: GUI
+  fullName: GUI

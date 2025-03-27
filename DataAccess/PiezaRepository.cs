@@ -3,8 +3,15 @@ using Microsoft.Data.Sqlite;
 
 namespace DataAccess
 {
+    /// <summary>
+    /// Class to manage the connection to the database
+    /// </summary>
     public class PiezaRepository
     {
+        /// <summary>
+        /// Get all the items from the database
+        /// </summary>
+        /// <returns></returns>
         public async Task<DataTable> GetAllPiezasAsync()
         {
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
@@ -33,6 +40,12 @@ namespace DataAccess
                 }
             }
         }
+        /// <summary>
+        /// Get the items from the database by barcode and category
+        /// </summary>
+        /// <param name="barcode"></param>
+        /// <param name="categoryID"></param>
+        /// <returns></returns>
         public async Task<DataTable> DynamicSearchItemAsync(string barcode, string categoryID)
         { 
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
@@ -66,6 +79,11 @@ namespace DataAccess
                 }
             }
         }
+        /// <summary>
+        /// Get the items from the database by barcode
+        /// </summary>
+        /// <param name="barcode"></param>
+        /// <returns></returns>
         public async Task<DataTable> ExactSearchItemAsync(string barcode)
         {
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
@@ -87,6 +105,12 @@ namespace DataAccess
                 }
             }
         }
+        /// <summary>
+        /// Get the items from the database by marca and category
+        /// </summary>
+        /// <param name="marcaID"></param>
+        /// <param name="categoryID"></param>
+        /// <returns></returns>
         public async Task<DataTable> SearchItemAsync(string marcaID, string categoryID)
         {
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
@@ -112,6 +136,17 @@ namespace DataAccess
                 }
             }
         }
+        /// <summary>
+        /// Save the items to the database
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="modelo"></param>
+        /// <param name="barcode"></param>
+        /// <param name="descripcion"></param>
+        /// <param name="categoria"></param>
+        /// <param name="cantidad"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public async Task<DataTable> SaveItemsAsync(string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
         {
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
@@ -167,6 +202,18 @@ namespace DataAccess
                 }
             }
         }
+        /// <summary>
+        /// Update the items to the database
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="marca"></param>
+        /// <param name="modelo"></param>
+        /// <param name="barcode"></param>
+        /// <param name="descripcion"></param>
+        /// <param name="categoria"></param>
+        /// <param name="cantidad"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public async Task<DataTable> UpdateItemsAsync(string ID, string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
         {
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
@@ -218,6 +265,11 @@ namespace DataAccess
                 }
             }            
         }
+        /// <summary>
+        /// Delete the items from the database
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public async Task<DataTable> DeleteItemsAsync(string ID)
         {
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
@@ -237,6 +289,12 @@ namespace DataAccess
                 }
             }
         }
+        /// <summary>
+        /// Add the items to the database
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="cantidad"></param>
+        /// <returns></returns>
         public async Task<DataTable> AddItemsAsync(string ID, int cantidad)
         {
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
@@ -256,6 +314,10 @@ namespace DataAccess
                 }
             }
         }
+        /// <summary>
+        /// Get the items from the database by ID to fill the combobox
+        /// </summary>
+        /// <returns></returns>
         public async Task<DataTable> ComboBox_MarcaAsync()
         {
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))
@@ -274,6 +336,10 @@ namespace DataAccess
                 }
             }
         }
+        /// <summary>
+        /// Get the items from the database by ID to fill the combobox
+        /// </summary>
+        /// <returns></returns>
         public async Task<DataTable> ComboBox_CategoriaAsync()
         {
             using (var conn = new SqliteConnection(DBConnection.ConnectionString))

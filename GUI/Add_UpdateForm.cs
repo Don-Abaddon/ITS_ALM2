@@ -4,6 +4,9 @@ using System.Data;
 
 namespace GUI
 {
+    /// <summary>
+    /// Clase para agregar o actualizar piezas en el inventario.
+    /// </summary>
     public partial class Add_UpdateForm : Style
     {
         private Inventory _inventory;
@@ -48,6 +51,9 @@ namespace GUI
             cmbcategory.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbmarca.DropDownStyle = ComboBoxStyle.DropDownList;
         }
+        /// <summary>
+        /// Reinicia los campos del formulario.
+        /// </summary>
         private void ResetFields()
         {
             txtpiezaID.Text = "ID";
@@ -56,6 +62,11 @@ namespace GUI
             txtdescription.Text = "Descripcion";
             txtqty.Text = "Cantidad";
         }
+        /// <summary>
+        /// Establece el texto de los TextBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBox_Enter(object sender, EventArgs e)
         {
             txtbar.Tag = "Barcode";
@@ -72,6 +83,11 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// Restaura el texto de los TextBox si están vacíos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBox_Leave(object sender, EventArgs e)
         {
             if (sender is TextBox textBox)
@@ -82,6 +98,10 @@ namespace GUI
                 }
             }
         }
+
+        /// <summary>
+        /// Configura el formulario.
+        /// </summary>
         private void ConfigurarFormulario()
         {
             _inventory = new Inventory();
@@ -93,9 +113,12 @@ namespace GUI
             ButtonStyle(btnsave);
             txtpiezaID.Enabled = false;
             txtpiezaID.ReadOnly = true;
-            txtdescription.Multiline = true;
-            
+            txtdescription.Multiline = true;            
         }
+
+        /// <summary>
+        /// Deshabilita los campos de texto.
+        /// </summary>
         private void Disable_entries()
         {
             txtbar.Enabled = false;
@@ -104,6 +127,12 @@ namespace GUI
             txtmodelo.Enabled = false;
             txtpiezaID.Enabled = false;
         }
+
+        /// <summary>
+        /// Habilita los campos de texto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NewPartForm_FormClosed(object? sender, FormClosedEventArgs e)
         { 
             MainForm? mainForm = Application.OpenForms["MainForm"] as MainForm;
@@ -112,8 +141,15 @@ namespace GUI
                 mainForm.Show();
             }
         }
+
+        /// <summary>
+        /// Guarda los datos de la pieza.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnsave_Click(object sender, EventArgs e)
         {
+            /// Obtiene los valores de los campos.
             string marca = cmbmarca.SelectedValue?.ToString() ?? string.Empty;
             string modelo = txtmodelo.Text;
             string categoria = cmbcategory.SelectedValue?.ToString() ?? string.Empty;
@@ -121,6 +157,7 @@ namespace GUI
             string cantidad = txtqty.Text;
             string barcode = txtbar.Text;
             string id = txtpiezaID.Text;
+            /// Valida si los campos están vacíos.
             if (txtpiezaID.Text == "" || txtpiezaID.Text == "ID")
             {
                 if (!int.TryParse(marca, out int marcaID) || !int.TryParse(categoria, out int categoriaID))
@@ -128,6 +165,7 @@ namespace GUI
                     DarkMessageBox.Show("Seleccione una marca y una categoría válidas.", "Error", MessageBoxButtons.OK);
                     return;
                 }
+                /// Valida si los campos están vacíos.
                 if (string.IsNullOrWhiteSpace(marca) || marca == "Marca" ||
                 string.IsNullOrWhiteSpace(modelo) || modelo == "Modelo" ||
                 string.IsNullOrWhiteSpace(categoria) || categoria == "Categoria" ||
@@ -139,6 +177,7 @@ namespace GUI
                 }
                 else
                 {
+                    /// Valida si la cantidad es un número.
                     if (int.TryParse(cantidad, out int cantidadNumerica) && cantidadNumerica >= 0)
                     {
                         DataTable dataTable = await _inventory.SaveItemsAsync(marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
@@ -150,6 +189,7 @@ namespace GUI
             }
             else
             {
+                /// Valida si los campos están vacíos.
                 if (int.TryParse(cantidad, out int cantidadNumerica) && cantidadNumerica >= 0)
                 {
                     DataTable dataTable = await _inventory.UpdateItems(id, marca, modelo, barcode, descripcion, categoria, cantidadNumerica);
@@ -158,6 +198,17 @@ namespace GUI
                 }                
             }            
         }
+
+        /// <summary>
+        /// Actualiza los campos del formulario.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="marcaID"></param>
+        /// <param name="modelo"></param>
+        /// <param name="barcode"></param>
+        /// <param name="descripcion"></param>
+        /// <param name="categoriaID"></param>
+        /// <param name="cantidad"></param>
         private void Updates(string id, int marcaID, string modelo, string barcode, string descripcion, int categoriaID, string cantidad)
         {
             if (!string.IsNullOrEmpty(id) && id != "ID") // Caso de edición
@@ -181,6 +232,11 @@ namespace GUI
             _marcaIDEdit = marcaID;
             _categoriaIDEdit = categoriaID;
         }
+
+        /// <summary>
+        /// Carga los datos en el ComboBox.
+        /// </summary>
+        /// <returns></returns>
         private async Task LoadComboBox()
         {
             DataTable dataTable = await _inventory.Combobox_Marca();
@@ -205,6 +261,9 @@ namespace GUI
                 cmbcategory.SelectedValue = _categoriaIDEdit;
             }
         }
+        /// <summary>
+        /// Refresca el formulario.
+        /// </summary>
         private async void RefreshForm()
         {
             txtpiezaID.Text = "ID";

@@ -1,0 +1,892 @@
+### YamlMime:ManagedReference
+items:
+- uid: DataAccess.PiezaRepository
+  commentId: T:DataAccess.PiezaRepository
+  id: PiezaRepository
+  parent: DataAccess
+  children:
+  - DataAccess.PiezaRepository.AddItemsAsync(System.String,System.Int32)
+  - DataAccess.PiezaRepository.ComboBox_CategoriaAsync
+  - DataAccess.PiezaRepository.ComboBox_MarcaAsync
+  - DataAccess.PiezaRepository.DeleteItemsAsync(System.String)
+  - DataAccess.PiezaRepository.DynamicSearchItemAsync(System.String,System.String)
+  - DataAccess.PiezaRepository.ExactSearchItemAsync(System.String)
+  - DataAccess.PiezaRepository.GetAllPiezasAsync
+  - DataAccess.PiezaRepository.SaveItemsAsync(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  - DataAccess.PiezaRepository.SearchItemAsync(System.String,System.String)
+  - DataAccess.PiezaRepository.UpdateItemsAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: PiezaRepository
+  nameWithType: PiezaRepository
+  fullName: DataAccess.PiezaRepository
+  type: Class
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: PiezaRepository
+    path: DataAccess/PiezaRepository.cs
+    startLine: 8
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Class to manage the connection to the database
+  example: []
+  syntax:
+    content: public class PiezaRepository
+    content.vb: Public Class PiezaRepository
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: DataAccess.PiezaRepository.GetAllPiezasAsync
+  commentId: M:DataAccess.PiezaRepository.GetAllPiezasAsync
+  id: GetAllPiezasAsync
+  parent: DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: GetAllPiezasAsync()
+  nameWithType: PiezaRepository.GetAllPiezasAsync()
+  fullName: DataAccess.PiezaRepository.GetAllPiezasAsync()
+  type: Method
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: GetAllPiezasAsync
+    path: DataAccess/PiezaRepository.cs
+    startLine: 14
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Get all the items from the database
+  example: []
+  syntax:
+    content: public Task<DataTable> GetAllPiezasAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function GetAllPiezasAsync() As Task(Of DataTable)
+  overload: DataAccess.PiezaRepository.GetAllPiezasAsync*
+- uid: DataAccess.PiezaRepository.DynamicSearchItemAsync(System.String,System.String)
+  commentId: M:DataAccess.PiezaRepository.DynamicSearchItemAsync(System.String,System.String)
+  id: DynamicSearchItemAsync(System.String,System.String)
+  parent: DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: DynamicSearchItemAsync(string, string)
+  nameWithType: PiezaRepository.DynamicSearchItemAsync(string, string)
+  fullName: DataAccess.PiezaRepository.DynamicSearchItemAsync(string, string)
+  type: Method
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: DynamicSearchItemAsync
+    path: DataAccess/PiezaRepository.cs
+    startLine: 48
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Get the items from the database by barcode and category
+  example: []
+  syntax:
+    content: public Task<DataTable> DynamicSearchItemAsync(string barcode, string categoryID)
+    parameters:
+    - id: barcode
+      type: System.String
+      description: ''
+    - id: categoryID
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function DynamicSearchItemAsync(barcode As String, categoryID As String) As Task(Of DataTable)
+  overload: DataAccess.PiezaRepository.DynamicSearchItemAsync*
+  nameWithType.vb: PiezaRepository.DynamicSearchItemAsync(String, String)
+  fullName.vb: DataAccess.PiezaRepository.DynamicSearchItemAsync(String, String)
+  name.vb: DynamicSearchItemAsync(String, String)
+- uid: DataAccess.PiezaRepository.ExactSearchItemAsync(System.String)
+  commentId: M:DataAccess.PiezaRepository.ExactSearchItemAsync(System.String)
+  id: ExactSearchItemAsync(System.String)
+  parent: DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: ExactSearchItemAsync(string)
+  nameWithType: PiezaRepository.ExactSearchItemAsync(string)
+  fullName: DataAccess.PiezaRepository.ExactSearchItemAsync(string)
+  type: Method
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: ExactSearchItemAsync
+    path: DataAccess/PiezaRepository.cs
+    startLine: 86
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Get the items from the database by barcode
+  example: []
+  syntax:
+    content: public Task<DataTable> ExactSearchItemAsync(string barcode)
+    parameters:
+    - id: barcode
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function ExactSearchItemAsync(barcode As String) As Task(Of DataTable)
+  overload: DataAccess.PiezaRepository.ExactSearchItemAsync*
+  nameWithType.vb: PiezaRepository.ExactSearchItemAsync(String)
+  fullName.vb: DataAccess.PiezaRepository.ExactSearchItemAsync(String)
+  name.vb: ExactSearchItemAsync(String)
+- uid: DataAccess.PiezaRepository.SearchItemAsync(System.String,System.String)
+  commentId: M:DataAccess.PiezaRepository.SearchItemAsync(System.String,System.String)
+  id: SearchItemAsync(System.String,System.String)
+  parent: DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: SearchItemAsync(string, string)
+  nameWithType: PiezaRepository.SearchItemAsync(string, string)
+  fullName: DataAccess.PiezaRepository.SearchItemAsync(string, string)
+  type: Method
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: SearchItemAsync
+    path: DataAccess/PiezaRepository.cs
+    startLine: 113
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Get the items from the database by marca and category
+  example: []
+  syntax:
+    content: public Task<DataTable> SearchItemAsync(string marcaID, string categoryID)
+    parameters:
+    - id: marcaID
+      type: System.String
+      description: ''
+    - id: categoryID
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function SearchItemAsync(marcaID As String, categoryID As String) As Task(Of DataTable)
+  overload: DataAccess.PiezaRepository.SearchItemAsync*
+  nameWithType.vb: PiezaRepository.SearchItemAsync(String, String)
+  fullName.vb: DataAccess.PiezaRepository.SearchItemAsync(String, String)
+  name.vb: SearchItemAsync(String, String)
+- uid: DataAccess.PiezaRepository.SaveItemsAsync(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  commentId: M:DataAccess.PiezaRepository.SaveItemsAsync(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  id: SaveItemsAsync(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  parent: DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: SaveItemsAsync(string, string, string, string, string, int)
+  nameWithType: PiezaRepository.SaveItemsAsync(string, string, string, string, string, int)
+  fullName: DataAccess.PiezaRepository.SaveItemsAsync(string, string, string, string, string, int)
+  type: Method
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: SaveItemsAsync
+    path: DataAccess/PiezaRepository.cs
+    startLine: 149
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Save the items to the database
+  example: []
+  syntax:
+    content: public Task<DataTable> SaveItemsAsync(string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
+    parameters:
+    - id: marca
+      type: System.String
+      description: ''
+    - id: modelo
+      type: System.String
+      description: ''
+    - id: barcode
+      type: System.String
+      description: ''
+    - id: descripcion
+      type: System.String
+      description: ''
+    - id: categoria
+      type: System.String
+      description: ''
+    - id: cantidad
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function SaveItemsAsync(marca As String, modelo As String, barcode As String, descripcion As String, categoria As String, cantidad As Integer) As Task(Of DataTable)
+  overload: DataAccess.PiezaRepository.SaveItemsAsync*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: ''
+  nameWithType.vb: PiezaRepository.SaveItemsAsync(String, String, String, String, String, Integer)
+  fullName.vb: DataAccess.PiezaRepository.SaveItemsAsync(String, String, String, String, String, Integer)
+  name.vb: SaveItemsAsync(String, String, String, String, String, Integer)
+- uid: DataAccess.PiezaRepository.UpdateItemsAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)
+  commentId: M:DataAccess.PiezaRepository.UpdateItemsAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)
+  id: UpdateItemsAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)
+  parent: DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: UpdateItemsAsync(string, string, string, string, string, string, int)
+  nameWithType: PiezaRepository.UpdateItemsAsync(string, string, string, string, string, string, int)
+  fullName: DataAccess.PiezaRepository.UpdateItemsAsync(string, string, string, string, string, string, int)
+  type: Method
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: UpdateItemsAsync
+    path: DataAccess/PiezaRepository.cs
+    startLine: 216
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Update the items to the database
+  example: []
+  syntax:
+    content: public Task<DataTable> UpdateItemsAsync(string ID, string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
+    parameters:
+    - id: ID
+      type: System.String
+      description: ''
+    - id: marca
+      type: System.String
+      description: ''
+    - id: modelo
+      type: System.String
+      description: ''
+    - id: barcode
+      type: System.String
+      description: ''
+    - id: descripcion
+      type: System.String
+      description: ''
+    - id: categoria
+      type: System.String
+      description: ''
+    - id: cantidad
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function UpdateItemsAsync(ID As String, marca As String, modelo As String, barcode As String, descripcion As String, categoria As String, cantidad As Integer) As Task(Of DataTable)
+  overload: DataAccess.PiezaRepository.UpdateItemsAsync*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: ''
+  nameWithType.vb: PiezaRepository.UpdateItemsAsync(String, String, String, String, String, String, Integer)
+  fullName.vb: DataAccess.PiezaRepository.UpdateItemsAsync(String, String, String, String, String, String, Integer)
+  name.vb: UpdateItemsAsync(String, String, String, String, String, String, Integer)
+- uid: DataAccess.PiezaRepository.DeleteItemsAsync(System.String)
+  commentId: M:DataAccess.PiezaRepository.DeleteItemsAsync(System.String)
+  id: DeleteItemsAsync(System.String)
+  parent: DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: DeleteItemsAsync(string)
+  nameWithType: PiezaRepository.DeleteItemsAsync(string)
+  fullName: DataAccess.PiezaRepository.DeleteItemsAsync(string)
+  type: Method
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: DeleteItemsAsync
+    path: DataAccess/PiezaRepository.cs
+    startLine: 272
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Delete the items from the database
+  example: []
+  syntax:
+    content: public Task<DataTable> DeleteItemsAsync(string ID)
+    parameters:
+    - id: ID
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function DeleteItemsAsync(ID As String) As Task(Of DataTable)
+  overload: DataAccess.PiezaRepository.DeleteItemsAsync*
+  nameWithType.vb: PiezaRepository.DeleteItemsAsync(String)
+  fullName.vb: DataAccess.PiezaRepository.DeleteItemsAsync(String)
+  name.vb: DeleteItemsAsync(String)
+- uid: DataAccess.PiezaRepository.AddItemsAsync(System.String,System.Int32)
+  commentId: M:DataAccess.PiezaRepository.AddItemsAsync(System.String,System.Int32)
+  id: AddItemsAsync(System.String,System.Int32)
+  parent: DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: AddItemsAsync(string, int)
+  nameWithType: PiezaRepository.AddItemsAsync(string, int)
+  fullName: DataAccess.PiezaRepository.AddItemsAsync(string, int)
+  type: Method
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: AddItemsAsync
+    path: DataAccess/PiezaRepository.cs
+    startLine: 297
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Add the items to the database
+  example: []
+  syntax:
+    content: public Task<DataTable> AddItemsAsync(string ID, int cantidad)
+    parameters:
+    - id: ID
+      type: System.String
+      description: ''
+    - id: cantidad
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function AddItemsAsync(ID As String, cantidad As Integer) As Task(Of DataTable)
+  overload: DataAccess.PiezaRepository.AddItemsAsync*
+  nameWithType.vb: PiezaRepository.AddItemsAsync(String, Integer)
+  fullName.vb: DataAccess.PiezaRepository.AddItemsAsync(String, Integer)
+  name.vb: AddItemsAsync(String, Integer)
+- uid: DataAccess.PiezaRepository.ComboBox_MarcaAsync
+  commentId: M:DataAccess.PiezaRepository.ComboBox_MarcaAsync
+  id: ComboBox_MarcaAsync
+  parent: DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: ComboBox_MarcaAsync()
+  nameWithType: PiezaRepository.ComboBox_MarcaAsync()
+  fullName: DataAccess.PiezaRepository.ComboBox_MarcaAsync()
+  type: Method
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: ComboBox_MarcaAsync
+    path: DataAccess/PiezaRepository.cs
+    startLine: 320
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Get the items from the database by ID to fill the combobox
+  example: []
+  syntax:
+    content: public Task<DataTable> ComboBox_MarcaAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function ComboBox_MarcaAsync() As Task(Of DataTable)
+  overload: DataAccess.PiezaRepository.ComboBox_MarcaAsync*
+- uid: DataAccess.PiezaRepository.ComboBox_CategoriaAsync
+  commentId: M:DataAccess.PiezaRepository.ComboBox_CategoriaAsync
+  id: ComboBox_CategoriaAsync
+  parent: DataAccess.PiezaRepository
+  langs:
+  - csharp
+  - vb
+  name: ComboBox_CategoriaAsync()
+  nameWithType: PiezaRepository.ComboBox_CategoriaAsync()
+  fullName: DataAccess.PiezaRepository.ComboBox_CategoriaAsync()
+  type: Method
+  source:
+    remote:
+      path: DataAccess/PiezaRepository.cs
+      branch: master
+      repo: https://github.com/Don-Abaddon/ITS_ALM2.git
+    id: ComboBox_CategoriaAsync
+    path: DataAccess/PiezaRepository.cs
+    startLine: 342
+  assemblies:
+  - DataAccess
+  namespace: DataAccess
+  summary: Get the items from the database by ID to fill the combobox
+  example: []
+  syntax:
+    content: public Task<DataTable> ComboBox_CategoriaAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Data.DataTable}
+      description: ''
+    content.vb: Public Function ComboBox_CategoriaAsync() As Task(Of DataTable)
+  overload: DataAccess.PiezaRepository.ComboBox_CategoriaAsync*
+references:
+- uid: DataAccess
+  commentId: N:DataAccess
+  href: DataAccess.html
+  name: DataAccess
+  nameWithType: DataAccess
+  fullName: DataAccess
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: DataAccess.PiezaRepository.GetAllPiezasAsync*
+  commentId: Overload:DataAccess.PiezaRepository.GetAllPiezasAsync
+  href: DataAccess.PiezaRepository.html#DataAccess_PiezaRepository_GetAllPiezasAsync
+  name: GetAllPiezasAsync
+  nameWithType: PiezaRepository.GetAllPiezasAsync
+  fullName: DataAccess.PiezaRepository.GetAllPiezasAsync
+- uid: System.Threading.Tasks.Task{System.Data.DataTable}
+  commentId: T:System.Threading.Tasks.Task{System.Data.DataTable}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DataTable>
+  nameWithType: Task<DataTable>
+  fullName: System.Threading.Tasks.Task<System.Data.DataTable>
+  nameWithType.vb: Task(Of DataTable)
+  fullName.vb: System.Threading.Tasks.Task(Of System.Data.DataTable)
+  name.vb: Task(Of DataTable)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Data.DataTable
+    name: DataTable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.data.datatable
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Data.DataTable
+    name: DataTable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.data.datatable
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: DataAccess.PiezaRepository.DynamicSearchItemAsync*
+  commentId: Overload:DataAccess.PiezaRepository.DynamicSearchItemAsync
+  href: DataAccess.PiezaRepository.html#DataAccess_PiezaRepository_DynamicSearchItemAsync_System_String_System_String_
+  name: DynamicSearchItemAsync
+  nameWithType: PiezaRepository.DynamicSearchItemAsync
+  fullName: DataAccess.PiezaRepository.DynamicSearchItemAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: DataAccess.PiezaRepository.ExactSearchItemAsync*
+  commentId: Overload:DataAccess.PiezaRepository.ExactSearchItemAsync
+  href: DataAccess.PiezaRepository.html#DataAccess_PiezaRepository_ExactSearchItemAsync_System_String_
+  name: ExactSearchItemAsync
+  nameWithType: PiezaRepository.ExactSearchItemAsync
+  fullName: DataAccess.PiezaRepository.ExactSearchItemAsync
+- uid: DataAccess.PiezaRepository.SearchItemAsync*
+  commentId: Overload:DataAccess.PiezaRepository.SearchItemAsync
+  href: DataAccess.PiezaRepository.html#DataAccess_PiezaRepository_SearchItemAsync_System_String_System_String_
+  name: SearchItemAsync
+  nameWithType: PiezaRepository.SearchItemAsync
+  fullName: DataAccess.PiezaRepository.SearchItemAsync
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: DataAccess.PiezaRepository.SaveItemsAsync*
+  commentId: Overload:DataAccess.PiezaRepository.SaveItemsAsync
+  href: DataAccess.PiezaRepository.html#DataAccess_PiezaRepository_SaveItemsAsync_System_String_System_String_System_String_System_String_System_String_System_Int32_
+  name: SaveItemsAsync
+  nameWithType: PiezaRepository.SaveItemsAsync
+  fullName: DataAccess.PiezaRepository.SaveItemsAsync
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: DataAccess.PiezaRepository.UpdateItemsAsync*
+  commentId: Overload:DataAccess.PiezaRepository.UpdateItemsAsync
+  href: DataAccess.PiezaRepository.html#DataAccess_PiezaRepository_UpdateItemsAsync_System_String_System_String_System_String_System_String_System_String_System_String_System_Int32_
+  name: UpdateItemsAsync
+  nameWithType: PiezaRepository.UpdateItemsAsync
+  fullName: DataAccess.PiezaRepository.UpdateItemsAsync
+- uid: DataAccess.PiezaRepository.DeleteItemsAsync*
+  commentId: Overload:DataAccess.PiezaRepository.DeleteItemsAsync
+  href: DataAccess.PiezaRepository.html#DataAccess_PiezaRepository_DeleteItemsAsync_System_String_
+  name: DeleteItemsAsync
+  nameWithType: PiezaRepository.DeleteItemsAsync
+  fullName: DataAccess.PiezaRepository.DeleteItemsAsync
+- uid: DataAccess.PiezaRepository.AddItemsAsync*
+  commentId: Overload:DataAccess.PiezaRepository.AddItemsAsync
+  href: DataAccess.PiezaRepository.html#DataAccess_PiezaRepository_AddItemsAsync_System_String_System_Int32_
+  name: AddItemsAsync
+  nameWithType: PiezaRepository.AddItemsAsync
+  fullName: DataAccess.PiezaRepository.AddItemsAsync
+- uid: DataAccess.PiezaRepository.ComboBox_MarcaAsync*
+  commentId: Overload:DataAccess.PiezaRepository.ComboBox_MarcaAsync
+  href: DataAccess.PiezaRepository.html#DataAccess_PiezaRepository_ComboBox_MarcaAsync
+  name: ComboBox_MarcaAsync
+  nameWithType: PiezaRepository.ComboBox_MarcaAsync
+  fullName: DataAccess.PiezaRepository.ComboBox_MarcaAsync
+- uid: DataAccess.PiezaRepository.ComboBox_CategoriaAsync*
+  commentId: Overload:DataAccess.PiezaRepository.ComboBox_CategoriaAsync
+  href: DataAccess.PiezaRepository.html#DataAccess_PiezaRepository_ComboBox_CategoriaAsync
+  name: ComboBox_CategoriaAsync
+  nameWithType: PiezaRepository.ComboBox_CategoriaAsync
+  fullName: DataAccess.PiezaRepository.ComboBox_CategoriaAsync

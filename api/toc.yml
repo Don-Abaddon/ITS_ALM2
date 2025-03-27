@@ -1,0 +1,64 @@
+### YamlMime:TableOfContent
+items:
+- uid: DataAccess
+  name: DataAccess
+  type: Namespace
+  items:
+  - uid: DataAccess.DBConnection
+    name: DBConnection
+    type: Class
+  - uid: DataAccess.DBConnection.DataAccessException
+    name: DBConnection.DataAccessException
+    type: Class
+  - uid: DataAccess.PiezaRepository
+    name: PiezaRepository
+    type: Class
+- uid: Domain
+  name: Domain
+  type: Namespace
+  items:
+  - uid: Domain.Inventory
+    name: Inventory
+    type: Class
+- uid: GUI
+  name: GUI
+  type: Namespace
+  items:
+  - uid: GUI.Add_UpdateForm
+    name: Add_UpdateForm
+    type: Class
+  - uid: GUI.DarkMessageBox
+    name: DarkMessageBox
+    type: Class
+  - uid: GUI.InventoryForm
+    name: InventoryForm
+    type: Class
+  - uid: GUI.MainForm
+    name: MainForm
+    type: Class
+  - uid: GUI.ReportsForm
+    name: ReportsForm
+    type: Class
+  - uid: GUI.Style
+    name: Style
+    type: Class
+- uid: GUI.Reports
+  name: GUI.Reports
+  type: Namespace
+  items:
+  - uid: GUI.Reports.DataSet1
+    name: DataSet1
+    type: Class
+  - uid: GUI.Reports.DataSet1.dtPiezasDataTable
+    name: DataSet1.dtPiezasDataTable
+    type: Class
+  - uid: GUI.Reports.DataSet1.dtPiezasRow
+    name: DataSet1.dtPiezasRow
+    type: Class
+  - uid: GUI.Reports.DataSet1.dtPiezasRowChangeEvent
+    name: DataSet1.dtPiezasRowChangeEvent
+    type: Class
+  - uid: GUI.Reports.DataSet1.dtPiezasRowChangeEventHandler
+    name: DataSet1.dtPiezasRowChangeEventHandler
+    type: Delegate
+memberLayout: SamePage
