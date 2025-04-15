@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" TextQuality="Regular" ReportInfo.Created="03/26/2025 16:07:47" ReportInfo.Modified="04/15/2025 08:10:30" ReportInfo.CreatorVersion="2025.1.0.0">
+  <Dictionary>
+    <XmlDataConnection Name="DBPiezas" ConnectionString="rijcmlqjvMLRQNNmscOhVp5BRTKpSKCgB+Th/VqFHX9h0Gdm9WfKXt13eIWPJM3mlqGCzELKsCH/ZcOColcTjdf1moLn+I391ORE6vBeDn4tPSm1eAedTQ62jFRN+A1Q5MQszOYumwK+F481kAdV7CYkHJij9ltP7f/jyfOjC45yK/Na/lnM8Mlb2OqGNJMNT/iaKTT">
+      <TableDataSource Name="dtPiezas2" DataType="System.Int32" Enabled="true" TableName="dtPiezas">
+        <Column Name="PiezaID" DataType="System.Int32"/>
+        <Column Name="Marca" DataType="System.String"/>
+        <Column Name="Modelo" DataType="System.String"/>
+        <Column Name="BarCode" DataType="System.String"/>
+        <Column Name="Descripcion" DataType="System.String"/>
+        <Column Name="Categoria" DataType="System.String"/>
+        <Column Name="Cantidad" DataType="System.Int32"/>
+      </TableDataSource>
+    </XmlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" BottomMargin="0" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="50">
+      <TextObject Name="TextTitle" Width="718" Height="50" Text="Piezas a pedir" HorzAlign="Center" VertAlign="Center" Font="Arial, 16pt, style=Bold"/>
+    </ReportTitleBand>
+    <DataBand Name="DataBand1" Top="54" Width="718.2" Height="32.13" DataSource="dtPiezas2">
+      <TableObject Name="Table1" Left="9.45" Width="700.2" Height="32.13" AdjustSpannedCellsWidth="true">
+        <TableColumn Name="Column1" Width="78.9"/>
+        <TableColumn Name="Column2" Width="154.5"/>
+        <TableColumn Name="Column3" Width="116.7"/>
+        <TableColumn Name="Column4" Width="116.7"/>
+        <TableColumn Name="Column5" Width="116.7"/>
+        <TableColumn Name="Column6" Width="116.7"/>
+        <TableRow Name="Row1" Height="32.13">
+          <TableCell Name="Cell1" Border.Lines="All" Font="Arial, 10pt" RowSpan="5"/>
+          <TableCell Name="Cell2" Border.Lines="All" Font="Arial, 10pt" RowSpan="5"/>
+          <TableCell Name="Cell3" Border.Lines="All" Font="Arial, 10pt" RowSpan="5"/>
+          <TableCell Name="Cell4" Border.Lines="All" Font="Arial, 10pt" RowSpan="5"/>
+          <TableCell Name="Cell5" Border.Lines="All" Text="[dtPiezas2.Categoria]" Font="Arial, 10pt" RowSpan="5"/>
+          <TableCell Name="Cell26" Border.Lines="All" Text="[dtPiezas2.Cantidad]" Font="Arial, 10pt" RowSpan="5"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="90.13" Width="718.2" Height="30"/>
+  </ReportPage>
+</Report>

@@ -358,5 +358,32 @@ namespace DataAccess
                 }
             }
         }
+        ///
+        public async Task<DataTable> ObtenerResumenPorCategoriaAsync()
+        {
+            using (var conn = new SqliteConnection(DBConnection.ConnectionString))
+            {
+                await conn.OpenAsync();
+                string query = @"SELECT                        
+                        p.Modelo,
+                        c.Category as Categoria,
+                        SUM(p.Cantidad) AS Cantidad
+                        FROM Piezas AS p 
+                    INNER JOIN Marcas AS m ON p.Marca = m.ID 
+                    INNER JOIN Category As c ON p.Categoria = c.ID
+                    GROUP BY c.ID, c.Category, p.Modelo  
+                    ORDER BY SUM(p.Cantidad) DESC";
+
+                using (var cmd = new SqliteCommand(query, conn))
+                {
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }
+                }
+            }
+        }
     }
 }

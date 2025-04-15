@@ -75,7 +75,7 @@ namespace Domain
         /// </summary>
         /// <param name="barcode"></param>
         /// <returns></returns>
-        public async Task<DataTable> ExactSearchItem( string barcode)
+        public async Task<DataTable> ExactSearchItem(string barcode)
         {
             return await _piezaRepository.ExactSearchItemAsync(barcode);
         }
@@ -101,7 +101,7 @@ namespace Domain
         /// <returns></returns>
         public async Task<DataTable> SaveItemsAsync(string marca, string modelo, string barcode, string descripcion, string categoria, int cantidad)
         {
-            return await _piezaRepository.SaveItemsAsync(marca,  modelo,  barcode,  descripcion,  categoria,  cantidad);
+            return await _piezaRepository.SaveItemsAsync(marca, modelo, barcode, descripcion, categoria, cantidad);
         }
         /// <summary>
         /// Actualiza un item en la base de datos
@@ -133,9 +133,9 @@ namespace Domain
         /// <param name="ID"></param>
         /// <param name="cantidad"></param>
         /// <returns></returns>
-        public async Task<DataTable> AddItems( string ID, int cantidad)
+        public async Task<DataTable> AddItems(string ID, int cantidad)
         {
-            return await _piezaRepository.AddItemsAsync(ID,cantidad);
+            return await _piezaRepository.AddItemsAsync(ID, cantidad);
         }
         /// <summary>
         /// Verifica si la base de datos existe y la crea si no
@@ -156,5 +156,31 @@ namespace Domain
                 throw new DataAccessException("Error al procesar datos de la base de datos", ex);
             }
         }
+        public async Task<DataTable> ObtenerPiezas()
+        {
+            var dtCompleto = await _piezaRepository.GetAllPiezasAsync();
+
+            DataRow[] filasFiltradas = dtCompleto.Select();
+
+            DataTable dtFiltrado = dtCompleto.Clone();
+            foreach (DataRow row in filasFiltradas)
+                dtFiltrado.ImportRow(row);
+
+            return dtFiltrado;
+        }
+
+        public async Task<DataTable> ObtenerResumenPorCategoria(int? umbral = null)
+        {
+            var dtCompleto = await _piezaRepository.ObtenerResumenPorCategoriaAsync();
+
+            DataRow[] filasFiltradas = dtCompleto.Select();
+
+            DataTable dtFiltrado = dtCompleto.Clone();
+            foreach (DataRow row in filasFiltradas)
+                dtFiltrado.ImportRow(row);
+
+            return dtFiltrado;
+        }
     }
+
 }

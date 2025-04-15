@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <dsPiezas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="DataSet1.xsd">
 
-	<dtPiezas2>
+	<dtPiezas>
 		<PiezaID>1</PiezaID>
 		<Marca>Logitech</Marca>
 		<Modelo>M110 Silent</Modelo>
@@ -10,9 +10,8 @@
 		<Descripcion>Mouse</Descripcion>
 		<Categoria>Mouse</Categoria>
 		<Cantidad>57</Cantidad>
-	</dtPiezas2>
-
-	<dtPiezas2>
+	</dtPiezas>
+	<dtPiezas>
 		<PiezaID>2</PiezaID>
 		<Marca>Kingston</Marca>
 		<Modelo>KVR16LS11/4</Modelo>
@@ -20,5 +19,5 @@
 		<Descripcion>4GB PC3L - 12800 CL11</Descripcion>
 		<Categoria>RAM Laptop</Categoria>
 		<Cantidad>22</Cantidad>
-	</dtPiezas2>
+	</dtPiezas>
 </dsPiezas>

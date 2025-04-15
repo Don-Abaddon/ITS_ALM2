@@ -443,6 +443,13 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="M:GUI.ReportsForm.MostrarReporte(System.Data.DataTable,System.String)">
+            <summary>
+            Muestra el reporte en un archivo PDF 
+            </summary>
+            <param name="dt"></param>
+            <param name="rutaFrx"></param>
+        </member>
         <member name="F:GUI.ReportsForm.components">
             <summary>
             Required designer variable.
