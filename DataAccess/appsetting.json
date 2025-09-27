@@ -1,0 +1,17 @@
+{
+  "Database": {
+        "SelectedProfile": "sqlite",
+        "Profile":{
+            "mysql":{
+                "Provider": "mysql",
+                "ConnectionString": "Server=localhost;Database=its_alm2;User Id=root;Password=1234;",
+                "SqlFolder": "sql"
+            },
+            "sqlite":{
+                "Provider": "sqlite",
+                "ConnectionString": "Data Source=its_alm2.db",
+                "SqlFolder": "sql"
+            }
+        }
+    }
+}

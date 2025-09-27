@@ -1,4 +1,6 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using System.Data.Common;
+using Microsoft.Data.Sqlite;
+using MySqlConnector;
 
 namespace DataAccess
 {
@@ -7,16 +9,16 @@ namespace DataAccess
     /// </summary>
     public abstract class DBConnection
     {
-        /// <summary>
-        /// Path to the database file
-        /// </summary>
-        private static readonly string basePath = @"\\prt-itstech\itstech\Yamil\";
-        private static readonly string folderPath = System.IO.Path.Combine(basePath, "ITS_ALM");
-        private static readonly string dbPath = System.IO.Path.Combine(folderPath, "its_alm2.db");
-        public static string DatabasePath => dbPath;
-        /// <summary>
-        /// Connection string to the database
-        /// </summary>
+        public static DbConnection CreateConnection(DbSettings s)
+        => s.Provider switch
+        {
+            "sqlite" => new SqliteConnection(s.ConnectionString),
+            "mysql"  => new MySqlConnection(s.ConnectionString),
+            _ => throw new NotSupportedException($"Proveedor no soportado: {s.Provider}")
+        };
+
+    public static string ProviderFolder(DbSettings s)
+        => Path.Combine(s.SqlFolder, s.Provider);
         public static string ConnectionString
         {
             get
