@@ -9,12 +9,12 @@
     <FileVersion>1.0.4</FileVersion>
     <AssemblyVersion>1.0.4</AssemblyVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>C:\Users\te81862\source\repos\ITS_ALM2\doc.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\ysant\source\repos\ITS_ALM2\doc.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FastReport.OpenSource" Version="2025.1.0" />
-    <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2025.1.0" />
+    <PackageReference Include="FastReport.OpenSource" Version="2025.2.12" />
+    <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2025.2.12" />
   </ItemGroup>
 
   <ItemGroup>

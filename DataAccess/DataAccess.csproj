@@ -8,9 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FastReport.OpenSource" Version="2025.1.0" />
-    <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2025.1.0" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.2" />
+    <PackageReference Include="FastReport.OpenSource" Version="2025.2.12" />
+    <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2025.2.12" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.9" />
+    <PackageReference Include="MySql.Data" Version="9.4.0" />
   </ItemGroup>
 
 </Project>

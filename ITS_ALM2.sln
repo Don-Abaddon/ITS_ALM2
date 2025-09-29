@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{E5167116-8AF6-4798-B44C-033FEA294152}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ITS_ALM_Setup", "ITS_ALM_Setup\ITS_ALM_Setup.vdproj", "{6D29D52B-DDED-40EF-A26B-818D5A477713}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,21 +16,20 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{03CDEA5E-E30B-4F23-B214-8AC8796016F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03CDEA5E-E30B-4F23-B214-8AC8796016F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03CDEA5E-E30B-4F23-B214-8AC8796016F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03CDEA5E-E30B-4F23-B214-8AC8796016F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F82CC067-E24B-418B-A1CE-9BFE575B709D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F82CC067-E24B-418B-A1CE-9BFE575B709D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F82CC067-E24B-418B-A1CE-9BFE575B709D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F82CC067-E24B-418B-A1CE-9BFE575B709D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E5167116-8AF6-4798-B44C-033FEA294152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E5167116-8AF6-4798-B44C-033FEA294152}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5167116-8AF6-4798-B44C-033FEA294152}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5167116-8AF6-4798-B44C-033FEA294152}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D29D52B-DDED-40EF-A26B-818D5A477713}.Debug|Any CPU.ActiveCfg = Debug
-		{6D29D52B-DDED-40EF-A26B-818D5A477713}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00384DA1-176A-4CD0-AD61-348DA23A93E4}
 	EndGlobalSection
 EndGlobal
